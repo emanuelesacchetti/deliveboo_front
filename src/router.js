@@ -5,6 +5,7 @@ import RestaurantList from './pages/RestaurantList.vue';
 import SingleRestaurant from './pages/SingleRestaurant.vue';
 import SingleProduct from './pages/SingleProduct.vue';
 import NotFound from './pages/NotFound.vue';
+import LaravelPage from './pages/LaravelPage.vue';
 
 const router = createRouter(
     {
@@ -34,6 +35,11 @@ const router = createRouter(
                 path: '/:pathMatch(.*)*',
                 name: 'not-found',
                 component: NotFound
+            },
+            {
+                path: '/laravel',
+                name: 'laravel',
+                component: LaravelPage
             }
         ]
     }

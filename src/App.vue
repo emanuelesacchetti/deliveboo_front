@@ -21,10 +21,8 @@
 </template>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
     @use './styles/general.scss';
 
-    h1{
-        color: red;
-    }
+
 </style>
