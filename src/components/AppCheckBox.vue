@@ -17,17 +17,18 @@ export default {
                 })
         },
 
-        /*  categoryFilter($id) {
-               console.log(this.store.selectedRestaurant);
-               const typeIds = this.store.selectedRestaurant.map(restaurantType => restaurantType.id);
-               axios.get(`${this.store.baseUrl} / api / restaurants ? types = ${typeIds.join(',')}`)
+          categoryFilter($id) {
+               console.log($id);
+               this.store.selectedRestaurant.push($id);
+               console.log(this.store.selectedRestaurant); 
+               
+               axios.get(`${this.store.baseUrl} / api / restaurants ? types = ${this.store.selectedRestaurant.join(',')}`)
                    .then(response => {
+                    console.log(response);
                        this.store.restaurantList = response.data.results;
-                       console.log(typeIds);
-                       console.log(response);
                    })
            }
-           */
+           
     },
     mounted() {
         this.getTypes();
@@ -41,8 +42,8 @@ export default {
         <div>
             <h2>Elenco dei ristoranti</h2>
             <div class="d-flex">
-                <div class="card" v-for="restaurantType in this.store.restaurantTypes">
-                    <input type="checkbox" v-model="this.store.selectedRestaurant" :id="restaurantType.id"
+                <div class="card" v-for="restaurantType in this.store.restaurantTypes" :key="restaurantType.id">
+                    <input type="checkbox" @click="categoryFilter(restaurantType.id)" :id="restaurantType.id"
                         :value="restaurantType.id">
                     <label :for="restaurantType.id">{{ restaurantType.name }}</label>
                 </div>
