@@ -34,19 +34,20 @@
             <div class="col-6">
                 <h1 class="p-3 border-bottom">Prodotti</h1>
                 <div>
-                    <ul class="list-unstyled">
-                        <li v-for="product in products" >
+                    <ul class="list-unstyled fs-5">
+                        <li v-for="product in products">
                             <div v-if="product.restaurant_id == restaurant_id"
                                 class="d-flex justify-content-around align-items-center py-1" :key="product.id">
                                 <span>{{ product.name }}</span>
-                                <span> Euro : {{ product.price }} </span>
-                                <button @click="addToCart(product)">add to cart</button>
+                                <span> {{ product.price }} &euro; </span>
+                                <button @click="addToCart(product)" class="btn btn-dark">add to cart</button>
                             </div>
                         </li>
                     </ul>
                 </div>
+                <span v-for="index in 4" class="btn btn-primary m-2" @click="restaurant_id = index"> Ristorante {{ index }}
+                </span>
             </div>
-
 
         </div>
 
@@ -164,8 +165,8 @@ export default {
             let total = 0;
             if (this.store.cart.length) {
                 this.store.cart.forEach(item => {
-                    if(item.product.restaurant_id == this.restaurant_id)
-                    total += (parseInt(item.product.price) * parseInt(item.product.quantity));
+                    if (item.product.restaurant_id == this.restaurant_id)
+                        total += (parseInt(item.product.price) * parseInt(item.product.quantity));
                 })
             }
             return total;
