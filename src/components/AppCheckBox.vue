@@ -17,18 +17,29 @@ export default {
                 })
         },
 
-          categoryFilter($id) {
-               console.log($id);
-               this.store.selectedRestaurant.push($id);
-               console.log(this.store.selectedRestaurant); 
-               
-               axios.get(`${this.store.baseUrl} / api / restaurants ? types = ${this.store.selectedRestaurant.join(',')}`)
-                   .then(response => {
+        categoryFilter($id) {
+            //   if (!this.store.selectedRestaurant.includes($id)) {
+            //      this.store.selectedRestaurant.push($id);
+            // } else {
+            //     this.store.selectedRestaurant.splice($id)
+            //}
+            if (this.store.selectedRestaurant.includes($id)) {
+                const index = this.store.selectedRestaurant.indexOf($id);
+                console.log(index);
+                this.store.selectedRestaurant.splice(index, 1);
+            } else {
+                this.store.selectedRestaurant.push($id);
+            }
+
+            console.log(this.store.selectedRestaurant);
+
+            axios.get(`${this.store.baseUrl}/api/restaurants?types=${this.store.selectedRestaurant.join(",")}`)
+                .then(response => {
                     console.log(response);
-                       this.store.restaurantList = response.data.results;
-                   })
-           }
-           
+                    this.store.restaurantList = response.data.results;
+                })
+        }
+
     },
     mounted() {
         this.getTypes();
@@ -42,6 +53,7 @@ export default {
         <div>
             <h2>Elenco dei ristoranti</h2>
             <div class="d-flex">
+
                 <div class="card" v-for="restaurantType in this.store.restaurantTypes" :key="restaurantType.id">
                     <input type="checkbox" @click="categoryFilter(restaurantType.id)" :id="restaurantType.id"
                         :value="restaurantType.id">

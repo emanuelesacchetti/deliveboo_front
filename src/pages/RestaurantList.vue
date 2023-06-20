@@ -17,6 +17,7 @@ export default {
 
 <template>
     <AppCheckBox />
+
     <div class="container_general">
         <ul>
             <li v-for="restaurant in this.store.restaurantList">
