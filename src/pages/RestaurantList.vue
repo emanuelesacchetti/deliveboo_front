@@ -1,17 +1,34 @@
 <script>
-    export default {
-        name: 'RestaurantList'
+import { store } from '../store.js';
+import AppCheckBox from '../components/AppCheckBox.vue';
+export default {
+    name: 'RestaurantList',
+    data() {
+        return {
+            store,
+        }
+    },
+    components: {
+        AppCheckBox,
     }
+}
 </script>
 
 
 <template>
-
-        <h2><strong>ciao io sono la lista dei ristoranti di una o più categorie</strong></h2>
-
+    <AppCheckBox />
+    <div class="container_general">
+        <ul>
+            <li v-for="restaurant in this.store.restaurantList">
+                {{ restaurant.name }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 
-<style>
-
+<style lang="scss" scoped> .container_general {
+     display: flex;
+     justify-content: center;
+ }
 </style>
