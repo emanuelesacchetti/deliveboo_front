@@ -13,12 +13,12 @@ export default {
 
 
 <template>
-    <AppHeader />
+    <AppHeader/>
     <h1>ciao mondo</h1>
     <div class="container">
-        <router-view />
+        <router-view/>
     </div>
-    <AppFooter />
+    <AppFooter/>
 </template>
 
 
