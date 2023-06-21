@@ -15,31 +15,57 @@ export default {
                     this.store.restaurantTypes = response.data.results;
                     console.log(response);
                 })
-        },
-
-        categoryFilter($id) {
-            //   if (!this.store.selectedRestaurant.includes($id)) {
-            //      this.store.selectedRestaurant.push($id);
-            // } else {
-            //     this.store.selectedRestaurant.splice($id)
-            //}
-            if (this.store.selectedRestaurant.includes($id)) {
-                const index = this.store.selectedRestaurant.indexOf($id);
-                console.log(index);
-                this.store.selectedRestaurant.splice(index, 1);
+        },                                                                          
+        categoryFilter($id) {  
+                                                                                                       
+            let myQuery = this.$route.query.types;
+            console.log('cosa è ' + myQuery)                                  
+            myQuery = myQuery.split(',');                                          
+            console.log( 'ho spillato myQuery:');
+            let found = false;
+            myQuery.forEach(element => {                                            
+                if (element == $id) {                                               
+            found = true;                                                           
+                }
+            })
+            if (found) {  
+                myQuery.forEach((element,index) => {
+                    if(element == $id){
+                        myQuery.splice(index,1)
+                        console.log('ho elimnato un elemento alla posizione' + index);   
+                    }
+                })                                                                                                       
             } else {
-                this.store.selectedRestaurant.push($id);
+                console.log('elemento non trovato');
+                if(myQuery[0] != ''){
+                    console.log('il primo elemento NON è vuoto')
+                    myQuery.push($id);
+                }else{
+                    
+                    myQuery = [$id];
+                    console.log('settato a' + $id)
+                }   
             }
-
-            console.log(this.store.selectedRestaurant);
-
-            axios.get(`${this.store.baseUrl}/api/restaurants?types=${this.store.selectedRestaurant.join(",")}`)
+            if(myQuery.length >= 1){
+                console.log(myQuery);
+                myQuery = myQuery.join(',');
+                console.log(myQuery);
+            }else{
+                myQuery = '';
+            }
+            console.log(myQuery);
+                                                      
+            myQuery = this.$router.replace({ query: { types: myQuery } });                                                                             
+        }
+    },
+    watch: {
+        '$route.query.types'(newQuery, oldQuery){
+            axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
                     console.log(response);
                     this.store.restaurantList = response.data.results;
                 })
         }
-
     },
     mounted() {
         this.getTypes();
