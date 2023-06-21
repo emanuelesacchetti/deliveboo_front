@@ -53,8 +53,8 @@ export default {
             <h1>Menù</h1>
             <hr>
             <div class="row">
-                <div class="col-3" v-for="product in products">
-                    <div class="card text-center m-3">
+                <div class="col-6" v-for="product in products">
+                    <div class="card text-center m-3 w-75">
                         <img class=" card-img-top" :src="product.image" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
