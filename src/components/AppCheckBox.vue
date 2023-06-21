@@ -13,7 +13,6 @@ export default {
             axios.get(`${this.store.baseUrl}/api/types`)
                 .then(response => {
                     this.store.restaurantTypes = response.data.results;
-                    console.log(response);
                 })
         },                                                                          
         categoryFilter($id) {  
@@ -39,17 +38,13 @@ export default {
                     myQuery.push($id);
                 }else{     
                     myQuery = [$id];
-                    console.log('settato a' + $id)
                 }   
             }
             if(myQuery.length >= 1){
-                console.log(myQuery);
                 myQuery = myQuery.join(',');
-                console.log(myQuery);
             }else{
                 myQuery = '';
             }
-            console.log(myQuery);                                         
             myQuery = this.$router.replace({ query: { types: myQuery } });                                                                             
         }
     },
@@ -57,7 +52,6 @@ export default {
         '$route.query.types'(newQuery, oldQuery){
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
-                    console.log(response);
                     this.store.restaurantList = response.data.results;
                 })
         }
