@@ -18,10 +18,8 @@ export default {
         },                                                                          
         categoryFilter($id) {  
                                                                                                        
-            let myQuery = this.$route.query.types;
-            console.log('cosa è ' + myQuery)                                  
-            myQuery = myQuery.split(',');                                          
-            console.log( 'ho spillato myQuery:');
+            let myQuery = this.$route.query.types;                                      
+            myQuery = myQuery.split(',');                                                  
             let found = false;
             myQuery.forEach(element => {                                            
                 if (element == $id) {                                               
@@ -31,17 +29,15 @@ export default {
             if (found) {  
                 myQuery.forEach((element,index) => {
                     if(element == $id){
-                        myQuery.splice(index,1)
-                        console.log('ho elimnato un elemento alla posizione' + index);   
+                        myQuery.splice(index,1)                        
                     }
                 })                                                                                                       
             } else {
-                console.log('elemento non trovato');
+                
                 if(myQuery[0] != ''){
-                    console.log('il primo elemento NON è vuoto')
-                    myQuery.push($id);
-                }else{
                     
+                    myQuery.push($id);
+                }else{     
                     myQuery = [$id];
                     console.log('settato a' + $id)
                 }   
@@ -53,8 +49,7 @@ export default {
             }else{
                 myQuery = '';
             }
-            console.log(myQuery);
-                                                      
+            console.log(myQuery);                                         
             myQuery = this.$router.replace({ query: { types: myQuery } });                                                                             
         }
     },
