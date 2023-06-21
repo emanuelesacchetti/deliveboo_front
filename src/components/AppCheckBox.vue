@@ -16,22 +16,66 @@ export default {
                     console.log(response);
                 })
         },
+        /*   getnumbers(newArray) {
+               let numbers;
+               numbers = newArray.map(function (Str) { parseInt(Str) });
+               return numbers;
+           },
+        */
+
+
 
         categoryFilter($id) {
-            //   if (!this.store.selectedRestaurant.includes($id)) {
-            //      this.store.selectedRestaurant.push($id);
-            // } else {
-            //     this.store.selectedRestaurant.splice($id)
-            //}
+            /*            let myquery = this.$route.query.types;
+                        myquery = myquery.split(',');
+                        console.log(myquery);
+                        if (myquery.includes($id)) {
+                            const index = myquery.indexOf($id);
+                            myquery.splice(index, 1);
+                            console.log('ramoif')
+                        } else {
+                            myquery.push($id);
+                            console.log('ramoelse')
+                        }
+                        myquery = myquery.join(",");
+                        delete this.$router.query;
+                        myquery = this.$router.replace({ query: { types: myquery } });
+            
+            
+                        // let myquery = 'ciao' + $id;
+                        //myquery = this.$router.replace({ query: { types: myquery } });
+            */
+
+            // console.log(this.$route.query)
+            let myQuery = this.$route.query.types;
+            myQuery = myQuery.split(',');
+            //console.log(myQuery);
+            let found = false;
+            myQuery.forEach(element => {
+                if (element == $id) {
+                    found = true;
+                }
+            })
+            if (found) {
+                let queryIndex = myQuery.indexOf($id);
+                myQuery.splice(queryIndex, 1)
+                console.log(myQuery);
+            } else {
+                myQuery.push($id)
+            }
+            myQuery = myQuery.join(',');
+            myQuery = this.$router.replace({ query: { types: myQuery } });
+            //console.log(myQuery);
+            //porcc
             if (this.store.selectedRestaurant.includes($id)) {
                 const index = this.store.selectedRestaurant.indexOf($id);
-                console.log(index);
+                //console.log(index);
                 this.store.selectedRestaurant.splice(index, 1);
             } else {
                 this.store.selectedRestaurant.push($id);
             }
 
-            console.log(this.store.selectedRestaurant);
+            //  console.log(this.store.selectedRestaurant);
 
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${this.store.selectedRestaurant.join(",")}`)
                 .then(response => {

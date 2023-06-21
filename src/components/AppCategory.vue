@@ -40,7 +40,8 @@ export default {
     <div class="container_category">
         <div v-for="restaurantType in this.store.restaurantTypes " class="card_category p-4">
 
-            <router-link @click='getTypesById(restaurantType.id)' :to="{ name: 'restaurants' }">
+            <router-link @click='getTypesById(restaurantType.id)'
+                :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
                 <h5 class="text-center">{{ restaurantType.name }}</h5>
             </router-link>
         </div>

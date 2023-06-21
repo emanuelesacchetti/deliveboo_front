@@ -10,6 +10,12 @@ export default {
     },
     components: {
         AppCheckBox,
+    },
+    methods: {
+
+    },
+    mounted() {
+
     }
 }
 </script>
