@@ -13,6 +13,8 @@ export default {
     },
     methods: {
         getProducts(id) {
+            //const restaurantId = this.$route.params.rastaurant_id;
+
             axios.get(`${this.store.baseUrl}/api/restaurants/${id}`)
                 .then(response => {
                     console.log(response)
@@ -32,8 +34,8 @@ export default {
         }
     },
 
-    mounted() {
-        this.getProducts();
+    mounted () {
+        this.getProducts(2);
     }
 }
 </script>
@@ -69,6 +71,10 @@ export default {
             </div>
 
         </div>
+
+        <!--<router-link :to="{name: 'single-restaurant', params: {rastaurant_id: 'products'}}" class="btn btn-primary">
+            Vedi Ristorante
+        </router-link>-->
 
 
 
