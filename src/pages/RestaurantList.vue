@@ -13,16 +13,28 @@ export default {
         AppCheckBox,
     },
     methods: {
-        getRestaurantList() {
-            axios.get(`${this.store.baseUrl}/api/restaurants`)
+        getRestaurantList(query) {
+            let link = `${this.store.baseUrl}/api/restaurants`
+            if (query) {
+                link += `?types=${query}`
+            }
+            axios.get(link)
                 .then(response => {
-                    this.store.allRestaurant = response.data.results;
+                    this.store.restaurantList = response.data.results;
                     console.log(response);
                 })
         }
     },
+    watch: {
+        '$route.query.types'(newQuery, oldQuery) {
+            axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
+                .then(response => {
+                    this.store.restaurantList = response.data.results;
+                })
+        }
+    },
     created() {
-        this.getRestaurantList();
+        this.getRestaurantList(this.$route.query.types);
     }
 }
 </script>
@@ -33,7 +45,7 @@ export default {
 
     <div class="container_general">
         <ul>
-            <li v-for="restaurant in this.store.allRestaurant">
+            <li v-for="restaurant in this.store.restaurantList">
                 {{ restaurant.name }}
             </li>
         </ul>
