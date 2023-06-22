@@ -22,7 +22,7 @@ const router = createRouter(
                 component: RestaurantList
             },
             {
-                path: '/restaurants/:rastaurant_id',
+                path: '/restaurants/:restaurant_id',
                 name: 'single-restaurant',
                 component: SingleRestaurant
             },

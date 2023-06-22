@@ -12,10 +12,12 @@ export default {
         }
     },
     methods: {
-        getProducts(id) {
-            //const restaurantId = this.$route.params.rastaurant_id;
+        getProducts() {
 
-            axios.get(`${this.store.baseUrl}/api/restaurants/${id}`)
+            const restaurantId = this.$route.params.restaurant_id
+            
+
+            axios.get(`${this.store.baseUrl}/api/restaurants/${restaurantId}`)
                 .then(response => {
                     console.log(response)
                     if (response.data.success) {
@@ -35,7 +37,7 @@ export default {
     },
 
     mounted () {
-        this.getProducts(2);
+        this.getProducts();
     }
 }
 </script>
@@ -71,13 +73,6 @@ export default {
             </div>
 
         </div>
-
-        <!--<router-link :to="{name: 'single-restaurant', params: {rastaurant_id: 'products'}}" class="btn btn-primary">
-            Vedi Ristorante
-        </router-link>-->
-
-
-
 
     </div>
 </template>
