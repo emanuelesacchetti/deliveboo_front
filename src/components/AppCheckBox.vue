@@ -6,10 +6,20 @@ export default {
     data() {
         return {
             store,
-            fisrtcategory: false,
+
         }
     },
     methods: {
+        getSelectedTypes() {
+            let query = this.$route.query.types
+            if (query) {
+                this.store.selectedRestaurant = [];
+                this.store.selectedRestaurant.push(query);
+                console.log(query);
+            }
+
+
+        },
         getTypes() {
             axios.get(`${this.store.baseUrl}/api/types`)
                 .then(response => {
@@ -17,6 +27,8 @@ export default {
                 })
         },
         categoryFilter($id) {
+            //  this.store.selectedRestaurant.push($id);
+            // if(this.store.selectedRestaurant)
             if (!this.$route.query.types) {
                 this.$router.replace({ query: { types: $id } })
                 console.log('query inesistente')
@@ -45,8 +57,10 @@ export default {
                     }
                 }
                 if (myQuery.length >= 1) {
+                    this.store.selectedRestaurant = [...myQuery];
                     myQuery = myQuery.join(',');
                 } else {
+                    this.store.selectedRestaurant = [];
                     myQuery = '';
                 }
                 myQuery = this.$router.replace({ query: { types: myQuery } });
@@ -56,7 +70,7 @@ export default {
     },
     mounted() {
         this.getTypes();
-        this.fisrtcategory = $route.query.types;
+        this.getSelectedTypes();
     }
 
 }
@@ -69,8 +83,9 @@ export default {
             <div class="d-flex">
 
                 <div class="card" v-for="restaurantType in this.store.restaurantTypes" :key="restaurantType.id">
-                    <input :checked="($route.query.types == restaurantType.id)" type="checkbox"
-                        @click="categoryFilter(restaurantType.id)" :id="restaurantType.id" :value="restaurantType.id">
+                    <input :class="{ 'bg-warning': store.selectedRestaurant.includes(restaurantType.id.toString()) }"
+                        type="checkbox" @click="categoryFilter(restaurantType.id)" :id="restaurantType.id"
+                        :value="restaurantType.id">
                     <label :for="restaurantType.id">{{ restaurantType.name }}</label>
                 </div>
 

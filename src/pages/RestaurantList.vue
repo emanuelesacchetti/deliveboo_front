@@ -3,6 +3,7 @@ import { store } from '../store.js';
 import AppCheckBox from '../components/AppCheckBox.vue';
 import axios from 'axios';
 export default {
+
     name: 'RestaurantList',
     data() {
         return {
@@ -42,7 +43,6 @@ export default {
 
 <template>
     <AppCheckBox />
-
     <div class="container_general">
         <ul>
             <li v-for="restaurant in this.store.restaurantList">
