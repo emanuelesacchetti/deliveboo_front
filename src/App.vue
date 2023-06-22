@@ -1,24 +1,27 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import SingleRestaurant from './pages/SingleRestaurant.vue';
 
 
 export default {
     components: {
         AppHeader,
         AppFooter,
+        SingleRestaurant
     }
 }
 </script>
 
 
 <template>
-    <AppHeader/>
+    <AppHeader />
     <h1>ciao mondo</h1>
     <div class="container">
-        <router-view/>
+        <router-view />
     </div>
-    <AppFooter/>
+    <SingleRestaurant></SingleRestaurant>
+    <AppFooter />
 </template>
 
 

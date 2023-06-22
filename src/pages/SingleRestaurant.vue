@@ -7,7 +7,9 @@ export default {
     data() {
         return {
             store,
-            products: []
+            products: [],
+            restaurants: []
+
 
         }
     },
@@ -23,6 +25,7 @@ export default {
                     if (response.data.success) {
                         this.products = response.data.results;
                         console.log(this.products)
+
                     } else {
                         //alert(response.data.error);
 
@@ -31,12 +34,26 @@ export default {
 
                 });
         },
+
+        getNameRestaurants() {
+            axios.get(`${this.store.baseUrl}/api/restaurants`)
+                .then(response => {
+                    console.log(response)
+                    if (response.data.success) {
+                        this.restaurants = response.data.results;
+                        console.log(this.restaurants)
+                    } else {
+                        //alert(response.data.error);
+                        this.$router.push({ name: 'not-found' });
+                    }
+                })
+        },
         getImageUrl(name) {
             return new URL(`../ assets / ${name}`, import.meta.url).href;
         }
     },
 
-    mounted () {
+    mounted() {
         this.getProducts();
     }
 }
@@ -45,11 +62,11 @@ export default {
 
 <template>
     <div class="container my-5">
-        <div class="container my_bg">
-            <h6>Ipotetico ristorante</h6>
-            <h1 class="ms-3">Cucina tipica di ipotetico ristorante</h1>
+        <div class="container my_bg" v-for="restaurant in restaurants">
+            <h6>{{ restaurant.name }}</h6>
+
             <div class="d-flex justify-content-center">
-                <small class="text-end">indirizzo</small>
+                <small class="text-end">{{ restaurant.address }}</small>
             </div>
         </div>
 
