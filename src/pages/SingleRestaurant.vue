@@ -7,7 +7,8 @@ export default {
     data() {
         return {
             store,
-            products: []
+            products: [],
+            restaurants: []
 
         }
     },
@@ -29,11 +30,25 @@ export default {
         },
         getImageUrl(name) {
             return new URL(`../ assets / ${name}`, import.meta.url).href;
-        }
-    },
+        },
 
-    mounted() {
-        this.getProducts(2);
+
+        getNameRestaurant() {
+            axios.get(`${this.store.baseUrl}/api/restaurants`)
+                .then(response => {
+                    console.log(response)
+                    if (response.data.success) {
+                        this.restaurants = response.data.results;
+                        console.log(this.products)
+                    } else {
+                        //alert(response.data.error);
+                        this.$router.push({ name: 'not-found' });
+                    }
+                })
+        },
+        mounted() {
+            this.getProducts(2);
+        }
     }
 }
 </script>
