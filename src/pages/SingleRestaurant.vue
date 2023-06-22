@@ -33,7 +33,7 @@ export default {
     },
 
     mounted() {
-        this.getProducts(2)
+        this.getProducts();
     }
 }
 </script>
