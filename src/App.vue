@@ -1,14 +1,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
-import SingleRestaurant from './pages/SingleRestaurant.vue';
+
 
 
 export default {
     components: {
         AppHeader,
         AppFooter,
-        SingleRestaurant
+
     }
 }
 </script>
@@ -20,7 +20,7 @@ export default {
     <div class="container">
         <router-view />
     </div>
-    <SingleRestaurant></SingleRestaurant>
+
     <AppFooter />
 </template>
 

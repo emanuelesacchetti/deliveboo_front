@@ -8,7 +8,8 @@ export default {
         return {
             store,
             products: [],
-            restaurants: []
+            restaurants: [],
+
 
 
         }
@@ -17,7 +18,7 @@ export default {
         getProducts() {
 
             const restaurantId = this.$route.params.restaurant_id
-            
+
 
             axios.get(`${this.store.baseUrl}/api/restaurants/${restaurantId}`)
                 .then(response => {
@@ -55,6 +56,7 @@ export default {
 
     mounted() {
         this.getProducts();
+        this.getNameRestaurants();
     }
 }
 </script>
@@ -63,11 +65,7 @@ export default {
 <template>
     <div class="container my-5">
         <div class="container my_bg" v-for="restaurant in restaurants">
-            <h6>{{ restaurant.name }}</h6>
-
-            <div class="d-flex justify-content-center">
-                <small class="text-end">{{ restaurant.address }}</small>
-            </div>
+            <h1 v-if="restaurant.id == this.$route.params.restaurant_id"> {{ restaurant.name }}</h1>
         </div>
 
         <div class="container-fluid mt-5">
@@ -84,13 +82,9 @@ export default {
                             <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </template>
 
