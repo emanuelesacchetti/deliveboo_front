@@ -1,6 +1,7 @@
 <script>
 import { store } from '../store.js';
 import AppCheckBox from '../components/AppCheckBox.vue';
+import axios from 'axios';
 export default {
     name: 'RestaurantList',
     data() {
@@ -12,10 +13,16 @@ export default {
         AppCheckBox,
     },
     methods: {
-
+        getRestaurantList() {
+            axios.get(`${this.store.baseUrl}/api/restaurants`)
+                .then(response => {
+                    this.store.allRestaurant = response.data.results;
+                    console.log(response);
+                })
+        }
     },
-    mounted() {
-
+    created() {
+        this.getRestaurantList();
     }
 }
 </script>
@@ -26,7 +33,7 @@ export default {
 
     <div class="container_general">
         <ul>
-            <li v-for="restaurant in this.store.restaurantList">
+            <li v-for="restaurant in this.store.allRestaurant">
                 {{ restaurant.name }}
             </li>
         </ul>

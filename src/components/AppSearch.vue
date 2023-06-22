@@ -9,7 +9,11 @@ export default {
 <template>
     <div class="container_general">
         <!--Search-->
-        <router-link :to="{ name: 'restaurants' }"> Ristoranti</router-link>
+        <router-link :to="{ name: 'restaurants' }">
+
+            <button> Ristoranti</button>
+
+        </router-link>
     </div>
 </template>
 
