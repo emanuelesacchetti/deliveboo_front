@@ -10,16 +10,6 @@ export default {
         }
     },
     methods: {
-        getSelectedTypes() {
-            let query = this.$route.query.types
-            if (query) {
-                this.store.selectedRestaurant = [];
-                this.store.selectedRestaurant.push(query);
-                console.log(query);
-            }
-
-
-        },
         getTypes() {
             axios.get(`${this.store.baseUrl}/api/types`)
                 .then(response => {
@@ -27,8 +17,7 @@ export default {
                 })
         },
         categoryFilter($id) {
-            //  this.store.selectedRestaurant.push($id);
-            // if(this.store.selectedRestaurant)
+
             if (!this.$route.query.types) {
                 this.$router.replace({ query: { types: $id } })
                 console.log('query inesistente')
@@ -66,11 +55,17 @@ export default {
                 myQuery = this.$router.replace({ query: { types: myQuery } });
             }
 
+        },
+        ifQueryExist($id){
+            if(this.$route.query.types){
+                if(this.$route.query.types.includes($id)){
+                    return 'text-danger'
+                }
+            }
         }
     },
     mounted() {
         this.getTypes();
-        this.getSelectedTypes();
     }
 
 }
@@ -82,11 +77,10 @@ export default {
             <h2>Elenco dei ristoranti</h2>
             <div class="d-flex">
 
-                <div class="card" v-for="restaurantType in this.store.restaurantTypes" :key="restaurantType.id">
-                    <input :class="{ 'bg-warning': store.selectedRestaurant.includes(restaurantType.id.toString()) }"
-                        type="checkbox" @click="categoryFilter(restaurantType.id)" :id="restaurantType.id"
-                        :value="restaurantType.id">
-                    <label :for="restaurantType.id">{{ restaurantType.name }}</label>
+                <div class="card" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id">
+                    <div :class="ifQueryExist(restaurantType.id)" @click="categoryFilter(restaurantType.id)">
+                        {{ restaurantType.name }}
+                    </div>
                 </div>
 
             </div>
