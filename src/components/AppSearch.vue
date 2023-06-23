@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .search {
-    top: 30vh;
+    top: 15vh;
 }
 
 button {
