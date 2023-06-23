@@ -1,4 +1,12 @@
 <template>
+
+    <ul class="list-group">
+        <li v-for="item in this.store.cart" class="list-group-item">{{ item.product.name }}</li>
+    </ul>
+
+    <p>totale {{ this.store.cartTotal }}</p>
+
+
     <div v-if="isUserPaying">
         <!-- Payment form fields -->
         <input type="email" v-model="email" placeholder="Your email">
@@ -8,11 +16,13 @@
         <button id="submit-payment-btn">Conferma pagamento</button>
     </div>
     <button v-else @click="getPaymentData">Paga con carta</button>
+
 </template>
 
 <script>
 import axios from 'axios';
 import braintree from 'braintree-web';
+import { store } from '../store.js';
 import dropin from 'braintree-web-drop-in';
 
 export default {
@@ -21,6 +31,7 @@ export default {
             email: '',
             cardholderName: '',
             isUserPaying: false,
+            store
 
         }
     },
@@ -33,9 +44,17 @@ export default {
                 });
             return token;
         },
+        emptyCart() {
+            
+            this.store.cart = [];
+            localStorage.setItem('cart', '');
+            
+        },
         async getPaymentData() {
             // Create a client-side Braintree instance
-            const clientToken = await this.getToken();
+            const clientToken = await this.getToken(); 
+
+            let that = this;
             if (clientToken) {
                 this.isUserPaying = true;
                 const instance = await dropin.create({
@@ -48,12 +67,28 @@ export default {
                     submitBtn.addEventListener('click', function () {
                         dropinInstance.requestPaymentMethod(function (err, payload) {
                             // Send the nonce to your Laravel backend for server-side processing
+                        
                             axios.post('http://localhost:8000/api/process-payment', {
-                                paymentMethodNonce: payload.nonce
+                                paymentMethodNonce: payload.nonce,
+                                total: that.store.cartTotal
+                            
+                            }).then(response => {
+
+                                if(response.data.success == true) {
+    
+                                    that.emptyCart();
+                                }
+
+                                alert (response.data.message)
+
                             })
+                                
+                                
                         })
                     })
                 })
+
+            
             } else {
                 console.log('Dropin creation failed: token not found');
             }

@@ -27,7 +27,10 @@
                         </li>
                     </ul>
                     <p class="text-end me-5 fw-semibold fs-4">Totale: {{ total }} &euro; </p>
-                    <button> Vai al checkout</button>
+                    <router-link :to="{ name: 'payment'}"
+                        class="btn btn-primary">
+                        Vai al checkout
+                    </router-link>
                 </div>
             </div>
 
@@ -101,6 +104,8 @@ export default {
                     total += (parseInt(item.product.price) * parseInt(item.product.quantity));
                 })
             }
+
+            this.store.cartTotal = total;
             return total;
         }
     },
