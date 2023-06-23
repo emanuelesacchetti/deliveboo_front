@@ -26,6 +26,13 @@ export default {
                     this.store.restaurantList = response.data.results;
                     console.log(response);
                 })
+        },
+        emptyCart(id) {
+            if (this.store.lastVisitedRestaurantId != id) {
+                this.store.cart = [];
+                localStorage.setItem('cart', '');
+            }
+            this.store.lastVisitedRestaurantId = id;
         }
     },
     watch: {
@@ -49,8 +56,9 @@ export default {
         <ul>
             <li v-for="restaurant in this.store.restaurantList" @click="">
                 {{ restaurant.name }}
-                <router-link :to="{name: 'single-restaurant', params: { restaurant_id: restaurant.id }}" class="btn btn-primary">
-                        Ordina da qui
+                <router-link :to="{ name: 'single-restaurant', params: { restaurant_id: restaurant.id } }"
+                    class="btn btn-primary" @click="emptyCart(restaurant.id)">
+                    Ordina da qui
                 </router-link>
 
             </li>
@@ -60,7 +68,7 @@ export default {
 
 
 <style lang="scss" scoped> .container_general {
-    display: flex;
-    justify-content: center;
-}
+     display: flex;
+     justify-content: center;
+ }
 </style>
