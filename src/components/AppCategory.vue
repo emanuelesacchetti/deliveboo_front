@@ -20,8 +20,8 @@ export default {
                 })
         },
         //funzione per prendere dati per singolo tipo di categoria
-        getTypesById(id) {
-            axios.get(`${this.store.baseUrl}/api/restaurants?types=${id}`)
+        getTypesById(slug) {
+            axios.get(`${this.store.baseUrl}/api/restaurants?types=${slug}`)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
                     console.log(response);
@@ -42,8 +42,8 @@ export default {
             <div class="row flex-md-nowrap overflow-x-auto ">
                 <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
 
-                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.id)'
-                        :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
+                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.slug)'
+                        :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
                         <span class="text_category">{{ restaurantType.name }}</span>
                     </router-link>

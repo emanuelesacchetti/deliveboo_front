@@ -16,23 +16,23 @@ export default {
                     this.store.restaurantTypes = response.data.results;
                 })
         },
-        categoryFilter($id) {
+        categoryFilter(slug) {
 
             if (!this.$route.query.types) {
-                this.$router.replace({ query: { types: $id } })
+                this.$router.replace({ query: { types: slug } })
                 console.log('query inesistente')
             } else {
                 let myQuery = this.$route.query.types;
                 myQuery = myQuery.split(',');
                 let found = false;
                 myQuery.forEach(element => {
-                    if (element == $id) {
+                    if (element == slug) {
                         found = true;
                     }
                 })
                 if (found) {
                     myQuery.forEach((element, index) => {
-                        if (element == $id) {
+                        if (element == slug) {
                             myQuery.splice(index, 1)
                         }
                     })
@@ -40,9 +40,9 @@ export default {
 
                     if (myQuery[0] != '') {
 
-                        myQuery.push($id);
+                        myQuery.push(slug);
                     } else {
-                        myQuery = [$id];
+                        myQuery = [slug];
                     }
                 }
                 if (myQuery.length >= 1) {
@@ -56,9 +56,9 @@ export default {
             }
 
         },
-        ifQueryExist($id){
+        ifQueryExist(slug){
             if(this.$route.query.types){
-                if(this.$route.query.types.includes($id)){
+                if(this.$route.query.types.includes(slug)){
                     return 'text-danger'
                 }
             }
@@ -78,7 +78,7 @@ export default {
             <div class="d-flex">
 
                 <div class="card" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id">
-                    <div :class="ifQueryExist(restaurantType.id)" @click="categoryFilter(restaurantType.id)">
+                    <div :class="ifQueryExist(restaurantType.slug)" @click="categoryFilter(restaurantType.slug)">
                         {{ restaurantType.name }}
                     </div>
                 </div>
