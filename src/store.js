@@ -6,4 +6,5 @@ export const store = reactive({
     restaurantTypes: [],//categorie di ristocazzi
     selectedRestaurant: [],//categorie Filtrate ristoranti
     cart: [],
+    lastVisitedRestaurantId: null, 
 })

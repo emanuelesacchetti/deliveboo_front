@@ -8,11 +8,11 @@
                 <div>
                     <ul class="list-unstyled">
                         <li v-for="item in store.cart">
-                            <div v-if="item.product.restaurant_id == restaurant_id"
-                                class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
+                            <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
                                 <div>
                                     <span class="text-bg-light rounded-circle p-2 px-2 me-2"> x {{ item.product.quantity }}
                                     </span>
+                                    <button @click="addToCart(item.product)">+</button>
                                     <span class="text-capitalize fw-semibold fs-5">{{ item.product.name }}</span>
                                 </div>
 
@@ -27,6 +27,7 @@
                         </li>
                     </ul>
                     <p class="text-end me-5 fw-semibold fs-4">Totale: {{ total }} &euro; </p>
+                    <button> Vai al checkout</button>
                 </div>
             </div>
 
@@ -97,8 +98,7 @@ export default {
             let total = 0;
             if (this.store.cart.length) {
                 this.store.cart.forEach(item => {
-                    if (item.product.restaurant_id == this.restaurant_id)
-                        total += (parseInt(item.product.price) * parseInt(item.product.quantity));
+                    total += (parseInt(item.product.price) * parseInt(item.product.quantity));
                 })
             }
             return total;
