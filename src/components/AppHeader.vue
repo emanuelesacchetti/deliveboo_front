@@ -18,7 +18,7 @@ export default {
 
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg" id="header-nav">
     <div class="container-fluid">
       <router-link :to="{ name: 'home' }">LOGO DELIVEBOO</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -42,4 +42,8 @@ export default {
 </template>
 
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  nav {
+    background-color: orange;
+  }
+</style>

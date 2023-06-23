@@ -7,30 +7,28 @@ export default {
 </script>
 
 <template>
-    <div class="container_general">
-        <!--Search-->
+    <div class="container text-center position-absolute start-50 z-1 translate-middle search">
+              <!--Search-->
         <router-link :to="{ name: 'restaurants' }">
 
-            <button> Ristoranti</button>
+            <button class="btn btn-lg border">Scopri tutti i nostri ristoranti</button>
 
         </router-link>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.container_general {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    input {
-        padding: 6px;
-        border: 1px solid black;
-        border-radius: 4px;
+    .search {
+        top: 55vh;
     }
-
     button {
-        border: 1px solid black;
+        background-color: rgb(253, 165, 0);
+        color: white;
+        
+        &:hover{
+            background-color: rgb(253, 114, 0);
+            color: white;
+        }
     }
-}
+
 </style>

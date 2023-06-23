@@ -1,11 +1,16 @@
 <script>
+import AppSearch from '../components/AppSearch.vue';
+
 export default {
     name: 'AppCarousel',
+    components: {
+        AppSearch
+    },
     data() {
         return {
 
             jumbotron: [
-                'burger_type.jpg',
+
                 'madonna.jpg',
                 'pizza.jpg',
                 'sushi.jpg',
@@ -17,23 +22,21 @@ export default {
 </script>
 
 <template>
-    <div class="container_jumbo">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div v-for="img in jumbotron" :key="img" class="carousel-item active">
-                    <img :src="`src/assets/jumbotron/${img}`" class="d-block w-100" alt="...">
-                </div>
-                <div v-for="img in jumbotron" :key="img" class="carousel-item">
-                    <img :src="`src/assets/jumbotron/${img}`" class="d-block w-100" alt="...">
-                </div>
+    <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="src/assets/jumbotron/burger_type.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" v-for="img in jumbotron" :key="img">
+                <img :src="`src/assets/jumbotron/${img}`" class="d-block w-100" alt="...">
             </div>
         </div>
+        <AppSearch />
     </div>
 </template>
 
 <style lang="scss" scoped>
-.container_jumbo {
-
-    width: 100vw;
-}
+    .carousel-inner{
+        height: 60vh;
+    }
 </style>
