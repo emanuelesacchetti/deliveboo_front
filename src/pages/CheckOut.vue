@@ -6,6 +6,7 @@
 
     <p>totale {{ this.store.cartTotal }}</p>
 
+    <input type="text" v-model="address">
 
     <div v-if="isUserPaying">
         <!-- Payment form fields -->
@@ -13,7 +14,7 @@
 
         <div id="dropin-container"></div>
         <!-- Submit button -->
-        <button id="submit-payment-btn">Conferma pagamento</button>
+        <button id="submit-payment-btn" @click="sendForm()">Conferma pagamento</button>
     </div>
     <button v-else @click="getPaymentData">Paga con carta</button>
 
@@ -31,7 +32,8 @@ export default {
             email: '',
             cardholderName: '',
             isUserPaying: false,
-            store
+            store,
+            address: ''
 
         }
     },
@@ -94,6 +96,38 @@ export default {
             }
             this.isDropinLoading = false;
         },
+        // Invio dati al back per email di conferma
+        sendForm() {
+
+            const payload  = {
+                    name: this.cardholderName,
+                    email: this.email,
+                    products: this.store.cart,
+                    price: this.store.total,
+                    address: this.address
+                    
+                }
+
+            axios.post(`${this.store.baseUrl}/api/neworder`, payload)
+            .then(response => { //200
+
+                if (response.data.success) {
+                    //resetto il form
+                    this.name = '';
+                    this.email = '';
+                    this.products = '';
+                    this.address = '';
+                    
+                } else {
+                    this.errors = response.data.errors;
+                    console.log(this.errors);
+                }
+
+                this.sending = false;
+
+            });
+
+            }
     },
 }
 </script>
