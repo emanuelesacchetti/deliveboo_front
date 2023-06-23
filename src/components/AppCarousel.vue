@@ -10,10 +10,11 @@ export default {
         return {
 
             jumbotron: [
-                'madonna.jpg',
+                'burger.jpg',
                 'pizza.jpg',
                 'sushi.jpg',
-                'vegetarian.jpg'
+                'donuts.jpg',
+                'fruit.jpg'
             ]
         }
     }
@@ -22,9 +23,9 @@ export default {
 
 <template>
     <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-bs-ride="carousel">
-        <div class="carousel-inner ">
-            <div class="carousel-item active h-100">
-                <img src="src/assets/jumbotron/burger_type.jpg" class="d-block  dimensione_img" alt="...">
+        <div class="carousel-inner w-100">
+            <div class="carousel-item active">
+                <img src="src/assets/jumbotron/donuts.jpg" class="d-block  dimensione_img" alt="...">
             </div>
             <div class="carousel-item" v-for="img in jumbotron" :key="img">
                 <img :src="`src/assets/jumbotron/${img}`" class="d-block  dimensione_img" alt="...">
@@ -44,7 +45,7 @@ export default {
 }
 
 .carousel-inner {
-    max-height: 60vh;
+    max-height: 70vh;
     background-color: rgb(238, 137, 11);
 
     .dimensione_img {
