@@ -1,17 +1,27 @@
 <script>
-    export default {
-        name: 'AppFooter'
+export default {
+    name: 'AppFooter',
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        getYear() {
+            return new Date().getFullYear()
+        }
     }
+}
 </script>
 
 
 <template>
-
-        <h2><strong>ciao io sono il footer</strong></h2>
-    
+    <footer class="bg-dark py-5 mt-3">
+        <div class="container">
+            <small class="text-white">&COPY; {{ getYear() }} </small>
+        </div>
+    </footer>
 </template>
 
 
-<style>
-
-</style>
+<style scoped lang="scss"></style>

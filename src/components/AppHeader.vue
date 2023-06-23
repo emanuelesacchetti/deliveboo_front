@@ -34,7 +34,7 @@ export default {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item p-3">
-          <a class="btn btn-outline-dark d-block mx-3 p-2 px-4 d-lg-flex align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+          <a class="btn btn-outline-dark d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
             aria-controls="offcanvasExample">
             <span class=" me-2"> Vai al Carrello </span>
             <i class="fa-solid fa-cart-shopping"></i>
