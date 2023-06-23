@@ -1,21 +1,30 @@
 <script>
-import AppSearch from '../components/AppSearch.vue';
 import AppCategory from '../components/AppCategory.vue';
+import AppCarousel from '../components/AppCarousel.vue';
 export default {
     name: 'AppHome',
     components: {
-        AppSearch,
-        AppCategory
+
+        AppCategory,
+        AppCarousel
     }
 }
 </script>
 
 
 <template>
-    <AppSearch />
-    <AppCategory />
-    <h2><strong>ciao io sono la home page</strong></h2>
+    <div class="position-relative">
+        <AppCarousel />
+        <AppCategory />
+    </div>
 </template>
 
 
-<style></style>
+<style lang="scss" scoped>
+.appSearch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
