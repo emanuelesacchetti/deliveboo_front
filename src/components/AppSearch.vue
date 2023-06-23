@@ -7,22 +7,17 @@ export default {
 </script>
 
 <template>
-    <div class="container text-center position-absolute start-50 z-1 translate-middle search">
+    <div class="container text-center position-absolute start-50 top-50  z-1 translate-middle search">
         <!--Search-->
         <router-link :to="{ name: 'restaurants' }">
-
-            <button class="btn btn-lg border">Scopri tutti i nostri ristoranti</button>
+            <img src="" alt="">
+            <button class="btn btn-outline-dark border fs-6">Scopri tutti i nostri ristoranti</button>
 
         </router-link>
     </div>
 </template>
-
 <style lang="scss" scoped>
-.search {
-    top: 15vh;
-}
-
-button {
+/*button {
     background-color: rgb(238, 127, 11);
     color: white;
 
@@ -30,5 +25,5 @@ button {
         background-color: rgb(253, 165, 0);
         color: white;
     }
-}
+}*/
 </style>

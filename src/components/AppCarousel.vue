@@ -22,35 +22,31 @@ export default {
 </script>
 
 <template>
-    <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-bs-ride="carousel">
-        <div class="carousel-inner w-100">
-            <div class="carousel-item active">
-                <img src="src/assets/jumbotron/donuts.jpg" class="d-block  dimensione_img" alt="...">
-            </div>
-            <div class="carousel-item" v-for="img in jumbotron" :key="img">
-                <img :src="`src/assets/jumbotron/${img}`" class="d-block  dimensione_img" alt="...">
+    <div class="container_carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide position-relative carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="src/assets/jumbotron/donuts.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" v-for="img in jumbotron" :key="img">
+                    <img :src="`src/assets/jumbotron/${img}`" class="d-block w-100" alt="...">
+
+                </div>
 
             </div>
-            <AppSearch />
+
         </div>
-
+        <AppSearch />
     </div>
 </template>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.carousel-inner {
+    max-height: 90vh;
+    background-color: rgb(238, 137, 11);
 }
 
-.carousel-inner {
-    max-height: 70vh;
-    background-color: rgb(238, 137, 11);
-
-    .dimensione_img {
-        width: 100%;
-        object-fit: cover;
-    }
+.container_carousel {
+    position: relative;
 }
 </style>

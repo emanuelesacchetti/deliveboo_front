@@ -22,11 +22,4 @@ export default {
 </template>
 
 
-<style lang="scss" scoped>
-.appSearch {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-</style>
+<style lang="scss" scoped></style>
