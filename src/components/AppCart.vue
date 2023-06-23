@@ -1,41 +1,38 @@
 <template>
-    <div class="container p-3">
+    <div class="container vh-100 p-2 d-flex flex-column">
+        <h1 class="p-3 border-bottom text-center">Riepilogo</h1>
+        <ul class="list-unstyled flex-column d-flex overflow-auto px-1">
+            <li v-for="item in store.cart">
+                <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
+                    <div class="w-25 d-flex align-items-center justify-content-between px-1">
 
+                        <i class="text-warning fa-solid fa-circle-plus fs-5" @click="addToCart(item.product)"
+                            role="button"></i>
 
-        <div class="row">
-            <div class="col">
-                <h1 class="p-3 border-bottom">Carrello</h1>
-                <div>
-                    <ul class="list-unstyled">
-                        <li v-for="item in store.cart">
-                            <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
-                                <div>
-                                    <span class="text-bg-light rounded-circle p-2 px-2 me-2"> x {{ item.product.quantity }}
-                                    </span>
-                                    <button @click="addToCart(item.product)">+</button>
-                                    <span class="text-capitalize fw-semibold fs-5">{{ item.product.name }}</span>
-                                </div>
+                        <div class="text-bg-light rounded-circle p-2 px-2">
+                            x{{ item.product.quantity }}
+                        </div>
+                    </div>
 
-                                <div>
-                                    <span @click="deletefromCart(item.product)" class="text-danger me-3"><i
-                                            class="fa-solid fa-trash"></i></span>
-                                    <span class="fw-semibold fs-6"> {{ item.product.price * item.product.quantity }}
-                                        &euro;</span>
-                                </div>
-                            </div>
+                    <div class="text-capitalize w-50 fw-semibold fs-6 text-nowrap text-truncate">
+                        {{ item.product.name }}
+                    </div>
 
-                        </li>
-                    </ul>
-                    <p class="text-end me-5 fw-semibold fs-4">Totale: {{ total }} &euro; </p>
-                    <router-link :to="{ name: 'payment'}"
-                        class="btn btn-primary">
-                        Vai al checkout
-                    </router-link>
+                    <div class="w-25 d-flex px-1">
+                        <div @click="deletefromCart(item.product)" class="text-danger text-nowrap"><i
+                                class="fa-solid fa-trash"></i></div>
+                        <div class="fw-semibold fs-6 text-nowrap text-end flex-grow-1"> {{ item.product.price *
+                            item.product.quantity }}
+                            &euro;</div>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-
+            </li>
+        </ul>
+        <p class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
+        <router-link :to="{ name: 'payment' }" class="btn btn-warning p-2 w-100">
+            Vai al checkout
+        </router-link>
     </div>
 </template>
 
@@ -114,7 +111,6 @@ export default {
         if (localStorageCart) {
             this.store.cart = JSON.parse(localStorageCart);
         }
-        console.log(localStorageCart);
     }
 }
 </script>
