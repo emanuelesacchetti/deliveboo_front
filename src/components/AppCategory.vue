@@ -38,14 +38,17 @@ export default {
 
 <template>
     <div class="container_category">
-        <div class="container mt-3">
+        <div class="container-fluid mt-5">
             <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class="card_category p-2  col-md col-sm-12 ">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-3 col-sm-12 ">
 
-                    <router-link @click='getTypesById(restaurantType.id)'
+                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.id)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
-                        <h5 class="text-center">{{ restaurantType.name }}</h5>
+                        <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
+                        <span class="text_category">{{ restaurantType.name }}</span>
                     </router-link>
+
+
                 </div>
             </div>
 
@@ -55,10 +58,61 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container_category {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+.container_category {
     .card_category {
-        border: 1px solid black;
+        border-radius: 10px;
+        position: relative;
+
+        .text_category {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            display: none;
+            text-decoration: none;
+        }
+
+
+
+
+        img {
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            border-radius: 100%;
+            box-shadow: -10px 0px 0px 4px rgb(238, 127, 11);
+
+        }
+
+        //media query
+        @media(max-width:768px) {
+            img {
+                object-fit: cover;
+                height: 200px;
+                border-radius: 10px;
+                box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+
+
     }
+
+}
+
+.card_category:hover .text_category {
+    display: block;
+    color: white;
+    font-weight: bold;
+}
+
+.card_category:hover img {
+    filter: blur(2px);
 }
 </style>

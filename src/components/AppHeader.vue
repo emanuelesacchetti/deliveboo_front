@@ -49,14 +49,20 @@ export default {
   </nav>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <AppCart/>
+    <AppCart />
   </div>
 </template>
 
 
 <style lang="scss" scoped>
 nav {
-  background-color: rgba(238, 127, 11, 1);
+  position: sticky;
+  overflow-y: scroll;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgba(238, 127, 11, 0.9);
 
 }
 </style>
