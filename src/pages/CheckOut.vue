@@ -6,7 +6,11 @@
 
     <p>totale {{ this.store.cartTotal }}</p>
 
+    <label for="address">Inserisci indirizzo</label>
     <input type="text" v-model="address">
+
+    <label for="name">Inserisci nome</label>
+    <input type="text" v-model="name">
 
     <div v-if="isUserPaying">
         <!-- Payment form fields -->
@@ -33,7 +37,8 @@ export default {
             cardholderName: '',
             isUserPaying: false,
             store,
-            address: ''
+            address: '',
+            name: ''
 
         }
     },
@@ -100,23 +105,24 @@ export default {
         sendForm() {
 
             const payload  = {
-                    name: this.cardholderName,
+                    name: this.name,
                     email: this.email,
                     products: this.store.cart,
-                    price: this.store.total,
+                    price: this.store.cartTotal,
                     address: this.address
                     
                 }
 
             axios.post(`${this.store.baseUrl}/api/neworder`, payload)
             .then(response => { //200
-
+                console.log('sono arrivato qui')
                 if (response.data.success) {
                     //resetto il form
                     this.name = '';
                     this.email = '';
                     this.products = '';
                     this.address = '';
+                    alert('tutto fatto');
                     
                 } else {
                     this.errors = response.data.errors;
