@@ -1,13 +1,11 @@
 <script>
     import AppHeader from './components/AppHeader.vue';
     import AppFooter from './components/AppFooter.vue';
-    import AppCart from './components/AppCart.vue';
 
     export default {
         components: {
             AppHeader,
             AppFooter,
-            AppCart,
         }
     }
 </script>
@@ -18,7 +16,6 @@
     <AppHeader/>
     <h1>ciao mondo</h1>
     <div class="container">
-        <AppCart></AppCart>
         <router-view/>
     </div>
     <AppFooter/>
