@@ -45,7 +45,7 @@ export default {
 }
 
 .carousel-inner {
-    //max-height: 50vh;
+    max-height: 70vh;
     background-color: rgb(238, 137, 11);
 
     .dimensione_img {

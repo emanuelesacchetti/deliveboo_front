@@ -37,10 +37,10 @@ export default {
 </script>
 
 <template>
-    <div class="container_category">
-        <div class="container-fluid mt-5">
+    <div class="container_category mt-2 mb-2">
+        <div class="container-fluid">
             <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-3 col-sm-12 ">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
 
                     <router-link class="d-block card_category " @click='getTypesById(restaurantType.id)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
