@@ -38,26 +38,27 @@ export default {
 
 <template>
     <div class="container_category">
-        <div v-for="restaurantType in this.store.restaurantTypes " class="card_category p-4">
+        <div class="container mt-3">
+            <div class="row flex-md-nowrap overflow-x-auto ">
+                <div v-for="restaurantType in this.store.restaurantTypes " class="card_category p-2  col-md col-sm-12 ">
 
-            <router-link @click='getTypesById(restaurantType.id)'
-                :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
-                <h5 class="text-center">{{ restaurantType.name }}</h5>
-            </router-link>
+                    <router-link @click='getTypesById(restaurantType.id)'
+                        :to="{ name: 'restaurants', query: { types: restaurantType.id } }">
+                        <h5 class="text-center">{{ restaurantType.name }}</h5>
+                    </router-link>
+                </div>
+            </div>
+
         </div>
+
     </div>
 </template>
 
 <style lang="scss" scoped>
 .container_category {
-    display: flex;
-
 
     .card_category {
         border: 1px solid black;
-        width: calc(100%/10);
-        height: 100px;
-
     }
 }
 </style>

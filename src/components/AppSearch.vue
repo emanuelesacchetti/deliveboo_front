@@ -8,7 +8,7 @@ export default {
 
 <template>
     <div class="container text-center position-absolute start-50 z-1 translate-middle search">
-              <!--Search-->
+        <!--Search-->
         <router-link :to="{ name: 'restaurants' }">
 
             <button class="btn btn-lg border">Scopri tutti i nostri ristoranti</button>
@@ -18,17 +18,17 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    .search {
-        top: 55vh;
-    }
-    button {
+.search {
+    top: 30vh;
+}
+
+button {
+    background-color: rgb(238, 127, 11);
+    color: white;
+
+    &:hover {
         background-color: rgb(253, 165, 0);
         color: white;
-        
-        &:hover{
-            background-color: rgb(253, 114, 0);
-            color: white;
-        }
     }
-
+}
 </style>

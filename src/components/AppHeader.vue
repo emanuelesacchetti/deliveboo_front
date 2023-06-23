@@ -43,7 +43,8 @@ export default {
 
 
 <style lang="scss" scoped>
-  nav {
-    background-color: orange;
-  }
+nav {
+  background-color: rgba(238, 127, 11, 1);
+
+}
 </style>
