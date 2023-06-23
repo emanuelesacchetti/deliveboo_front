@@ -9,14 +9,14 @@
                     <ul class="list-unstyled">
                         <li v-for="item in store.cart">
                             <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
-                                <div>
-                                    <span class="text-bg-light rounded-circle p-2 px-2 me-2"> x {{ item.product.quantity }}
+                                <div class="w-75 d-flex align-items-center px-1">
+                                    <span class="text-bg-light rounded-circle p-2 px-2 me-2"> x{{ item.product.quantity }}
                                     </span>
-                                    <button @click="addToCart(item.product)">+</button>
-                                    <span class="text-capitalize fw-semibold fs-5">{{ item.product.name }}</span>
+                                    <span @click="addToCart(item.product)" role="button"><i class="text-warning me-2 fa-solid fa-circle-plus fs-5" ></i></span>
+                                    <span class="text-capitalize fw-semibold fs-5 text-nowrap text-truncate">{{ item.product.name }}</span>
                                 </div>
 
-                                <div>
+                                <div class="w-25">
                                     <span @click="deletefromCart(item.product)" class="text-danger me-3"><i
                                             class="fa-solid fa-trash"></i></span>
                                     <span class="fw-semibold fs-6"> {{ item.product.price * item.product.quantity }}
@@ -26,7 +26,7 @@
 
                         </li>
                     </ul>
-                    <p class="text-end me-5 fw-semibold fs-4">Totale: {{ total }} &euro; </p>
+                    <p class=" mx-5 fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
                     <button> Vai al checkout</button>
                 </div>
             </div>
