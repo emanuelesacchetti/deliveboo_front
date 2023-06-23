@@ -3,7 +3,7 @@
 
 
         <div class="row">
-            <div class="col-6">
+            <div class="col">
                 <h1 class="p-3 border-bottom">Carrello</h1>
                 <div>
                     <ul class="list-unstyled">
@@ -21,7 +21,6 @@
                                             class="fa-solid fa-trash"></i></span>
                                     <span class="fw-semibold fs-6"> {{ item.product.price * item.product.quantity }}
                                         &euro;</span>
-
                                 </div>
                             </div>
 
@@ -29,24 +28,6 @@
                     </ul>
                     <p class="text-end me-5 fw-semibold fs-4">Totale: {{ total }} &euro; </p>
                 </div>
-            </div>
-
-            <div class="col-6">
-                <h1 class="p-3 border-bottom">Prodotti</h1>
-                <div>
-                    <ul class="list-unstyled fs-5">
-                        <li v-for="product in products">
-                            <div v-if="product.restaurant_id == restaurant_id"
-                                class="d-flex justify-content-around align-items-center py-1" :key="product.id">
-                                <span>{{ product.name }}</span>
-                                <span> {{ product.price }} &euro; </span>
-                                <button @click="addToCart(product)" class="btn btn-dark">add to cart</button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <span v-for="index in 4" class="btn btn-primary m-2" @click="restaurant_id = index"> Ristorante {{ index }}
-                </span>
             </div>
 
         </div>
@@ -62,55 +43,6 @@ export default {
     data() {
         return {
             store,
-            restaurant_id: 1,
-            //product list 
-            products: [
-                {
-                    name: 'product1',
-                    price: 20,
-                    restaurant_id: 1,
-                },
-                {
-                    name: 'product2',
-                    price: 30,
-                    restaurant_id: 1,
-                },
-                {
-                    name: 'product3',
-                    price: 9,
-                    restaurant_id: 1,
-                },
-                {
-                    name: 'product4',
-                    price: 3,
-                    restaurant_id: 2,
-                },
-                {
-                    name: 'product5',
-                    price: 45,
-                    restaurant_id: 2,
-                },
-                {
-                    name: 'product6',
-                    price: 24,
-                    restaurant_id: 3,
-                },
-                {
-                    name: 'product7',
-                    price: 10,
-                    restaurant_id: 4,
-                },
-                {
-                    name: 'product8',
-                    price: 26,
-                    restaurant_id: 4,
-                },
-                {
-                    name: 'product9',
-                    price: 23,
-                    restaurant_id: 4
-                }
-            ],
         }
     },
     methods: {
