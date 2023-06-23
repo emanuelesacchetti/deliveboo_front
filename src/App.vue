@@ -16,11 +16,7 @@ export default {
 
 <template>
     <AppHeader />
-    <h1>ciao mondo</h1>
-    <div class="container">
         <router-view />
-    </div>
-
     <AppFooter />
 </template>
 

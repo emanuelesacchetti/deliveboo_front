@@ -68,7 +68,7 @@ export default {
 
 
 <style lang="scss" scoped> .container_general {
-     display: flex;
-     justify-content: center;
- }
+    display: flex;
+    justify-content: center;
+}
 </style>
