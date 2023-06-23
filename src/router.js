@@ -37,6 +37,11 @@ const router = createRouter(
                 component: NotFound
             },
             {
+                path: '/checkout',
+                name: 'payment',
+                component: CheckOut
+            },
+            {
                 path: '/laravel',
                 name: 'laravel',
                 component: LaravelPage
