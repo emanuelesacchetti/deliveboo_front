@@ -52,10 +52,19 @@ export default {
                 phone_number: '3341234567',
                 email: 'bsu@gmail.com',
                 total: store.cartTotal,
-                cart: store.cart
+                products: getProducts(),
             },
             isUserPaying: false,
             store,
+        }
+    },
+    computed: {
+        getProducts(){
+            let products = [];
+            this.store.cart.forEach( item => {
+                products.push(item.product.id)
+            })
+            return products;
         }
     },
     methods: {
