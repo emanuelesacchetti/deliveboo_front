@@ -56,7 +56,7 @@ export default {
         <ul>
             <li v-for="restaurant in this.store.restaurantList" @click="">
                 {{ restaurant.name }}
-                <router-link :to="{ name: 'single-restaurant', params: { restaurant_id: restaurant.id } }"
+                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
                     class="btn btn-primary" @click="emptyCart(restaurant.id)">
                     Ordina da qui
                 </router-link>
