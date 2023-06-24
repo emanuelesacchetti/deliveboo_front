@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <div class="container_category mt-5 mb-2">
+    <div class="container_category mt-5">
         <div class="container-fluid">
             <div class="row flex-md-nowrap overflow-x-auto ">
                 <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
@@ -47,8 +47,6 @@ export default {
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
                         <span class="text_category">{{ restaurantType.name }}</span>
                     </router-link>
-
-
                 </div>
             </div>
 

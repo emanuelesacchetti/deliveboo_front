@@ -16,7 +16,7 @@ export default {
 
 
 <template>
-    <footer class="bg-dark py-5 mt-3">
+    <footer class="bg-dark py-5">
         <div class="container">
             <small class="text-white">&COPY; {{ getYear() }} </small>
         </div>
