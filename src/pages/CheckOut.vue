@@ -52,22 +52,30 @@ export default {
                 phone_number: '3341234567',
                 email: 'bsu@gmail.com',
                 total: store.cartTotal,
-                products: getProducts(),
+                products: [],
+                restaurant_id: null,
             },
             isUserPaying: false,
             store,
         }
     },
-    computed: {
+    methods: {
         getProducts(){
             let products = [];
             this.store.cart.forEach( item => {
-                products.push(item.product.id)
+                let product = {
+                    id: item.product.id,
+                    quantity: item.product.quantity
+                }
+                products.push(product)
             })
-            return products;
-        }
-    },
-    methods: {
+            this.orderPayload.products = products;
+        },
+        getRestaurantId(){
+            if(store.cart.length){
+                this.orderPayload.restaurant_id = store.cart[0].product.restaurant_id;
+            }
+        },
         getToken() {
             let token = axios.get('http://localhost:8000/api/generate-client-token')
                 .catch(error => {
@@ -131,5 +139,9 @@ export default {
             this.isDropinLoading = false;
         },
     },
+    mounted(){
+        this.getProducts();
+        this.getRestaurantId();
+    }
 }
 </script>
