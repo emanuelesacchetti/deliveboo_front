@@ -13,20 +13,24 @@
         <!-- Payment form fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" placeholder="Inserisci qui il tuo nome">
+            <input v-model="orderPayload.name" type="text" class="form-control" id="name" placeholder="Inserisci qui il tuo nome">
         </div>
         <div class="mb-3">
             <label for="Indirizzo" class="form-label">Indirizzo</label>
-            <input type="text" class="form-control" id="Indirizzo" placeholder="Inserisci l'indirizzo per la consegna">
+            <input v-model="orderPayload.address" type="text" class="form-control" id="Indirizzo" placeholder="Inserisci l'indirizzo per la consegna">
         </div>
         <div class="mb-3">
-            <label for="phone" class="form-label">Num di telefono</label>
-            <input type="text" class="form-control" id="phone" placeholder="Inserisci il tuo recapito telefonico">
+            <label for="email" class="form-label">E-mail</label>
+            <input v-model="orderPayload.email" type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input v-model="orderPayload.phone_number" type="email" class="form-control" id="phone" placeholder="Inserisci il tuo recapito">
         </div>
 
         <div id="dropin-container"></div>
         <!-- Submit button -->
-        <button id="submit-payment-btn" class="btn btn-warning w-100" @click="sendForm()">Conferma pagamento</button>
+        <button id="submit-payment-btn" class="btn btn-warning w-100">Conferma pagamento</button>
     </div>
     <div v-else class="container">
         <button @click="getPaymentData" class="btn btn-warning w-100">Procedi con il pagamento</button>
@@ -42,13 +46,16 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
-            email: '',
-            cardholderName: '',
+            orderPayload: {
+                name: 'bsu',
+                address: 'via vai',
+                phone_number: '3341234567',
+                email: 'bsu@gmail.com',
+                total: store.cartTotal,
+                cart: store.cart
+            },
             isUserPaying: false,
             store,
-            address: '',
-            name: ''
-
         }
     },
     methods: {
@@ -90,12 +97,10 @@ export default {
 
                             axios.post('http://localhost:8000/api/process-payment', {
                                 paymentMethodNonce: payload.nonce,
-                                total: that.store.cartTotal
-
+                                order: that.orderPayload,
                             }).then(response => {
 
                                 if (response.data.success == true) {
-
                                     that.emptyCart();
                                 }else{
                                     submitBtn.classList.remove('disabled');
@@ -116,39 +121,6 @@ export default {
             }
             this.isDropinLoading = false;
         },
-        // Invio dati al back per email di conferma
-        sendForm() {
-
-            const payload  = {
-                    name: this.name,
-                    email: this.email,
-                    products: this.store.cart,
-                    price: this.store.cartTotal,
-                    address: this.address
-                    
-                }
-
-            axios.post(`${this.store.baseUrl}/api/neworder`, payload)
-            .then(response => { //200
-                console.log('sono arrivato qui')
-                if (response.data.success) {
-                    //resetto il form
-                    this.name = '';
-                    this.email = '';
-                    this.products = '';
-                    this.address = '';
-                    alert('tutto fatto');
-                    
-                } else {
-                    this.errors = response.data.errors;
-                    console.log(this.errors);
-                }
-
-                    this.sending = false;
-
-                });
-
-        }
     },
 }
 </script>
