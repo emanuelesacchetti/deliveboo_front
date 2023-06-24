@@ -13,20 +13,24 @@
         <!-- Payment form fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" placeholder="Inserisci qui il tuo nome">
+            <input type="text" class="form-control" id="name" v-model="name" placeholder="Inserisci qui il tuo nome">
         </div>
         <div class="mb-3">
             <label for="Indirizzo" class="form-label">Indirizzo</label>
-            <input type="text" class="form-control" id="Indirizzo" placeholder="Inserisci l'indirizzo per la consegna">
+            <input type="text" class="form-control" id="Indirizzo" v-model="address" placeholder="Inserisci l'indirizzo per la consegna">
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Num di telefono</label>
             <input type="text" class="form-control" id="phone" placeholder="Inserisci il tuo recapito telefonico">
         </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" v-model="email" placeholder="Inserisci la tua email">
+        </div>
 
         <div id="dropin-container"></div>
         <!-- Submit button -->
-        <button id="submit-payment-btn" class="btn btn-warning w-100" @click="sendForm()">Conferma pagamento</button>
+        <button id="submit-payment-btn" class="btn btn-warning w-100">Conferma pagamento</button>
     </div>
     <div v-else class="container">
         <button @click="getPaymentData" class="btn btn-warning w-100">Procedi con il pagamento</button>
@@ -90,7 +94,10 @@ export default {
 
                             axios.post('http://localhost:8000/api/process-payment', {
                                 paymentMethodNonce: payload.nonce,
-                                total: that.store.cartTotal
+                                total: that.store.cartTotal,
+                                name: that.name,
+                                email: that.email,
+                                address: that.address
 
                             }).then(response => {
 
@@ -117,12 +124,11 @@ export default {
             this.isDropinLoading = false;
         },
         // Invio dati al back per email di conferma
-        sendForm() {
+        /*sendForm() {
 
             const payload  = {
                     name: this.name,
                     email: this.email,
-                    products: this.store.cart,
                     price: this.store.cartTotal,
                     address: this.address
                     
@@ -144,11 +150,9 @@ export default {
                     console.log(this.errors);
                 }
 
-                    this.sending = false;
-
                 });
 
-        }
+        }*/
     },
 }
 </script>
