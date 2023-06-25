@@ -13,7 +13,7 @@
         <!-- Payment form fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" v-model="name" placeholder="Inserisci qui il tuo nome">
+            <input type="text" class="form-control" id="name" v-model="user_name" placeholder="Inserisci qui il tuo nome">
         </div>
         <div class="mb-3">
             <label for="Indirizzo" class="form-label">Indirizzo</label>
@@ -46,12 +46,12 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
-            email: '',
             cardholderName: '',
             isUserPaying: false,
             store,
+            email: '',
             address: '',
-            name: ''
+            user_name: '',
 
         }
     },
@@ -75,6 +75,7 @@ export default {
             const clientToken = await this.getToken();
 
             let that = this;
+
             if (clientToken) {
                 this.isUserPaying = true;
                 const instance = await dropin.create({
@@ -95,9 +96,10 @@ export default {
                             axios.post('http://localhost:8000/api/process-payment', {
                                 paymentMethodNonce: payload.nonce,
                                 total: that.store.cartTotal,
-                                name: that.name,
                                 email: that.email,
-                                address: that.address
+                                address: that.address,
+                                user_name: that.user_name,
+                                
 
                             }).then(response => {
 
