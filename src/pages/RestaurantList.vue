@@ -81,6 +81,4 @@ export default {
 .my_rounded {
     border-radius: 40%;
 }
-
-
 </style>

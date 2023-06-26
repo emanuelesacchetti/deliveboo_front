@@ -14,6 +14,7 @@ export default {
             axios.get(`${this.store.baseUrl}/api/types`)
                 .then(response => {
                     this.store.restaurantTypes = response.data.results;
+                    console.log(this.store.restaurantTypes)
                 })
         },
         categoryFilter(slug) {
@@ -72,11 +73,17 @@ export default {
 <template>
     <div class="container py-2 ">
         <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap border">
-            <div class="col border text-center py-4 rounded-5 my_hover" v-for="restaurantType in store.restaurantTypes"
+            <div class="col border text-center py-4" v-for="restaurantType in store.restaurantTypes"
                 :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
                 @click="categoryFilter(restaurantType.slug)">
 
-                <h6 class=" my_btn rounded-5">{{ restaurantType.name }}</h6>
+
+                <div class="card w-50">
+                    <img :src="restaurantType.image" alt="Card image cap" class="w-50 m-auto">
+                    <div class="card-body">
+                        <h6 class=" my_btn rounded-5">{{ restaurantType.name }}</h6>
+                    </div>
+                </div>
 
 
             </div>
