@@ -56,7 +56,7 @@ export default {
         <div class="row g-4">
             <div class="col-12 " v-for="restaurant in  this.store.restaurantList ">
                 <div class="card text-center w-50 h-100 m-auto my_color rounded-5">
-                    <img :src="restaurant.image" alt="Immagini Ristoranti" class="my_rounded w-25 m-auto mt-3">
+                    <img :src="restaurant.image" alt="Immagini Ristoranti" class="my_rounded w-50 m-auto mt-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ restaurant.name }}</h5>
                     </div>

@@ -23,38 +23,54 @@ export default {
                 this.$router.replace({ query: { types: slug } })
                 console.log('query inesistente')
             } else {
+                // let myQuery = this.$route.query.types;
+                // myQuery = myQuery.split(',');
+                // let found = false;
+                // myQuery.forEach(element => {
+                //     if (element == slug) {
+                //         found = true;
+                //     }
+                // })
+                // if (found) {
+                //     myQuery.forEach((element, index) => {
+                //         if (element == slug) {
+                //             myQuery.splice(index, 1)
+                //         }
+                //     })
+                // } else {
+
+                //     if (myQuery[0] != '') {
+
+                //         myQuery.push(slug);
+                //     } else {
+                //         myQuery = [slug];
+                //     }
+                // }
+                // if (myQuery.length >= 1) {
+                //     this.store.selectedRestaurant = [...myQuery];
+                //     myQuery = myQuery.join(',');
+                // } else {
+                //     this.store.selectedRestaurant = [];
+                //     myQuery = '';
+                // }
+                // myQuery = this.$router.replace({ query: { types: myQuery } });
                 let myQuery = this.$route.query.types;
-                myQuery = myQuery.split(',');
-                let found = false;
-                myQuery.forEach(element => {
-                    if (element == slug) {
-                        found = true;
-                    }
-                })
-                if (found) {
-                    myQuery.forEach((element, index) => {
-                        if (element == slug) {
-                            myQuery.splice(index, 1)
-                        }
-                    })
-                } else {
 
-                    if (myQuery[0] != '') {
 
-                        myQuery.push(slug);
-                    } else {
-                        myQuery = [slug];
-                    }
-                }
-                if (myQuery.length >= 1) {
-                    this.store.selectedRestaurant = [...myQuery];
-                    myQuery = myQuery.join(',');
+                if (myQuery != '' || myQuery != undefined) {
+                    this.store.selectedRestaurant = myQuery;
+
+                    myQuery = slug;
                 } else {
-                    this.store.selectedRestaurant = [];
+                    this.store.selectedRestaurant = '';
                     myQuery = '';
+
                 }
                 myQuery = this.$router.replace({ query: { types: myQuery } });
             }
+
+
+
 
         },
         ifQueryExist(slug) {
@@ -68,28 +84,22 @@ export default {
     }
 
 }
+
 </script>
 
 <template>
     <div class="container py-2 ">
-        <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap border">
-            <div class="col border text-center py-4" v-for="restaurantType in store.restaurantTypes"
-                :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
+        <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap ">
+            <div class="col-12  text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
-
-
-                <div class="card w-50">
+                <div class="card" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
                     <img :src="restaurantType.image" alt="Card image cap" class="w-50 m-auto">
                     <div class="card-body">
-                        <h6 class=" my_btn rounded-5">{{ restaurantType.name }}</h6>
+                        <small class=" my_btn rounded-5">{{ restaurantType.name }}</small>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
 </template>
 
