@@ -44,10 +44,8 @@ export default {
 
                     <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
-                        <div class="container_img">
-                            <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        </div>
-                        <h4 class="text_category d-flex justify-content-center">{{ restaurantType.name }}</h4>
+                        <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
+                        <span class="text_category d-flex justify-content-center mt-2">{{ restaurantType.name }}</span>
                     </router-link>
 
 
@@ -61,61 +59,35 @@ export default {
 
 <style lang="scss" scoped>
 .container_category {
-    background-color: #FFBD00;
-
-    .container_img {
-        height: 80%;
-    }
+    background-color: white;
 
     .card_category {
         border-radius: 10px;
-        position: relative;
-        border: 1px solid black;
+        text-decoration: none;
 
         .text_category {
-            /*  position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             color: black;
-            display: none;*/
-            color: black;
+            text-decoration: none;
         }
-
-
-
-
-
-
-        img {
-            object-fit: cover;
-            aspect-ratio: 1/1;
-            border-radius: 10px 10px 0 0;
-
-
-        }
-
-        //media query
-        @media(max-width:768px) {
-            img {
-                object-fit: cover;
-                height: 200px;
-                border-radius: 10px;
-                box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
-            }
-        }
-
-
-
     }
+}
+
+
+img {
+    border-radius: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    box-shadow: 6px 5px 10px 5px rgba(158, 1, 89, 0.5);
 
 }
 
-.card_category:hover .text_category {
-    display: none;
-}
-
-.card_category:hover img {
-    filter: blur(2px);
+//media query
+@media(max-width:768px) {
+    img {
+        object-fit: cover;
+        height: 200px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px 2px rgba(158, 1, 89, 0.5);
+    }
 }
 </style>
