@@ -51,6 +51,7 @@ export default {
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <AppCart />
+    <button type="button" class="btn-close position-absolute m-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
 </template>
 

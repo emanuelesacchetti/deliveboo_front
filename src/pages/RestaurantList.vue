@@ -52,23 +52,24 @@ export default {
 
 <template>
     <AppCheckBox />
-    <div class="container_general">
-        <ul>
-            <li v-for="restaurant in this.store.restaurantList" @click="">
-                {{ restaurant.name }}
-                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                    class="btn btn-primary" @click="emptyCart(restaurant.id)">
-                    Ordina da qui
-                </router-link>
-
-            </li>
-        </ul>
+    <div class="container p-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col" v-for="restaurant in this.store.restaurantList">
+                <div class="card text-center h-100" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.name }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
+                            class="btn btn-warning" @click="emptyCart(restaurant.id)">
+                            Ordina da qui
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 
-<style lang="scss" scoped> .container_general {
-    display: flex;
-    justify-content: center;
-}
-</style>
+<style lang="scss" scoped></style>
