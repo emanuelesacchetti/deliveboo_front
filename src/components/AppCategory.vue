@@ -47,7 +47,7 @@ export default {
                             <div class="d-flex justify-content-center img_container">
                                 <img class="mt-2" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
                             </div>
-                            <span class="text_category">{{ restaurantType.name }}</span>
+                            <span class="d-flex justify-content-center">{{ restaurantType.name }}</span>
                         </router-link>
                     </div>
 
@@ -65,27 +65,31 @@ export default {
     background-color: #FFBD00;
 
     .card_category {
-        border: 1px solid black;
-        background-color: #9E0059;
-        height: 100px;
+        border: 1px solid #FF5400;
+        border-radius: 10px;
+        background-color: white;
 
         img {
-            background-color: white;
-            padding: 5px;
             border-radius: 100%;
+            object-fit: cover;
+
         }
     }
 
 
     //media query
-    @media(max-width:768px) {
+    /*   @media(max-width:768px) {
         img {
             object-fit: cover;
             height: 200px;
             border-radius: 10px;
             box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
         }
+    }*/
+    .card_category:hover {
+        background-color: #FF5400;
     }
+
 
 
 }

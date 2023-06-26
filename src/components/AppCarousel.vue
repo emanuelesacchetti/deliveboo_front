@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 .carousel-inner {
-    height: 100%;
+    height: 1000px;
     background-color: rgb(238, 137, 11);
 }
 
@@ -52,11 +52,11 @@ img {
 }
 
 .carousel-item {
-    height: 100%;
+    height: 1000px;
 }
 
 #carouselExampleSlidesOnly {
-    height: 100%;
+    height: 1000px;
 }
 
 .container_carousel {

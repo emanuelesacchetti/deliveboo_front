@@ -64,7 +64,7 @@ nav {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: #FEA50B;
+  background-color: #FFBD00;
 
 }
 </style>
