@@ -37,16 +37,21 @@ export default {
 </script>
 
 <template>
-    <div class="container_category mt-5">
-        <div class="container-fluid">
-            <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
+    <div class="container_category">
+        <div class="container">
+            <div class="row row-cols-md-6 row-cols-1 ">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 ">
+                    <div class="card_category">
+                        <router-link class="d-block card_category " @click='getTypesById(restaurantType.slug)'
+                            :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
+                            <div class="d-flex justify-content-center img_container">
+                                <img class="mt-2" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
+                            </div>
+                            <span class="text_category">{{ restaurantType.name }}</span>
+                        </router-link>
+                    </div>
 
-                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.slug)'
-                        :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
-                        <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        <span class="text_category">{{ restaurantType.name }}</span>
-                    </router-link>
+
                 </div>
             </div>
 
@@ -56,18 +61,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .container_category {
+    background-color: #A8DADC;
+
     .card_category {
         border-radius: 10px;
         position: relative;
 
-        .text_category {
+        /*   .text_category {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -75,18 +76,20 @@ export default {
             color: black;
             display: none;
             text-decoration: none;
+        }*/
+
+        .card_category {
+            border: 1px solid black;
+            background-color: #457B9D;
+            height: 100px;
+
+            img {
+                background-color: white;
+                padding: 5px;
+                border-radius: 100%;
+            }
         }
 
-
-
-
-        img {
-            object-fit: cover;
-            aspect-ratio: 1/1;
-            border-radius: 100%;
-            box-shadow: -10px 0px 0px 4px rgb(238, 127, 11);
-
-        }
 
         //media query
         @media(max-width:768px) {
@@ -104,13 +107,9 @@ export default {
 
 }
 
-.card_category:hover .text_category {
-    display: block;
-    color: white;
-    font-weight: bold;
-}
 
 .card_category:hover img {
-    filter: blur(2px);
+    background-color: #A8DADC;
+
 }
 </style>
