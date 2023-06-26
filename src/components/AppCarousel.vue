@@ -41,12 +41,26 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+#carouselExampleSlidesOnly {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
 .carousel-inner {
-    max-height: 90vh;
+    height: 100%;
     background-color: rgb(238, 137, 11);
+}
+
+img {
+    height: 100%;
+    object-fit: cover;
 }
 
 .container_carousel {
     position: relative;
+    height: 100vh;
 }
 </style>

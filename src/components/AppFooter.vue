@@ -16,7 +16,10 @@ export default {
 
 
 <template>
-    <footer class="bg-dark py-5 mt-3">
+    <div>
+        <img src="src/assets/img/wave.png" alt="">
+    </div>
+    <footer class="container_footer py-5 ">
         <div class="container">
             <small class="text-white">&COPY; {{ getYear() }} </small>
         </div>
@@ -24,4 +27,13 @@ export default {
 </template>
 
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+img {
+    width: 100%;
+    height: 200px;
+}
+
+.container_footer {
+    background-color: #FF0054;
+}
+</style>

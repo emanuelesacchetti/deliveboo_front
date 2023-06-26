@@ -37,15 +37,17 @@ export default {
 </script>
 
 <template>
-    <div class="container_category mt-5 mb-2">
+    <div class="container_category">
         <div class="container-fluid">
-            <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
+            <div class="row flex-md-nowrap overflow-x-auto">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12 ">
 
-                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.slug)'
+                    <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
-                        <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        <span class="text_category">{{ restaurantType.name }}</span>
+                        <div class="container_img">
+                            <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
+                        </div>
+                        <h4 class="text_category d-flex justify-content-center">{{ restaurantType.name }}</h4>
                     </router-link>
 
 
@@ -58,26 +60,29 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .container_category {
+    background-color: #FFBD00;
+
+    .container_img {
+        height: 80%;
+    }
+
     .card_category {
         border-radius: 10px;
         position: relative;
+        border: 1px solid black;
 
         .text_category {
-            position: absolute;
+            /*  position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: black;
-            display: none;
-            text-decoration: none;
+            display: none;*/
+            color: black;
         }
+
+
 
 
 
@@ -85,8 +90,8 @@ export default {
         img {
             object-fit: cover;
             aspect-ratio: 1/1;
-            border-radius: 100%;
-            box-shadow: -10px 0px 0px 4px rgb(238, 127, 11);
+            border-radius: 10px 10px 0 0;
+
 
         }
 
@@ -107,9 +112,7 @@ export default {
 }
 
 .card_category:hover .text_category {
-    display: block;
-    color: white;
-    font-weight: bold;
+    display: none;
 }
 
 .card_category:hover img {

@@ -1,11 +1,10 @@
 <script>
 import AppCategory from '../components/AppCategory.vue';
 import AppCarousel from '../components/AppCarousel.vue';
-import AppMain from '../components/AppMain.vue';
+
 export default {
     name: 'AppHome',
     components: {
-        AppMain,
         AppCategory,
         AppCarousel
     }
@@ -18,7 +17,6 @@ export default {
         <AppCarousel />
         <AppCategory />
     </div>
-    <AppMain />
 </template>
 
 
