@@ -72,7 +72,7 @@ export default {
 <template>
     <div class="container py-2 ">
         <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap border">
-            <div class="col border text-center py-4 rounded-5" v-for="restaurantType in store.restaurantTypes"
+            <div class="col border text-center py-4 rounded-5 my_hover" v-for="restaurantType in store.restaurantTypes"
                 :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
                 @click="categoryFilter(restaurantType.slug)">
 
@@ -99,5 +99,9 @@ export default {
 
 .my_btn:hover {
     cursor: pointer;
+}
+
+.my_hover:hover {
+    background-color: rgb(255, 193, 7);
 }
 </style>
