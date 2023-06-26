@@ -29,7 +29,6 @@ export default {
             axios.get(link)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
-                    console.log(response);
                 })
         },
         emptyCart() {
@@ -38,13 +37,13 @@ export default {
         },
         clickOnRestaurant(restaurant) {
             //click su un ristorante diverso da quello già visitato o non è il primo
-            console.log(!this.store.lastVisitedRestaurantId == restaurant.id);
-            if (!this.store.lastVisitedRestaurantId == restaurant.id) {
+            if (!(this.store.lastVisitedRestaurantId == restaurant.id)) {
                 //verifico se il carrello non è vuoto
                 if (this.store.cart.length) {
                     //caso A: ALERT, prodotti nel carrello
                     this.cartAlert.triggered = true;
                     this.cartAlert.slug = restaurant.slug;
+                    this.cartAlert.id = restaurant.id;
                 } else {
                     //caso B: procedo al ristorante
                     this.goToRestaurant(restaurant.id, restaurant.slug)
