@@ -62,54 +62,31 @@ export default {
 
 <style lang="scss" scoped>
 .container_category {
-    background-color: #A8DADC;
+    background-color: #FFBD00;
 
     .card_category {
-        border-radius: 10px;
-        position: relative;
+        border: 1px solid black;
+        background-color: #9E0059;
+        height: 100px;
 
-        /*   .text_category {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: black;
-            display: none;
-            text-decoration: none;
-        }*/
-
-        .card_category {
-            border: 1px solid black;
-            background-color: #457B9D;
-            height: 100px;
-
-            img {
-                background-color: white;
-                padding: 5px;
-                border-radius: 100%;
-            }
+        img {
+            background-color: white;
+            padding: 5px;
+            border-radius: 100%;
         }
-
-
-        //media query
-        @media(max-width:768px) {
-            img {
-                object-fit: cover;
-                height: 200px;
-                border-radius: 10px;
-                box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
-            }
-        }
-
-
-
     }
 
-}
 
+    //media query
+    @media(max-width:768px) {
+        img {
+            object-fit: cover;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
+        }
+    }
 
-.card_category:hover img {
-    background-color: #A8DADC;
 
 }
 </style>

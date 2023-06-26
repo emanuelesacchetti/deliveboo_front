@@ -34,6 +34,6 @@ img {
 }
 
 .container_footer {
-    background-color: #1D3557;
+    background-color: #FF0054;
 }
 </style>
