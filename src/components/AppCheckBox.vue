@@ -70,13 +70,14 @@ export default {
 </script>
 
 <template>
-    <div class="container py-2">
+    <div class="container py-2 ">
         <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap border">
-            <div class="col border text-center py-4" v-for="restaurantType in store.restaurantTypes"
+            <div class="col border text-center py-4 rounded-5" v-for="restaurantType in store.restaurantTypes"
                 :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
                 @click="categoryFilter(restaurantType.slug)">
 
-                {{ restaurantType.name }}
+                <h6 class=" my_btn rounded-5">{{ restaurantType.name }}</h6>
+
 
             </div>
 
@@ -94,5 +95,9 @@ export default {
         width: calc(100%/10);
         height: 100px;
     }
+}
+
+.my_btn:hover {
+    cursor: pointer;
 }
 </style>
