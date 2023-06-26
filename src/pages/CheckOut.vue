@@ -47,10 +47,10 @@ export default {
     data() {
         return {
             orderPayload: {
-                name: 'bsu',
-                address: 'via vai',
-                phone_number: '3341234567',
-                email: 'bsu@gmail.com',
+                name: 'mario rossi',
+                address: 'via nazionale, 1',
+                phone_number: '3331234567',
+                email: 'mariorossi@gmail.com',
                 total: store.cartTotal,
                 products: [],
                 restaurant_id: null,
