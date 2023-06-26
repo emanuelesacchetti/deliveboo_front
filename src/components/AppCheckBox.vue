@@ -70,8 +70,8 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="row  row-cols-4 row-cols-md-6 row-cols-lg-8 overflow-auto flex-nowrap border my-2">
+    <div class="container py-2">
+        <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap border">
             <div class="col border text-center py-4" v-for="restaurantType in store.restaurantTypes"
                 :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
                 @click="categoryFilter(restaurantType.slug)">

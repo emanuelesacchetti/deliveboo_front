@@ -89,7 +89,7 @@ export default {
         <div class="container-fluid d-flex">
 
             <div class="container-fluid mt-5">
-                <div class=" row row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+                <div class=" row row-cols-1 row-cols-lg-2 row-cols-xl-3">
                     <div class="col p-2" v-for="product in restaurant.products">
                         <div class="card text-center m-3 h-100">
                             <img class=" card-img-top" :src="product.image" alt="Card image cap">
