@@ -29,8 +29,10 @@
 
             </li>
         </ul>
-        <p class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
-        <router-link :to="{ name: 'payment' }" class="btn btn-warning p-2 w-100">
+        <p v-if="store.cart.length" class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
+        <p v-else class="p-3 text-center"> Nessun elemento nel carrello</p>
+
+        <router-link :to="{ name: 'payment' }" class="btn btn-warning p-2 w-100" :class="{ 'disabled': !store.cart.length }">
             Vai al checkout
         </router-link>
     </div>

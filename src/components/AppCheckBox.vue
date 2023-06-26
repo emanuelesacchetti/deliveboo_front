@@ -56,11 +56,9 @@ export default {
             }
 
         },
-        ifQueryExist(slug){
-            if(this.$route.query.types){
-                if(this.$route.query.types.includes(slug)){
-                    return 'text-danger'
-                }
+        ifQueryExist(slug) {
+            if (this.$route.query.types) {
+                return this.$route.query.types.includes(slug)
             }
         }
     },
@@ -72,19 +70,18 @@ export default {
 </script>
 
 <template>
-    <div class="container_check">
-        <div>
-            <h2>Elenco dei ristoranti</h2>
-            <div class="d-flex">
+    <div class="container">
+        <div class="row  row-cols-4 row-cols-md-6 row-cols-lg-8 overflow-auto flex-nowrap border my-2">
+            <div class="col border text-center py-4" v-for="restaurantType in store.restaurantTypes"
+                :key="restaurantType.id" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }"
+                @click="categoryFilter(restaurantType.slug)">
 
-                <div class="card" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id">
-                    <div :class="ifQueryExist(restaurantType.slug)" @click="categoryFilter(restaurantType.slug)">
-                        {{ restaurantType.name }}
-                    </div>
-                </div>
+                {{ restaurantType.name }}
 
             </div>
+
         </div>
+
     </div>
 </template>
 
