@@ -37,9 +37,9 @@ export default {
             localStorage.setItem('cart', '');
         },
         clickOnRestaurant(restaurant) {
-            //click su un ristorante diverso da quello già visitato
-            console.log('visito: ' + restaurant.id + '. Avevo visitato: ' + this.store.lastVisitedRestaurantId);
-            if (this.store.lastVisitedRestaurantId && this.store.lastVisitedRestaurantId != restaurant.id) {
+            //click su un ristorante diverso da quello già visitato o non è il primo
+            console.log(!this.store.lastVisitedRestaurantId == restaurant.id);
+            if (!this.store.lastVisitedRestaurantId == restaurant.id) {
                 //verifico se il carrello non è vuoto
                 if (this.store.cart.length) {
                     //caso A: ALERT, prodotti nel carrello
