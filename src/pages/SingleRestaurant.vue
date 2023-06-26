@@ -99,7 +99,8 @@ export default {
                                 <p class="card-text"> &euro; {{ product.price }}</p>
                             </div>
                             <div class="card-footer">
-                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al carrello</button>
+                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al
+                                    carrello</button>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@ export default {
                 </div>
             </div>
             <div class="cart-container mt-4 p-2 d-none d-md-block">
-                <AppCart/>
+                <AppCart />
             </div>
         </div>
     </div>
@@ -115,8 +116,7 @@ export default {
 
 
 <style scoped lang="scss">
-    .cart-container{
-        width: 40%;
-    }
-
+.cart-container {
+    width: 40%;
+}
 </style>

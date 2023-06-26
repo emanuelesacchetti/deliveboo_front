@@ -54,8 +54,9 @@ export default {
     <AppCheckBox />
     <div class="container p-3">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            <div class="col" v-for="restaurant in this.store.restaurantList">
-                <div class="card text-center h-100" >
+            <div class="col" v-for="restaurant in  this.store.restaurantList ">
+                <div class="card text-center h-100 my_color rounded-5">
+                    <img :src="restaurant.image" alt="Immagini Ristoranti" class="my_rounded w-75 m-auto mt-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ restaurant.name }}</h5>
                     </div>
@@ -72,4 +73,12 @@ export default {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my_color {
+    background-color: rgb(240, 140, 35);
+}
+
+.my_rounded {
+    border-radius: 40%;
+}
+</style>

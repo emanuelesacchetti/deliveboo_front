@@ -40,9 +40,9 @@ export default {
     <div class="container_category mt-5 mb-2">
         <div class="container-fluid">
             <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12 ">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12">
 
-                    <router-link class="d-block card_category " @click='getTypesById(restaurantType.slug)'
+                    <router-link class="d-block card_category" @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
                         <span class="text_category">{{ restaurantType.name }}</span>
