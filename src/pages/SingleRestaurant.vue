@@ -90,7 +90,7 @@ export default {
 
             <div class="container-fluid mt-5 my_menu">
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
-                    <div class="col p-2 mt-5" v-for="product in restaurant.products">
+                    <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
                         <div class="my_card text-center col-lg-8 col-xl-8 m-3 h-100">
                             <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
                                 alt="Card image cap">
@@ -108,7 +108,7 @@ export default {
 
                 </div>
             </div>
-            <div class="cart-container mt-4 p-2 d-none d-md-block">
+            <div class="cart-container mt-5 ms-2 p-2 d-none d-md-block">
                 <AppCart />
             </div>
         </div>
@@ -122,6 +122,9 @@ export default {
 
 .cart-container {
     width: 40%;
+    border: 2px solid $primary-color;
+    border-radius: 10px;
+
 }
 
 .my_card {
@@ -131,7 +134,9 @@ export default {
 }
 
 .my_menu {
-    border-right: 1px solid black;
+    border: 2px solid $primary-color;
+    background-color: whitesmoke;
+    border-radius: 10px;
 }
 
 img {
