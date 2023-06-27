@@ -35,16 +35,16 @@ export default {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item p-3">
-          <a class="btn btn-outline-dark d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap"
-            data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <a class="my_btn d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
+            href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <span class=" me-2"> Vai al Carrello </span>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping my_cart"></i>
           </a>
         </li>
 
         <li class="nav-item p-3">
           <!--<router-link :to="{name: laravel}">Lavora con noi</router-link>-->
-          <a :href="store.baseUrl" class="btn btn-outline-dark mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
+          <a :href="store.baseUrl" class="my_btn mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
         </li>
       </ul>
     </div>
@@ -74,7 +74,49 @@ nav {
   }
 
 }
+
 nav::-webkit-scrollbar {
   display: none;
-}  
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.my_cart {
+  color: #390099;
+}
+
+.my_btn {
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+}
+
+.my_btn:hover {
+  letter-spacing: 3px;
+  background-color: #390099;
+  color: hsl(0, 0%, 100%);
+  box-shadow: #390099 0px 7px 29px 0px;
+}
+
+.my_btn:hover .my_cart {
+  color: white;
+}
+
+.my_btn:active {
+  letter-spacing: 3px;
+  background-color: #390099;
+  color: hsl(0, 0%, 100%);
+  box-shadow: #390099 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
 </style>
