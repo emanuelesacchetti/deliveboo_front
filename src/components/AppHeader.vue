@@ -72,4 +72,7 @@ nav {
   }
 
 }
+nav::-webkit-scrollbar {
+  display: none;
+}  
 </style>
