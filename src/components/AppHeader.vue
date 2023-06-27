@@ -85,7 +85,7 @@ nav::-webkit-scrollbar {
 
 a {
   text-decoration: none;
-  color: white;
+  color: $neutral-color;
 }
 
 .my_cart {
@@ -97,14 +97,14 @@ a {
 }
 
 .my_btn:hover {
-  @include mixins.primary-btn-hover
+  @include mixins.btn-hover
 }
 
 .my_btn:hover .my_cart {
-  color: $white-color;
+  color: $neutral-color;
 }
 
 .my_btn:active {
-  @include mixins.primary-btn-active
+  @include mixins.btn-active
 }
 </style>

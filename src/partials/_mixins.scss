@@ -1,6 +1,6 @@
 @use '../partials/variables.scss' as *;
 
-@mixin primary-btn {
+@mixin primary-btn{
     padding: 17px 40px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 1);
@@ -10,21 +10,21 @@
     text-transform: uppercase;
     font-size: 15px;
     transition: all .5s ease;
-}
+};
 
-@mixin primary-btn-hover {
+@mixin btn-hover {
     letter-spacing: 3px;
     background-color: $secondary-color;
     color: hsl(0, 0%, 100%);
     box-shadow: $secondary-color 0px 7px 29px 0px;
-}
+};
 
-@mixin primary-btn-active {
+@mixin btn-active {
     letter-spacing: 3px;
     background-color: $secondary-color;
     color: hsl(0, 0%, 100%);
     box-shadow: $secondary-color 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
-}
+};
 
