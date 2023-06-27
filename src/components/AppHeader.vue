@@ -66,7 +66,7 @@ nav {
   top: 0;
   left: 0;
   background-color: #FF0054;
-  height: 80px;
+  height: 100px;
 
   .logo_img {
     width: 200px;

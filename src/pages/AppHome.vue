@@ -41,7 +41,7 @@ export default {
         display: block;
         margin: auto;
         width: 60vw;
-        margin-top: -300px;
+        margin-top: -250px;
     }
 
     .wave_img {
