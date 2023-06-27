@@ -21,14 +21,26 @@ export default {
     </div>
     <footer class="container_footer py-5 ">
         <div class="container">
+            <div class="row">
+                <div class="col-3">
+
+                </div>
+                <div class="col-3">
+                    
+                </div>
+                <div class="col-3">
+                    
+                </div>
+            </div>
             <small class="text-white">&COPY; {{ getYear() }} </small>
+
         </div>
     </footer>
 </template>
 
 
 <style scoped lang="scss">
-@use '../partials/variables' as *;
+@use '../partials/variables.scss' as *;
 
 img {
     width: 100%;

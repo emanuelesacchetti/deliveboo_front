@@ -92,7 +92,7 @@ export default {
                 <div class=" row row-cols-1 row-cols-lg-2 row-cols-xl-3">
                     <div class="col p-2" v-for="product in restaurant.products">
                         <div class="card text-center m-3 h-100">
-                            <img class=" card-img-top" :src="product.image" alt="Card image cap">
+                            <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title fs-3 mb-3">{{ product.name }}</h5>
                                 <p class="card-text">{{ product.description }}</p>

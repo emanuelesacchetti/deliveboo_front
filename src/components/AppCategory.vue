@@ -72,7 +72,10 @@ export default {
             text-decoration: none;
         }
 
-        img {
+        
+    }
+}
+img {
             border-radius: 100%;
             object-fit: cover;
             aspect-ratio: 1/1;
@@ -81,8 +84,6 @@ export default {
                 box-shadow: 6px 5px 15px 1px #38009996;
             }
         }
-    }
-}
 
 .no-scroll::-webkit-scrollbar {
     display: none;
