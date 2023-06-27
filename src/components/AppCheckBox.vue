@@ -23,54 +23,38 @@ export default {
                 this.$router.replace({ query: { types: slug } })
                 console.log('query inesistente')
             } else {
-                // let myQuery = this.$route.query.types;
-                // myQuery = myQuery.split(',');
-                // let found = false;
-                // myQuery.forEach(element => {
-                //     if (element == slug) {
-                //         found = true;
-                //     }
-                // })
-                // if (found) {
-                //     myQuery.forEach((element, index) => {
-                //         if (element == slug) {
-                //             myQuery.splice(index, 1)
-                //         }
-                //     })
-                // } else {
-
-                //     if (myQuery[0] != '') {
-
-                //         myQuery.push(slug);
-                //     } else {
-                //         myQuery = [slug];
-                //     }
-                // }
-                // if (myQuery.length >= 1) {
-                //     this.store.selectedRestaurant = [...myQuery];
-                //     myQuery = myQuery.join(',');
-                // } else {
-                //     this.store.selectedRestaurant = [];
-                //     myQuery = '';
-                // }
-                // myQuery = this.$router.replace({ query: { types: myQuery } });
                 let myQuery = this.$route.query.types;
-
-
-                if (myQuery != '' || myQuery != undefined) {
-                    this.store.selectedRestaurant = myQuery;
-
-                    myQuery = slug;
+                myQuery = myQuery.split(',');
+                let found = false;
+                myQuery.forEach(element => {
+                    if (element == slug) {
+                        found = true;
+                    }
+                })
+                if (found) {
+                    myQuery.forEach((element, index) => {
+                        if (element == slug) {
+                            myQuery.splice(index, 1)
+                        }
+                    })
                 } else {
-                    this.store.selectedRestaurant = '';
-                    myQuery = '';
 
+                    if (myQuery[0] != '') {
+
+                        myQuery.push(slug);
+                    } else {
+                        myQuery = [slug];
+                    }
+                }
+                if (myQuery.length >= 1) {
+                    this.store.selectedRestaurant = [...myQuery];
+                    myQuery = myQuery.join(',');
+                } else {
+                    this.store.selectedRestaurant = [];
+                    myQuery = '';
                 }
                 myQuery = this.$router.replace({ query: { types: myQuery } });
             }
-
-
-
 
         },
         ifQueryExist(slug) {
@@ -92,8 +76,8 @@ export default {
         <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap ">
             <div class="col-12  text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
-                <div class="card" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="w-50 m-auto">
+                <div class="card my_background" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
+                    <img :src="restaurantType.image" alt="Card image cap" class="w-50 m-auto  ">
                     <div class="card-body">
                         <small class=" my_btn rounded-5">{{ restaurantType.name }}</small>
                     </div>
@@ -114,6 +98,12 @@ export default {
     }
 }
 
+.my_background {
+    border: 3px solid rgb(255, 0, 84);
+    border-radius: 100%;
+    width: 150px;
+}
+
 .my_btn:hover {
     cursor: pointer;
 }
@@ -129,7 +119,11 @@ export default {
     z-index: 100;
     top: 0;
     left: 0;
-    background-color: rgba(238, 127, 11, 0.9);
 
+
+}
+
+.types::-webkit-scrollbar {
+    display: none;
 }
 </style>
