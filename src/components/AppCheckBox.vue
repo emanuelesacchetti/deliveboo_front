@@ -74,12 +74,12 @@ export default {
 <template>
     <div class="container py-2 ">
         <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap ">
-            <div class="col-12  text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
+            <div class="col-sm-3  text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
-                <div class="card my_background" :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="w-50 m-auto  ">
+                <div class="card my_background h-100 " :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
+                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto  ">
                     <div class="card-body">
-                        <small class=" my_btn rounded-5">{{ restaurantType.name }}</small>
+                        <small class=" my_btn rounded-5 text-light">{{ restaurantType.name }}</small>
                     </div>
                 </div>
             </div>
@@ -88,6 +88,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/general.scss';
+@use '../partials/variables.scss' as *;
+@use '../partials/mixins.scss';
+
 .container_check {
 
 
@@ -99,7 +103,7 @@ export default {
 }
 
 .my_background {
-    background-color: rgb(253, 92, 30);
+    background-color: $primary-color;
     cursor: pointer;
 
 
