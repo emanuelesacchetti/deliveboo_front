@@ -39,8 +39,8 @@ export default {
 <template>
     <div class="container_category">
         <div class="container-fluid">
-            <div class="row flex-md-nowrap overflow-x-auto">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12 ">
+            <div class="row flex-md-nowrap overflow-x-auto no-scroll">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12">
 
                     <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
@@ -70,7 +70,12 @@ export default {
             text-decoration: none;
         }
     }
+
 }
+
+.no-scroll::-webkit-scrollbar {
+  display: none;}  
+
 
 
 img {
