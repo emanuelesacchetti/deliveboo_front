@@ -108,7 +108,7 @@ export default {
 
                 </div>
             </div>
-            <div class="cart-container mt-4 p-2 d-none d-md-block">
+            <div class="cart-container mt-5 ms-2 p-2 d-none d-md-block">
                 <AppCart />
             </div>
         </div>
@@ -122,6 +122,9 @@ export default {
 
 .cart-container {
     width: 40%;
+    border: 2px solid $primary-color;
+    border-radius: 10px;
+
 }
 
 .my_card {
@@ -131,8 +134,9 @@ export default {
 }
 
 .my_menu {
-    border: 1px solid black;
+    border: 2px solid $primary-color;
     background-color: whitesmoke;
+    border-radius: 10px;
 }
 
 img {
