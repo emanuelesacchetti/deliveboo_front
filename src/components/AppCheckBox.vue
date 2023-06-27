@@ -121,4 +121,15 @@ export default {
 .my_hover:hover {
     background-color: rgb(255, 193, 7);
 }
+
+.types {
+    position: sticky;
+    overflow-y: scroll;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgba(238, 127, 11, 0.9);
+
+}
 </style>
