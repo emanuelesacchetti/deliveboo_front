@@ -3,7 +3,9 @@ export default {
     name: 'AppFooter',
     data() {
         return {
-
+            developers: {
+                
+            }
         }
     },
     methods: {
@@ -23,7 +25,7 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-3">
-
+                    <small>Emanuele Sacchetti</small>
                 </div>
                 <div class="col-3">
                     
