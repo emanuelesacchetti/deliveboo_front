@@ -58,6 +58,7 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../partials/variables' as *;
 nav {
   position: sticky;
   overflow-y: scroll;
@@ -65,7 +66,7 @@ nav {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: #FF0054;
+  background-color: $primary-color;
   height: 100px;
 
   .logo_img {
