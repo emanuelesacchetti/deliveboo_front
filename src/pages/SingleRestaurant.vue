@@ -85,6 +85,9 @@ export default {
         <div class="container my_bg text-center">
             <h1 class="display-1"> {{ restaurant.name }}</h1>
         </div>
+        <div>
+            <img :src="`${store.baseUrl}/storage/${restaurant.image}`" alt="Card image cap">
+        </div>
 
         <div class="container-fluid d-flex">
 
@@ -109,7 +112,7 @@ export default {
                 </div>
             </div>
             <div class="cart-container mt-5 ms-2 p-2 d-none d-md-block">
-                <AppCart />
+                <AppCart class="cart_element" />
             </div>
         </div>
     </div>
@@ -122,20 +125,26 @@ export default {
 
 .cart-container {
     width: 40%;
+
+    .cart_element {
+        border-radius: 40px;
+        background-color: whitesmoke;
+    }
 }
 
 
 .my_card {
     width: 100%;
-    border-radius: 0 0 0 40px;
-    border-bottom: 2px solid $primary-color;
-    border-left: 2px solid $primary-color;
-    box-shadow: -5px 6px 6px 0px #31313296;
+    border-radius: 40px 40px 40px 40px;
+    //border-bottom: 2px solid $secondary-color;
+    //border-left: 2px solid $secondary-color;
+    // box-shadow: -5px 5px 10px 0px $secondary-color;
     //background-color: rgba(255, 0, 85, 0.096);
     // background: linear-gradient(to bottom left, #FF0054 2%, #FFFFFF 100%);
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    background-color: white;
 
 
     .img_container {
@@ -162,8 +171,11 @@ export default {
 }
 
 .my_menu {
-    border-right: 1px solid $secondary-color;
+    padding: 30px;
+    //border-right: 1px solid $secondary-color;
     padding: 50px;
+    border-radius: 40px;
+    background-color: whitesmoke
 }
 
 
@@ -179,5 +191,10 @@ button:hover {
 
 button:active {
     @include mixins.btn-active;
+}
+
+//hover
+.my_card:hover {
+    box-shadow: -5px 5px 5px 0px $secondary-color;
 }
 </style>
