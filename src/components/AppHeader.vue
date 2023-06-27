@@ -24,26 +24,27 @@ export default {
 
 <template>
   <nav class="navbar navbar-expand-lg" id="header-nav">
-    <div class="container-fluid px-3">
-      <router-link :to="{ name: 'home' }">LOGO DELIVEBOO</router-link>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container-fluid px-3 h-100">
+      <router-link :to="{ name: 'home' }"><img class="logo_img" src="src/assets/img/logo.svg" alt=""></router-link>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item p-3">
-          <a class="btn btn-outline-dark d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-            aria-controls="offcanvasExample">
+          <a class="my_btn d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
+            href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <span class=" me-2"> Vai al Carrello </span>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping my_cart"></i>
           </a>
         </li>
 
         <li class="nav-item p-3">
           <!--<router-link :to="{name: laravel}">Lavora con noi</router-link>-->
-          <a :href="store.baseUrl" class="btn btn-outline-dark mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
+          <a :href="store.baseUrl" class="my_btn mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
         </li>
       </ul>
     </div>
@@ -57,6 +58,11 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../styles/general.scss';
+@use '../partials/variables.scss' as *;
+@use '../partials/mixins.scss';
+
+
 nav {
   position: sticky;
   overflow-y: scroll;
@@ -64,7 +70,41 @@ nav {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgba(238, 127, 11, 0.9);
+  background-color: $primary-color;
+  height: 100px;
 
+  .logo_img {
+    width: 200px;
+  }
+
+}
+
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: $neutral-color;
+}
+
+.my_cart {
+  color: $secondary-color;
+}
+
+.my_btn {
+  @include mixins.primary-btn
+}
+
+.my_btn:hover {
+  @include mixins.btn-hover
+}
+
+.my_btn:hover .my_cart {
+  color: $neutral-color;
+}
+
+.my_btn:active {
+  @include mixins.btn-active
 }
 </style>

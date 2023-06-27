@@ -26,7 +26,7 @@ export default {
         <div id="carouselExampleSlidesOnly" class="carousel slide position-relative carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="src/assets/jumbotron/donuts.jpg" class="d-block w-100" alt="...">
+                    <img src="src/assets/jumbotron/test.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item" v-for="img in jumbotron" :key="img">
                     <img :src="`src/assets/jumbotron/${img}`" class="d-block w-100" alt="...">
@@ -41,12 +41,26 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+#carouselExampleSlidesOnly {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
 .carousel-inner {
-    max-height: 90vh;
-    background-color: rgb(238, 137, 11);
+    height: 100%;
+    //background-color: rgb(238, 137, 11);
+}
+
+img {
+    height: 100%;
+    object-fit: cover;
 }
 
 .container_carousel {
     position: relative;
+    height: 100vh;
 }
 </style>
