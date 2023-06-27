@@ -37,15 +37,15 @@ export default {
 </script>
 
 <template>
-    <div class="container_category mt-5 mb-2">
+    <div class="container_category">
         <div class="container-fluid">
-            <div class="row flex-md-nowrap overflow-x-auto ">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2  col-md-2 col-sm-12">
+            <div class="row flex-md-nowrap overflow-x-auto no-scroll">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12">
 
-                    <router-link class="d-block card_category" @click='getTypesById(restaurantType.slug)'
+                    <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        <span class="text_category">{{ restaurantType.name }}</span>
+                        <span class="text_category d-flex justify-content-center mt-2">{{ restaurantType.name }}</span>
                     </router-link>
 
 
@@ -58,61 +58,45 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@use '../partials/_variables.scss' as *;
 
 .container_category {
+    background-color: white;
+
     .card_category {
         border-radius: 10px;
-        position: relative;
+        text-decoration: none;
 
         .text_category {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             color: black;
-            display: none;
             text-decoration: none;
         }
 
-
-
-
-        img {
+        
+    }
+}
+img {
+            border-radius: 100%;
             object-fit: cover;
             aspect-ratio: 1/1;
-            border-radius: 100%;
-            box-shadow: -10px 0px 0px 4px rgb(238, 127, 11);
 
-        }
-
-        //media query
-        @media(max-width:768px) {
-            img {
-                object-fit: cover;
-                height: 200px;
-                border-radius: 10px;
-                box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.5);
+            &:hover {
+                box-shadow: 6px 5px 15px 1px #38009996;
             }
         }
 
+.no-scroll::-webkit-scrollbar {
+    display: none;
+}
 
+//media query
+@media(max-width:768px) {
+    img {
+        object-fit: cover;
+        height: 200px;
+        border-radius: 10px;
 
     }
-
 }
 
-.card_category:hover .text_category {
-    display: block;
-    color: white;
-    font-weight: bold;
-}
-
-.card_category:hover img {
-    filter: blur(2px);
-}
-</style>
+//hover </style>

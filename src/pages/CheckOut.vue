@@ -73,6 +73,7 @@ export default {
         },
         getRestaurantId(){
             if(store.cart.length){
+                //da provare this.orderPayload.restaurant_id = this.store.lastVisitedRestaurantId;
                 this.orderPayload.restaurant_id = store.cart[0].product.restaurant_id;
             }
         },
