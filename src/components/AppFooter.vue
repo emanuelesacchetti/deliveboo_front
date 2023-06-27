@@ -28,12 +28,14 @@ export default {
 
 
 <style scoped lang="scss">
+@use '../partials/variables' as *;
+
 img {
     width: 100%;
     height: 200px;
 }
 
 .container_footer {
-    background-color: #FF0054;
+    background-color: $primary-color;
 }
 </style>

@@ -58,6 +58,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../partials/_variables.scss' as *;
+
 .container_category {
     background-color: white;
 

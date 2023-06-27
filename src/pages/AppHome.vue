@@ -17,8 +17,6 @@ export default {
 
 
         <div class="container_wave ">
-            <div class="full">
-            </div>
             <img class="wave_img" src="src/assets/img/wave.png" alt="">
             <img class="slogan_img" src="src/assets/img/slogan.svg" alt="">
 
@@ -47,11 +45,8 @@ export default {
     .wave_img {
         width: 100%;
         transform: rotate(180deg);
-    }
-
-    .full {
-        
-        background-color: #FF0054;
+        display: block;
+        margin-top: -10px;
     }
 }
 </style>

@@ -24,7 +24,7 @@ export default {
 
 <template>
   <nav class="navbar navbar-expand-lg" id="header-nav">
-    <div class="container-fluid px-3">
+    <div class="container-fluid px-3 h-100">
       <router-link :to="{ name: 'home' }"><img class="logo_img" src="src/assets/img/logo.svg" alt=""></router-link>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -59,6 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '../partials/variables' as *;
+
 nav {
   position: sticky;
   overflow-y: scroll;
@@ -85,7 +86,7 @@ a {
 }
 
 .my_cart {
-  color: #390099;
+  color: $secondary-color;
 }
 
 .my_btn {
@@ -102,9 +103,9 @@ a {
 
 .my_btn:hover {
   letter-spacing: 3px;
-  background-color: #390099;
+  background-color: $secondary-color;
   color: hsl(0, 0%, 100%);
-  box-shadow: #390099 0px 7px 29px 0px;
+  box-shadow: $secondary-color 0px 7px 29px 0px;
 }
 
 .my_btn:hover .my_cart {
@@ -113,9 +114,9 @@ a {
 
 .my_btn:active {
   letter-spacing: 3px;
-  background-color: #390099;
+  background-color: $secondary-color;
   color: hsl(0, 0%, 100%);
-  box-shadow: #390099 0px 0px 0px 0px;
+  box-shadow: $secondary-color 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
 }
