@@ -74,8 +74,8 @@ export default {
 }
 
 .no-scroll::-webkit-scrollbar {
-  display: none;
-}  
+    display: none;
+}
 
 
 
@@ -83,7 +83,7 @@ img {
     border-radius: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
-    box-shadow: 6px 5px 10px 5px rgba(158, 1, 89, 0.5);
+
 
 }
 
@@ -93,7 +93,13 @@ img {
         object-fit: cover;
         height: 200px;
         border-radius: 10px;
-        box-shadow: 0px 2px 10px 2px rgba(158, 1, 89, 0.5);
+
     }
+}
+
+//hover 
+img:hover {
+    box-shadow: 6px 5px 15px 1px #38009996;
+
 }
 </style>
