@@ -79,7 +79,7 @@ export default {
                 <div class="card my_background h-100 " :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
                     <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto  ">
                     <div class="card-body">
-                        <small class=" my_btn rounded-5 text-light">{{ restaurantType.name }}</small>
+                        <small class="btn  my_btn rounded-5 text-light">{{ restaurantType.name }}</small>
                     </div>
                 </div>
             </div>
@@ -105,29 +105,13 @@ export default {
 .my_background {
     background-color: $primary-color;
     cursor: pointer;
-
-
-
 }
 
 .my_btn:hover {
     cursor: pointer;
 }
 
-.my_hover:hover {
-    background-color: rgb(255, 193, 7);
-}
 
-.types {
-    position: sticky;
-    overflow-y: scroll;
-    width: 100%;
-    z-index: 100;
-    top: 0;
-    left: 0;
-
-
-}
 
 .types::-webkit-scrollbar {
     display: none;

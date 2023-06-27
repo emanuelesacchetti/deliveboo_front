@@ -94,11 +94,10 @@ export default {
                     <div class="card-body">
                         <h5 class="card-title">{{ restaurant.name }}</h5>
                     </div>
-                    <div class="card-footer h-50">
+                    <div class="card-footer">
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                            class="btn my_btn text-light button-78" role="button" @click="emptyCart(restaurant.id)">
+                            class="btn my_btn text-light " @click="emptyCart(restaurant.id)">
                             Ordina da qui
-
                         </router-link>
                     </div>
                 </div>
