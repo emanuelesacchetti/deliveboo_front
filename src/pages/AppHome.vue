@@ -41,7 +41,7 @@ export default {
         display: block;
         margin: auto;
         width: 60vw;
-        margin-top: -200px;
+        margin-top: -300px;
     }
 
     .wave_img {
@@ -50,7 +50,7 @@ export default {
     }
 
     .full {
-        height: 50px;
+        
         background-color: #FF0054;
     }
 }
