@@ -88,18 +88,19 @@ export default {
 
         <div class="container-fluid d-flex">
 
-            <div class="container-fluid mt-5">
+            <div class="container-fluid mt-5 my_menu">
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
-                    <div class="col p-2" v-for="product in restaurant.products">
-                        <div class="card text-center m-3 h-100">
-                            <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`" alt="Card image cap">
-                            <div class="card-body">
+                    <div class="col p-2 mt-5" v-for="product in restaurant.products">
+                        <div class="my_card text-center col-lg-8 col-xl-8 m-3 h-100">
+                            <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
+                                alt="Card image cap">
+                            <div class="card-body ">
                                 <h5 class="card-title fs-3 mb-3">{{ product.name }}</h5>
                                 <p class="card-text">{{ product.description }}</p>
                                 <p class="card-text"> &euro; {{ product.price }}</p>
                             </div>
                             <div class="card-footer">
-                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al
+                                <button @click="addToCart(product)">Aggiungi al
                                     carrello</button>
                             </div>
                         </div>
@@ -116,7 +117,41 @@ export default {
 
 
 <style scoped lang="scss">
+@use '../partials/variables.scss' as *;
+@use '../partials/mixins.scss';
+
 .cart-container {
     width: 40%;
+}
+
+.my_card {
+    border: 1px solid black;
+    position: relative;
+    border-radius: 10px;
+}
+
+.my_menu {
+    border-right: 1px solid black;
+}
+
+img {
+    position: absolute;
+    top: -10px;
+    left: -80px;
+    width: 200px;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+}
+
+button {
+    @include mixins.primary-btn;
+}
+
+button:hover {
+    @include mixins.btn-hover;
+}
+
+button:active {
+    @include mixins.btn-active;
 }
 </style>
