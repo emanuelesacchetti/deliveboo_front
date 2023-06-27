@@ -65,6 +65,6 @@ nav {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgb(255, 0, 84);
+  background-color: rgb(254, 109, 36);
 }
 </style>

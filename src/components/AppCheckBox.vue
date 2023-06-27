@@ -99,9 +99,11 @@ export default {
 }
 
 .my_background {
-    border: 3px solid rgb(255, 0, 84);
-    border-radius: 100%;
-    width: 150px;
+    background-color: rgb(253, 92, 30);
+    cursor: pointer;
+
+
+
 }
 
 .my_btn:hover {
