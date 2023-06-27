@@ -89,7 +89,7 @@ export default {
         <div class="container-fluid d-flex">
 
             <div class="container-fluid mt-5">
-                <div class=" row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
                     <div class="col p-2" v-for="product in restaurant.products">
                         <div class="card text-center m-3 h-100">
                             <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`" alt="Card image cap">
@@ -99,7 +99,8 @@ export default {
                                 <p class="card-text"> &euro; {{ product.price }}</p>
                             </div>
                             <div class="card-footer">
-                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al carrello</button>
+                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al
+                                    carrello</button>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@ export default {
                 </div>
             </div>
             <div class="cart-container mt-4 p-2 d-none d-md-block">
-                <AppCart/>
+                <AppCart />
             </div>
         </div>
     </div>
@@ -115,8 +116,7 @@ export default {
 
 
 <style scoped lang="scss">
-    .cart-container{
-        width: 40%;
-    }
-
+.cart-container {
+    width: 40%;
+}
 </style>
