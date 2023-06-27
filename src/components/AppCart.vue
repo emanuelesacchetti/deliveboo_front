@@ -29,10 +29,11 @@
 
             </li>
         </ul>
-        <p v-if="store.cart.length" class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
+        <p v-if="store.cart.length" class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span>
+            &euro; </p>
         <p v-else class="p-3 text-center"> Nessun elemento nel carrello</p>
 
-        <router-link :to="{ name: 'payment' }" class="btn btn-warning p-2 w-100" :class="{ 'disabled': !store.cart.length }">
+        <router-link :to="{ name: 'payment' }" class="my_btn p-2 w-100" :class="{ 'disabled': !store.cart.length }">
             Vai al checkout
         </router-link>
     </div>
@@ -117,4 +118,23 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use '../partials/variables.scss' as *;
+@use '../partials/mixins.scss';
+
+.my_btn {
+    @include mixins.primary-btn;
+    border-color: $secondary-color;
+    text-align: center;
+    text-decoration: none;
+    color: $secondary-color;
+}
+
+.my_btn:hover {
+    @include mixins.btn-hover;
+}
+
+.my_btn:active {
+    @include mixins.btn-active;
+}
+</style>

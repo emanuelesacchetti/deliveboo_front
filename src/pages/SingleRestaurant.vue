@@ -91,15 +91,15 @@ export default {
             <div class="container-fluid mt-5 my_menu">
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
                     <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
-                        <div class="my_card text-center col-lg-8 col-xl-8 m-3 h-100">
-                            <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
-                                alt="Card image cap">
-                            <div class="card-body ">
-                                <h5 class="card-title fs-3 mb-3">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}</p>
-                                <p class="card-text"> &euro; {{ product.price }}</p>
+                        <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
+                            <div class="img_container">
+                                <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
+                                    alt="Card image cap">
                             </div>
-                            <div class="card-footer">
+                            <div class="my_cardText">
+                                <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
+                                <p>{{ product.description }}</p>
+                                <p> &euro; {{ product.price }}</p>
                                 <button @click="addToCart(product)">Aggiungi al
                                     carrello</button>
                             </div>
@@ -122,34 +122,55 @@ export default {
 
 .cart-container {
     width: 40%;
-    border: 2px solid $primary-color;
-    border-radius: 10px;
-
 }
 
+
 .my_card {
-    border: 1px solid black;
-    position: relative;
-    border-radius: 10px;
+    width: 100%;
+    border-radius: 0 0 0 40px;
+    border-bottom: 2px solid $primary-color;
+    border-left: 2px solid $primary-color;
+    box-shadow: -5px 6px 6px 0px #31313296;
+    //background-color: rgba(255, 0, 85, 0.096);
+    // background: linear-gradient(to bottom left, #FF0054 2%, #FFFFFF 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+
+    .img_container {
+        position: relative;
+        width: 20%;
+        height: 100%;
+
+        img {
+            position: absolute;
+            width: 150px;
+            border-radius: 100%;
+            aspect-ratio: 1/1;
+            top: 0px;
+            left: -80px;
+        }
+    }
+
+
+
+    .my_cardText {
+        width: 80%;
+        padding: 1rem;
+    }
 }
 
 .my_menu {
-    border: 2px solid $primary-color;
-    background-color: whitesmoke;
-    border-radius: 10px;
+    border-right: 1px solid $secondary-color;
+    padding: 50px;
 }
 
-img {
-    position: absolute;
-    top: -10px;
-    left: -80px;
-    width: 200px;
-    border-radius: 100%;
-    aspect-ratio: 1/1;
-}
+
 
 button {
     @include mixins.primary-btn;
+    border-color: $secondary-color;
 }
 
 button:hover {
