@@ -96,7 +96,7 @@ export default {
                     </div>
                     <div class="card-footer">
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                            class="btn my_btn text-light " @click="emptyCart(restaurant.id)">
+                            class="btn btn_color text-light " @click="emptyCart(restaurant.id)">
                             Ordina da qui
                         </router-link>
                     </div>
@@ -135,10 +135,11 @@ export default {
     border-radius: 30%;
 }
 
-.my_btn {
+.btn_color {
     background-color: $secondary-color;
     border-radius: 30px;
     padding: 10px;
+
 }
 
 .my_img {
