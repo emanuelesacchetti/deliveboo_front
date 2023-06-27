@@ -71,22 +71,21 @@ export default {
             color: black;
             text-decoration: none;
         }
-    }
 
+        img {
+            border-radius: 100%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+
+            &:hover {
+                box-shadow: 6px 5px 15px 1px #38009996;
+            }
+        }
+    }
 }
 
 .no-scroll::-webkit-scrollbar {
     display: none;
-}
-
-
-
-img {
-    border-radius: 100%;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-
-
 }
 
 //media query
@@ -99,9 +98,4 @@ img {
     }
 }
 
-//hover 
-img:hover {
-    box-shadow: 6px 5px 15px 1px #38009996;
-
-}
-</style>
+//hover </style>

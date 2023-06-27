@@ -58,7 +58,10 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../styles/general.scss';
 @use '../partials/variables' as *;
+@use '../partials/mixins.scss';
+
 
 nav {
   position: sticky;
@@ -90,34 +93,18 @@ a {
 }
 
 .my_btn {
-  padding: 17px 40px;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 1);
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-size: 15px;
-  transition: all .5s ease;
+  @include mixins.primary-btn
 }
 
 .my_btn:hover {
-  letter-spacing: 3px;
-  background-color: $secondary-color;
-  color: hsl(0, 0%, 100%);
-  box-shadow: $secondary-color 0px 7px 29px 0px;
+  @include mixins.primary-btn-hover
 }
 
 .my_btn:hover .my_cart {
-  color: white;
+  color: $white-color;
 }
 
 .my_btn:active {
-  letter-spacing: 3px;
-  background-color: $secondary-color;
-  color: hsl(0, 0%, 100%);
-  box-shadow: $secondary-color 0px 0px 0px 0px;
-  transform: translateY(10px);
-  transition: 100ms;
+  @include mixins.primary-btn-active
 }
 </style>
