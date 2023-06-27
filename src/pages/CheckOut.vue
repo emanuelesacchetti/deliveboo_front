@@ -33,7 +33,7 @@
         <button id="submit-payment-btn" class="btn btn-warning w-100">Conferma pagamento</button>
     </div>
     <div v-else class="container">
-        <button @click="getPaymentData" class="btn btn-warning w-100">Procedi con il pagamento</button>
+        <button @click="getPaymentData" class="btn btn-warning w-100" :class="{'disabled':!store.cart.length}">Procedi con il pagamento</button>
     </div>
 </template>
 
@@ -120,12 +120,10 @@ export default {
 
                                 if (response.data.success == true) {
                                     that.emptyCart();
+                                    that.$router.push({ name: 'checkout-success', params: { orderCode: response.data.orderCode }});
                                 }else{
                                     submitBtn.classList.remove('disabled');
                                 }
-
-                                alert(response.data.message)
-
                             })
 
 
@@ -137,7 +135,7 @@ export default {
             } else {
                 console.log('Dropin creation failed: token not found');
             }
-            this.isDropinLoading = false;
+            // this.isDropinLoading = false;
         },
     },
     mounted(){
