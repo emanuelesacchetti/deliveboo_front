@@ -25,7 +25,7 @@ export default {
 
 
 <template>
-  <nav class="navbar navbar-expand-lg" id="header-nav">
+  <nav class="navbar navbar-expand-sm" id="header-nav">
     <div class="container-fluid px-3 h-100">
       <router-link :to="{ name: 'home' }"><img class="logo_img" :src="getImageUrl('logo.svg')" alt=""></router-link>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
