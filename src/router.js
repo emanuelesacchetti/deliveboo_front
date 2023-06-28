@@ -7,6 +7,7 @@ import SingleProduct from './pages/SingleProduct.vue';
 import NotFound from './pages/NotFound.vue';
 import LaravelPage from './pages/LaravelPage.vue';
 import CheckOut from './pages/CheckOut.vue';
+import CheckOutSuccess from './pages/CheckOutSuccess.vue'
 
 const router = createRouter(
     {
@@ -40,12 +41,18 @@ const router = createRouter(
             {
                 path: '/checkout',
                 name: 'payment',
-                component: CheckOut
+                component: CheckOut,
             },
             {
                 path: '/laravel',
                 name: 'laravel',
                 component: LaravelPage
+            },
+            {
+                path: '/checkout/:orderCode',
+                name: 'checkout-success',
+                component: CheckOutSuccess,
+                props: true,
             }
         ]
     }
