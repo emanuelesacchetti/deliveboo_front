@@ -81,17 +81,21 @@ export default {
 
 
 <template>
-    <div class="container my-5">
-        <div class="container my_bg text-center">
-            <h1 class="display-1"> {{ restaurant.name }}</h1>
-        </div>
-        <div>
-            <img :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap">
-        </div>
+    <div class="container-fluid">
 
-        <div class="container-fluid d-flex">
+
+        <div class="position-relative container_jumbo">
+            <img class=" w-100" :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap">
+            <div class=" my_bg text-center container_jumboText">
+                <h1 class="display-1"> {{ restaurant.name }}</h1>
+            </div>
+        </div>
+        <div class="container-fluid d-flex position-relative general_container p-5">
+
+
 
             <div class="container-fluid mt-5 my_menu">
+                <h1 class=" p-3 border-bottom text-center">Menù</h1>
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
                     <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
                         <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
@@ -111,9 +115,10 @@ export default {
 
                 </div>
             </div>
-            <div class="cart-container mt-5 ms-2 p-2 d-none d-md-block">
+            <div class="cart-container mt-5 ms-2 ps-2 d-none d-md-block">
                 <AppCart class="cart_element" />
             </div>
+
         </div>
     </div>
 </template>
@@ -123,11 +128,43 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.general_container {
+    top: -150px;
+}
+
+.container_jumbo {
+    height: 500px;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .container_jumboText {
+        width: 100vw;
+        box-shadow: 0px 0px 10px 20px rgba($color: black, $alpha: 0.5);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        background-color: rgba($color: black, $alpha: 0.5);
+
+    }
+}
+
+
 .cart-container {
     width: 40%;
 
     .cart_element {
-        border-radius: 40px;
+        border-radius: 20px;
         background-color: whitesmoke;
     }
 }
@@ -135,7 +172,7 @@ export default {
 
 .my_card {
     width: 100%;
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 20px 20px 20px 20px;
     //border-bottom: 2px solid $secondary-color;
     //border-left: 2px solid $secondary-color;
     // box-shadow: -5px 5px 10px 0px $secondary-color;
@@ -167,15 +204,16 @@ export default {
 
     .my_cardText {
         width: 80%;
-        padding: 1rem;
+        //padding: 1rem;
+        padding: 5px 5px 5px 50px;
     }
 }
 
 .my_menu {
-    padding: 30px;
+
     //border-right: 1px solid $secondary-color;
-    padding: 50px;
-    border-radius: 40px;
+    padding: 8px 50px 50px 50px;
+    border-radius: 20px;
     background-color: whitesmoke
 }
 
@@ -197,5 +235,17 @@ button:active {
 //hover
 .my_card:hover {
     box-shadow: -5px 5px 5px 0px $secondary-color;
+}
+
+//mediquery 
+@media(max-width:768px) {
+
+    .general_container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+
 }
 </style>
