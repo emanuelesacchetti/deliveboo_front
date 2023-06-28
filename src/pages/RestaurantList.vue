@@ -90,13 +90,13 @@ export default {
         <div class="row g-4">
             <div class=" col-12" v-for="restaurant in  this.store.restaurantList">
                 <div class=" card mb-3 rounded-5 overflow-hidden">
-                    <div class=" row g-0">
+                    <div class=" row">
                         <div class="col-md-8 position-relative">
                             <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
                             <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 my_image">
                         </div>
-                        <div class="col-md-4 bg-black">
-                            <div class="text-center text-light h-100 d-flex flex-column justify-content-center">
+                        <div class="col-md-4 bg-black d-flex justify-content-center align-items-center">
+                            <div class="text-center text-light">
                                 <h5 class="">{{ restaurant.name }}</h5>
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
                                     class="btn btn_color text-light mt-3" @click="emptyCart(restaurant.id)">
@@ -140,7 +140,7 @@ export default {
     //border: 1px solid rgba($secondary-color, $alpha: 4.0);
     transform: scale(1.1);
     transition: 0.4s all;
-    background: black;
+    background-color: black;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -159,12 +159,12 @@ export default {
     border-radius: 30px;
     padding: 10px;
 
+
+
 }
 
 .btn_color:hover {
     background-color: $secondary-color;
 
 }
-
-.my_image {}
 </style>

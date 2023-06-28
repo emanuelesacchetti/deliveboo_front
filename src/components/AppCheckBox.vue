@@ -72,12 +72,12 @@ export default {
 </script>
 
 <template>
-    <div class="container py-2 ">
+    <div class="container py-2">
         <div class="row overflow-auto flex-nowrap ">
             <div class="col text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
                 <div class="restaurant-icon " :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto mt-2  ">
+                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
                     <div class="card-body">
                         <small class="my_text">{{ restaurantType.name }}</small>
                     </div>
@@ -121,8 +121,8 @@ export default {
 
 }
 
-.restaurant-icon img:hover {
-    transition: 0.4s all;
+.restaurant-icon:hover {
+    transition: 0.4s;
     transform: scale(1.4);
 
 }
@@ -132,7 +132,11 @@ export default {
 }
 
 .my_color {
-    border: 3px solid $secondary-color;
+    background-color: $primary-color;
     border-radius: 50%;
+
+
+
+
 }
 </style>
