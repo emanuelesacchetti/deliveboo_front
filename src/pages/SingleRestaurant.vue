@@ -86,7 +86,7 @@ export default {
             <h1 class="display-1"> {{ restaurant.name }}</h1>
         </div>
         <div>
-            <img :src="`${store.baseUrl}/storage/${restaurant.image}`" alt="Card image cap">
+            <img :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap">
         </div>
 
         <div class="container-fluid d-flex">
