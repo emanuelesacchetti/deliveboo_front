@@ -36,6 +36,9 @@ export default {
     methods: {
         getYear() {
             return new Date().getFullYear()
+        },
+        getImageUrl(img) {
+            return new URL(`../assets/img/${img}`, import.meta.url).href;
         }
     }
 }
@@ -44,7 +47,7 @@ export default {
 
 <template>
     <div class="wave-container">
-        <img src="src/assets/img/wave.png" alt="">
+        <img :src="getImageUrl('wave.png')" alt="">
     </div>
     <footer class="container_footer py-5 ">
         <div class="container">
@@ -52,8 +55,8 @@ export default {
                 <span v-for="developer in developers" class="dev-container col-lg-4 col-sm-6">
                     <span>
                         <small>{{ developer.nome }}</small>
-                        <a :href="developer.git"><img src="src/assets/img/github.png" alt="github logo"></a>
-                        <a :href="developer.linkedin"><img src="src/assets/img/linkedin.png" alt="linkedin logo"></a>
+                        <a :href="developer.git"><img :src="getImageUrl('github.png')" alt="github logo"></a>
+                        <a :href="developer.linkedin"><img :src="getImageUrl('linkedin.png')" alt="linkedin logo"></a>
                         <hr />
                     </span>
                 </span>
