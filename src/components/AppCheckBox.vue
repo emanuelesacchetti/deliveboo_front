@@ -73,13 +73,13 @@ export default {
 
 <template>
     <div class="container py-2 ">
-        <div class="row  row-cols-3 row-cols-md-5 row-cols-lg-8 overflow-auto flex-nowrap ">
-            <div class="col-sm-3  text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
+        <div class="row overflow-auto flex-nowrap ">
+            <div class="col text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
-                <div class="card my_background h-100 " :class="{ 'text-bg-warning': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto  ">
+                <div class="restaurant-icon " :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
+                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto mt-2  ">
                     <div class="card-body">
-                        <small class="btn  my_btn rounded-5 text-light">{{ restaurantType.name }}</small>
+                        <small class="my_text">{{ restaurantType.name }}</small>
                     </div>
                 </div>
             </div>
@@ -107,13 +107,32 @@ export default {
     cursor: pointer;
 }
 
-.my_btn:hover {
-    cursor: pointer;
+.my_text {
+    font-size: 13px;
+    color: $secondary-color;
+    font-weight: bolder;
 }
 
+.restaurant-icon {
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
 
+
+}
+
+.restaurant-icon img:hover {
+    transition: 0.4s all;
+    transform: scale(1.4);
+
+}
 
 .types::-webkit-scrollbar {
     display: none;
+}
+
+.my_color {
+    border: 3px solid $secondary-color;
+    border-radius: 50%;
 }
 </style>

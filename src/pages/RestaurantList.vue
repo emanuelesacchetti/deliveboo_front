@@ -88,17 +88,18 @@ export default {
     <AppCheckBox />
     <div class="container p-3">
         <div class="row g-4">
-            <div class=" col-6" v-for="restaurant in  this.store.restaurantList">
-                <div class=" card mb-3 rounded-5" style="max-width: 540px;">
+            <div class=" col-12" v-for="restaurant in  this.store.restaurantList">
+                <div class=" card mb-3 rounded-5 overflow-hidden">
                     <div class=" row g-0">
-                        <div class="col-md-4">
-                            <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 rounded-5">
+                        <div class="col-md-8 position-relative">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
+                            <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 my_image">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">{{ restaurant.name }}</h5>
+                        <div class="col-md-4 bg-black">
+                            <div class="text-center text-light h-100 d-flex flex-column justify-content-center">
+                                <h5 class="">{{ restaurant.name }}</h5>
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                                    class="btn btn_color text-light h-50 mt-3" @click="emptyCart(restaurant.id)">
+                                    class="btn btn_color text-light mt-3" @click="emptyCart(restaurant.id)">
                                     Ordina da qui
                                 </router-link>
                             </div>
@@ -136,14 +137,19 @@ export default {
 }
 
 .card:hover {
-    border: 1px solid rgba($secondary-color, $alpha: 4.0);
+    //border: 1px solid rgba($secondary-color, $alpha: 4.0);
     transform: scale(1.1);
-
-    background: white;
-    color: #48abe0;
+    transition: 0.4s all;
+    background: black;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.my_style {
+    background: linear-gradient(to left, black, transparent);
+    z-index: 50;
+    margin-right: -80px;
 }
 
 
@@ -159,4 +165,6 @@ export default {
     background-color: $secondary-color;
 
 }
+
+.my_image {}
 </style>
