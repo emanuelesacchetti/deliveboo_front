@@ -137,6 +137,7 @@ export default {
 .general_container {
     top: -150px;
     padding: 3rem;
+
 }
 
 .container_jumbo {
@@ -150,13 +151,12 @@ export default {
 
     .container_jumboText {
         width: 100vw;
-        //box-shadow: 0px 0px 10px 20px rgba($color: black, $alpha: 0.5);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white;
-        //background-color: rgba($color: black, $alpha: 0.5);
+
 
     }
 }
@@ -175,30 +175,28 @@ export default {
 .my_card {
     width: 100%;
     border-radius: 20px 20px 20px 20px;
-    //border-bottom: 2px solid $secondary-color;
-    //border-left: 2px solid $secondary-color;
-    // box-shadow: -5px 5px 10px 0px $secondary-color;
-    //background-color: rgba(255, 0, 85, 0.096);
-    // background: linear-gradient(to bottom left, #FF0054 2%, #FFFFFF 100%);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     background-color: white;
     transition: box-shadow 0.9s ease;
+    position: relative;
 
 
     .img_container {
-        position: relative;
-        width: 20%;
+        position: absolute;
+        width: 150px;
         height: 100%;
+        top: 0;
+        left: -75px;
 
         img {
-            position: absolute;
-            width: 150px;
+            // position: absolute;
+            width: 100%;
             border-radius: 100%;
             aspect-ratio: 1/1;
-            top: 0px;
-            left: -50px;
+            // top: -30px;
+            //left: -50%;
         }
     }
 
@@ -209,9 +207,9 @@ export default {
             line-height: 30px;
         }
 
+        letter-spacing: 2px;
         width: 80%;
-        //padding: 1rem;
-        padding: 15px 15px 15px 50px;
+        padding: 10px 10px 20px 80px;
 
     }
 }
@@ -219,7 +217,7 @@ export default {
 .my_menu {
 
     //border-right: 1px solid $secondary-color;
-    padding: 8px 50px 50px 50px;
+    padding: 8px 50px 50px 100px;
     border-radius: 20px;
     background-color: whitesmoke
 }

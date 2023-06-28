@@ -72,7 +72,7 @@ nav {
   top: 0;
   left: 0;
   background-color: $primary-color;
-  height: 100px;
+
 
   .logo_img {
     width: 200px;

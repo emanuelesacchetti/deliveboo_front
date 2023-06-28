@@ -16,11 +16,11 @@ export default {
 
 <template>
     <body>
-        <AppHeader/>
+        <AppHeader />
         <div>
-            <router-view/>
+            <router-view />
         </div>
-        <AppFooter/>
+        <AppFooter />
     </body>
 </template>
 
@@ -28,5 +28,8 @@ export default {
 <style lang="scss">
 @use './styles/general.scss';
 
-
+* {
+    //font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
+}
 </style>

@@ -2,9 +2,13 @@
 <script>
 import axios from 'axios';
 import { store } from '../store.js';
+import AppSearch from './AppSearch.vue';
 
 export default {
     name: 'AppCategory',
+    components: {
+        AppSearch,
+    },
     data() {
         return {
             store,
@@ -37,6 +41,9 @@ export default {
 </script>
 
 <template>
+    <div class="container-fluid">
+        <AppSearch />
+    </div>
     <div class="container_category">
         <div class="container-fluid">
             <div class="row flex-md-nowrap overflow-x-auto no-scroll">
@@ -50,10 +57,6 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="container_check">
-            <img class="scroll_eat" src="src/assets/img/Scroll.svg" alt="">
-        </div>
-
     </div>
 </template>
 
