@@ -6,8 +6,7 @@
                 <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
                     <div class="w-25 d-flex align-items-center justify-content-between px-1">
 
-                        <i class="text-warning fa-solid fa-circle-plus fs-5" @click="addToCart(item.product)"
-                            role="button"></i>
+                        <i class=" fa-solid fa-circle-plus fs-5" @click="addToCart(item.product)" role="button"></i>
 
                         <div class="text-bg-light rounded-circle p-2 px-2">
                             x{{ item.product.quantity }}
@@ -29,10 +28,11 @@
 
             </li>
         </ul>
-        <p v-if="store.cart.length" class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span> &euro; </p>
+        <p v-if="store.cart.length" class="text-center fw-semibold fs-4">Totale: <span class="ms-1">{{ total }}</span>
+            &euro; </p>
         <p v-else class="p-3 text-center"> Nessun elemento nel carrello</p>
 
-        <router-link :to="{ name: 'payment' }" class="btn btn-warning p-2 w-100" :class="{ 'disabled': !store.cart.length }">
+        <router-link :to="{ name: 'payment' }" class="my_btn p-2 w-100" :class="{ 'disabled': !store.cart.length }">
             Vai al checkout
         </router-link>
     </div>
@@ -117,4 +117,27 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use '../partials/variables.scss' as *;
+@use '../partials/mixins.scss';
+
+.my_btn {
+    @include mixins.primary-btn;
+    border-color: $secondary-color;
+    text-align: center;
+    text-decoration: none;
+    color: $secondary-color;
+}
+
+.my_btn:hover {
+    @include mixins.btn-hover;
+}
+
+.my_btn:active {
+    @include mixins.btn-active;
+}
+
+.fa-circle-plus {
+    color: $secondary-color;
+}
+</style>

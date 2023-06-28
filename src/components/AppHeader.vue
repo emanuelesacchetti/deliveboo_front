@@ -13,7 +13,9 @@ export default {
     }
   },
   methods: {
-
+    getImageUrl(img) {
+      return new URL(`../assets/img/${img}`, import.meta.url).href;
+    }
   }
 }
 
@@ -23,9 +25,9 @@ export default {
 
 
 <template>
-  <nav class="navbar navbar-expand-lg" id="header-nav">
+  <nav class="navbar navbar-expand-lg z-5" id="header-nav">
     <div class="container-fluid px-3 h-100">
-      <router-link :to="{ name: 'home' }"><img class="logo_img" src="src/assets/img/logo.svg" alt=""></router-link>
+      <router-link :to="{ name: 'home' }"><img class="logo_img" :src="getImageUrl('logo.svg')" alt=""></router-link>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -67,11 +69,10 @@ nav {
   position: sticky;
   overflow-y: scroll;
   width: 100%;
-  z-index: 100;
   top: 0;
   left: 0;
   background-color: $primary-color;
-  height: 100px;
+
 
   .logo_img {
     width: 200px;

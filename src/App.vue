@@ -15,12 +15,12 @@ export default {
 
 
 <template>
-    <body class="min-vh-100">
-        <AppHeader class="vh-15" />
-        <div class="vh-70 ">
+    <body>
+        <AppHeader />
+        <div>
             <router-view />
         </div>
-        <AppFooter class="vh-15" />
+        <AppFooter />
     </body>
 </template>
 
@@ -28,11 +28,8 @@ export default {
 <style lang="scss">
 @use './styles/general.scss';
 
-.vh-15 {
-    min-height: 15vh;
-}
-
-.vh-70 {
-    min-height: 85vh;
+* {
+    //font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
 }
 </style>

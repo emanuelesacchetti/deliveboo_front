@@ -1,12 +1,11 @@
 <script>
 import AppCategory from '../components/AppCategory.vue';
-import AppCarousel from '../components/AppCarousel.vue';
+
 
 export default {
     name: 'AppHome',
     components: {
         AppCategory,
-        AppCarousel
     }
 }
 </script>
@@ -19,10 +18,7 @@ export default {
         <div class="container_wave ">
             <img class="wave_img" src="src/assets/img/wave.png" alt="">
             <img class="slogan_img" src="src/assets/img/slogan.svg" alt="">
-
-
         </div>
-        <!--<AppCarousel />-->
         <AppCategory />
     </div>
 </template>
@@ -39,7 +35,7 @@ export default {
         display: block;
         margin: auto;
         width: 60vw;
-        margin-top: -250px;
+        margin-top: -20vw;
     }
 
     .wave_img {

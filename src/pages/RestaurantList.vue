@@ -110,10 +110,10 @@ export default {
         </div>
     </div>
     <div v-if="cartAlert.triggered"
-        class="position-fixed bottom-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light">
+        class="position-fixed bottom-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-2">
         <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
-            <button class="btn btn-warning" @click="clickOnAlertBtn('confirm')">
+            <button @click="clickOnAlertBtn('confirm')">
                 Procedi
             </button>
             <button class="btn btn-secondary" @click="clickOnAlertBtn('close')">

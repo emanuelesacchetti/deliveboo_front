@@ -81,26 +81,33 @@ export default {
 
 
 <template>
-    <div class="container my-5">
-        <div class="container my_bg text-center">
-            <h1 class="display-1"> {{ restaurant.name }}</h1>
-        </div>
+    <div class="container-fluid">
 
-        <div class="container-fluid d-flex">
+
+        <div class="position-relative container_jumbo">
+            <img class=" w-100" :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap">
+            <div class=" my_bg text-center container_jumboText">
+                <h1 class="display-1"> {{ restaurant.name }}</h1>
+            </div>
+        </div>
+        <div class="container-fluid d-flex position-relative general_container">
+
+
 
             <div class="container-fluid mt-5 my_menu">
+                <h1 class=" p-3 border-bottom text-center">Menù</h1>
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
                     <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
-                        <div class="my_card text-center col-lg-8 col-xl-8 m-3 h-100">
-                            <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
-                                alt="Card image cap">
-                            <div class="card-body ">
-                                <h5 class="card-title fs-3 mb-3">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}</p>
-                                <p class="card-text"> &euro; {{ product.price }}</p>
+                        <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
+                            <div class="img_container">
+                                <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
+                                    alt="Card image cap">
                             </div>
-                            <div class="card-footer">
-                                <button @click="addToCart(product)" class="btn btn-warning w-100">Aggiungi al
+                            <div class="my_cardText">
+                                <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
+                                <p>{{ product.description }}</p>
+                                <p class="fw-bold"> &euro; {{ product.price }}</p>
+                                <button @click="addToCart(product)">Aggiungi al
                                     carrello</button>
                             </div>
                         </div>
@@ -108,9 +115,10 @@ export default {
 
                 </div>
             </div>
-            <div class="cart-container mt-5 ms-2 p-2 d-none d-md-block">
-                <AppCart />
+            <div class="cart-container mt-5 ms-2 ps-2 d-none d-md-block">
+                <AppCart class="cart_element" />
             </div>
+
         </div>
     </div>
 </template>
@@ -120,43 +128,132 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
-.cart-container {
-    width: 40%;
-    border: 2px solid $primary-color;
-    border-radius: 10px;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.general_container {
+    top: -150px;
+    padding: 3rem;
 
 }
 
+.container_jumbo {
+    height: 500px;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(40%);
+    }
+
+    .container_jumboText {
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+
+
+    }
+}
+
+
+.cart-container {
+    width: 40%;
+
+    .cart_element {
+        border-radius: 20px;
+        background-color: whitesmoke;
+    }
+}
+
+
 .my_card {
-    border: 1px solid black;
+    width: 100%;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transition: box-shadow 0.9s ease;
     position: relative;
-    border-radius: 10px;
+
+
+    .img_container {
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        top: 0;
+        left: -75px;
+
+        img {
+            // position: absolute;
+            width: 100%;
+            border-radius: 100%;
+            aspect-ratio: 1/1;
+            // top: -30px;
+            //left: -50%;
+        }
+    }
+
+
+
+    .my_cardText {
+        p {
+            line-height: 30px;
+        }
+
+        letter-spacing: 2px;
+        width: 80%;
+        padding: 10px 10px 20px 80px;
+
+    }
 }
 
 .my_menu {
-    border: 2px solid $primary-color;
-    background-color: whitesmoke;
-    border-radius: 10px;
+
+    //border-right: 1px solid $secondary-color;
+    padding: 8px 50px 50px 100px;
+    border-radius: 20px;
+    background-color: whitesmoke
 }
 
-img {
-    position: absolute;
-    top: -10px;
-    left: -80px;
-    width: 200px;
-    border-radius: 100%;
-    aspect-ratio: 1/1;
-}
+
 
 button {
     @include mixins.primary-btn;
+    border-color: $secondary-color;
 }
 
 button:hover {
     @include mixins.btn-hover;
+    font-size: 12px;
 }
 
 button:active {
     @include mixins.btn-active;
+}
+
+//hover
+.my_card:hover {
+    box-shadow: -5px 5px 5px 0px $secondary-color;
+}
+
+//mediquery 
+@media(max-width:768px) {
+
+    .general_container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+
+
+
 }
 </style>
