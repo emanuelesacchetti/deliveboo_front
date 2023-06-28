@@ -40,18 +40,18 @@ export default {
     <div class="container_category">
         <div class="container-fluid">
             <div class="row flex-md-nowrap overflow-x-auto no-scroll">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12">
+                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12 ">
 
                     <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
                         <span class="text_category d-flex justify-content-center mt-2">{{ restaurantType.name }}</span>
                     </router-link>
-
-
                 </div>
             </div>
-
+        </div>
+        <div class="container_check">
+            <img class="scroll_eat" src="src/assets/img/Scroll.svg" alt="">
         </div>
 
     </div>
@@ -72,21 +72,35 @@ export default {
             text-decoration: none;
         }
 
-        
+
     }
 }
-img {
-            border-radius: 100%;
-            object-fit: cover;
-            aspect-ratio: 1/1;
 
-            &:hover {
-                box-shadow: 6px 5px 15px 1px #38009996;
-            }
-        }
+.scroll_eat {
+    width: 200px;
+}
+
+img {
+    border-radius: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    transition: box-shadow 0.5s ease;
+
+    &:hover {
+        box-shadow: 6px 5px 15px 1px #38009996;
+    }
+}
 
 .no-scroll::-webkit-scrollbar {
     display: none;
+}
+
+.container_check {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
 }
 
 //media query

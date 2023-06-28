@@ -145,6 +145,7 @@ export default {
     align-items: flex-end;
     justify-content: center;
     background-color: white;
+    transition: box-shadow 0.9s ease;
 
 
     .img_container {
@@ -158,7 +159,7 @@ export default {
             border-radius: 100%;
             aspect-ratio: 1/1;
             top: 0px;
-            left: -80px;
+            left: -50px;
         }
     }
 
