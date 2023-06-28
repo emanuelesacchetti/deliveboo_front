@@ -29,7 +29,8 @@ export default {
 @use './styles/general.scss';
 
 * {
-    //font-family: 'Bebas Neue', sans-serif;
     font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 </style>

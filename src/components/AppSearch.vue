@@ -10,9 +10,9 @@ export default {
     <div class="container-fluid d-flex justify-content-center mb-2">
         <!--Search-->
         <router-link :to="{ name: 'restaurants' }">
-            <div class="container_img">
-                <img class="img_static" src="src/assets/img/mostra.svg" alt="">
-                <img class="img_hover" src="src/assets/img/mostrahover.svg" alt="">
+            <div class="container_img mt-5">
+                <img class="img_static my-2 ps-5 " src="src/assets/img/mostra.svg" alt="">
+                <img class="img_hover my-2 ps-5" src="src/assets/img/mostrahover.svg" alt="">
             </div>
 
 
@@ -44,8 +44,10 @@ button:active {
 
 .container_img {
     position: relative;
-    height: 100px;
-    transition: all 5.0s ease-in;
+    transition: all 0.5s ease;
+    border: 2px solid $secondary-color;
+    border-radius: 20px;
+
 
 
 }
@@ -55,11 +57,11 @@ button:active {
     left: 0;
     top: 0;
     filter: opacity(0);
-    transition: all 0.9s ease-in;
+    transition: all 0.5s ease;
 }
 
 .img_static {
-    transition: all 0.9s ease;
+    transition: all 0.5s ease;
 }
 
 .container_img:hover .img_hover {
@@ -72,5 +74,10 @@ button:active {
     filter: opacity(0);
     // transition: all 1.0s ease-in-out;
 
+}
+
+.container_img:hover {
+    background-color: rgba($color: black, $alpha: 1.0);
+    transition: all 0.9s ease;
 }
 </style>
