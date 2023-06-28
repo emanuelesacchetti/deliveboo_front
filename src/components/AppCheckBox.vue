@@ -72,17 +72,14 @@ export default {
 </script>
 
 <template>
-    <div class="container py-2">
-        <div class="row overflow-auto flex-nowrap ">
-            <div class="col text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
+    <div class="container-fluid">
+        <div class="row overflow-x-auto flex-nowrap ">
+            <div :class="{ 'my_color': ifQueryExist(restaurantType.slug) }" class=" text-center  restaurant-icon  col-2"
+                v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
-                <div class="restaurant-icon " :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
-                    <div class="card-body">
-                        <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
-                            restaurantType.name }}</small>
-                    </div>
-                </div>
+                <img :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="Card image">
+                <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
+                    restaurantType.name }}</small>
             </div>
         </div>
     </div>
@@ -93,46 +90,44 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
-.container_check {
 
 
-    .card {
-        border: 1px solid black;
-        width: calc(100%/10);
-        height: 100px;
-    }
-}
-
-.my_background {
-    background-color: $primary-color;
-    cursor: pointer;
-}
 
 
 
 .my_text {
+    display: none;
     font-size: 13px;
-    color: $secondary-color;
+    color: $primary-color;
     font-weight: bolder;
 }
 
 .restaurant-icon {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+    border-radius: 10%;
+    overflow: hidden;
     cursor: pointer;
+
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        aspect-ratio: 1/1;
+        filter: brightness(60%);
+    }
 
 
 }
 
 .restaurant-icon:hover {
     transition: 0.4s;
-    transform: scale(1.4);
+    //transform: scale(1.1);
 
 }
 
-.types::-webkit-scrollbar {
-    display: none;
-}
 
 .my_color {
     background-color: $primary-color;

@@ -134,11 +134,11 @@ export default {
 @use '../partials/mixins.scss';
 
 .my_color {
-    border: 3px solid $secondary-color;
+    border: 3px solid black;
 }
 
 .card {
-    background-color: $tertiarycolor;
+    background-color: black;
 }
 
 .card:hover {
@@ -152,7 +152,7 @@ export default {
 }
 
 .my_style {
-    background: linear-gradient(to left, $tertiarycolor, transparent);
+    background: linear-gradient(to left, black, transparent);
     z-index: 50;
 
 }
@@ -163,7 +163,7 @@ export default {
 
 button {
     @include mixins.primary-btn;
-    background-color: $tertiarycolor;
+    background-color: $primary-color;
     border-color: white;
     color: white;
 }
@@ -171,7 +171,7 @@ button {
 button:hover {
     @include mixins.btn-hover;
 
-    background-color: $primary-color;
+    background-color: $secondary-color;
 
 }
 
