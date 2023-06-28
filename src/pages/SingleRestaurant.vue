@@ -90,7 +90,7 @@ export default {
                 <h1 class="display-1"> {{ restaurant.name }}</h1>
             </div>
         </div>
-        <div class="container-fluid d-flex position-relative general_container p-5">
+        <div class="container-fluid d-flex position-relative general_container">
 
 
 
@@ -136,6 +136,7 @@ export default {
 
 .general_container {
     top: -150px;
+    padding: 3rem;
 }
 
 .container_jumbo {
