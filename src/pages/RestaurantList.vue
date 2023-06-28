@@ -99,10 +99,9 @@ export default {
                         <div class="col-md-4 bg-black d-flex justify-content-center align-items-center">
                             <div class="text-center text-light">
                                 <h5 class="">{{ restaurant.name }}</h5>
-                                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                                    class="btn btn_color text-light mt-3" @click="emptyCart(restaurant.id)">
+                                <button class="btn btn_color text-light mt-3" @click="clickOnRestaurant(restaurant)">
                                     Ordina da qui
-                                </router-link>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -111,7 +110,7 @@ export default {
         </div>
     </div>
     <div v-if="cartAlert.triggered"
-        class="position-fixed bottom-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-2">
+        class="position-fixed top-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-9">
         <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
             <button @click="clickOnAlertBtn('confirm')">
