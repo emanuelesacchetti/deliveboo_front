@@ -88,17 +88,21 @@ export default {
     <AppCheckBox />
     <div class="container p-3">
         <div class="row g-4">
-            <div class="col-sm-6 " v-for="restaurant in  this.store.restaurantList ">
-                <div class="card h-100 text-center my_color rounded-5 overflow-hidden">
-                    <img :src="restaurant.image" alt="Immagini Ristoranti" class="my_img">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.name }}</h5>
-                    </div>
-                    <div class="card-footer">
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                            class="btn btn_color text-light " @click="emptyCart(restaurant.id)">
-                            Ordina da qui
-                        </router-link>
+            <div class=" col-6" v-for="restaurant in  this.store.restaurantList">
+                <div class=" card mb-3 rounded-5" style="max-width: 540px;">
+                    <div class=" row g-0">
+                        <div class="col-md-4">
+                            <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 rounded-5">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ restaurant.name }}</h5>
+                                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
+                                    class="btn btn_color text-light h-50 mt-3" @click="emptyCart(restaurant.id)">
+                                    Ordina da qui
+                                </router-link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,9 +135,18 @@ export default {
     border: 3px solid $primary-color;
 }
 
-.my_rounded {
-    border-radius: 30%;
+.card:hover {
+    border: 1px solid rgba($secondary-color, $alpha: 4.0);
+    transform: scale(1.1);
+
+    background: white;
+    color: #48abe0;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+
 
 .btn_color {
     background-color: $secondary-color;
@@ -145,9 +158,5 @@ export default {
 .btn_color:hover {
     background-color: $secondary-color;
 
-}
-
-.my_img {
-    height: 70%;
 }
 </style>
