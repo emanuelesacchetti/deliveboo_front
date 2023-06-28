@@ -108,6 +108,8 @@ export default {
     cursor: pointer;
 }
 
+
+
 .my_text {
     font-size: 13px;
     color: $secondary-color;
@@ -135,10 +137,5 @@ export default {
 .my_color {
     background-color: $primary-color;
     border-radius: 50%;
-
-
-
-
-
 }
 </style>
