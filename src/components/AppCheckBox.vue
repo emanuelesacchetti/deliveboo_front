@@ -79,7 +79,8 @@ export default {
                 <div class="restaurant-icon " :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
                     <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
                     <div class="card-body">
-                        <small class="my_text">{{ restaurantType.name }}</small>
+                        <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
+                            restaurantType.name }}</small>
                     </div>
                 </div>
             </div>
@@ -134,6 +135,7 @@ export default {
 .my_color {
     background-color: $primary-color;
     border-radius: 50%;
+
 
 
 

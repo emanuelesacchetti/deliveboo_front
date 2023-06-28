@@ -87,10 +87,10 @@ export default {
 <template>
     <AppCheckBox />
     <div class="container p-3">
-        <div class="row g-4">
-            <div class=" col-12" v-for="restaurant in  this.store.restaurantList">
-                <div class=" card mb-3 rounded-5 overflow-hidden">
-                    <div class=" row">
+        <div class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
+            <div class=" col my_height" v-for="restaurant in  this.store.restaurantList">
+                <div class=" card h-100 rounded-5 overflow-hidden">
+                    <div class=" row h-100">
                         <div class="col-md-8 position-relative">
                             <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
                             <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 my_image">
@@ -144,6 +144,7 @@ export default {
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 51;
 }
 
 .my_style {
@@ -154,8 +155,10 @@ export default {
 
 
 
+
+
 .btn_color {
-    background-color: $secondary-color;
+    background-color: $primary-color;
     border-radius: 30px;
     padding: 10px;
 
@@ -166,5 +169,9 @@ export default {
 .btn_color:hover {
     background-color: $secondary-color;
 
+}
+
+.my_height {
+    height: 250px;
 }
 </style>
