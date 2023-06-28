@@ -149,7 +149,7 @@ export default {
 .my_style {
     background: linear-gradient(to left, black, transparent);
     z-index: 50;
-    margin-right: -80px;
+
 }
 
 
