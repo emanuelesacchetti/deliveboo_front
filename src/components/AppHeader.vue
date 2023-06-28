@@ -53,7 +53,7 @@ export default {
       </div>
     </nav>
     <div class="position-relative wave-container">
-      <img class="wave_img w-100 position-absolute top-0 start-0 z-1" src="src/assets/img/wave.png" alt="">
+      <img class="wave_img w-100 position-absolute top-0 start-0 z-1" :src="getImageUrl('wave.png')" alt="">
     </div>
   </header>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
