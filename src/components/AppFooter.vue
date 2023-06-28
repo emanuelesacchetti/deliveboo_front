@@ -46,10 +46,10 @@ export default {
 
 
 <template>
-    <div class="wave-container">
-        <img :src="getImageUrl('wave.png')" alt="">
-    </div>
-    <footer class="container_footer py-5 ">
+    <footer class="container_footer py-5 position-relative">
+        <div class="wave-container">
+            <img :src="getImageUrl('wave.png')" alt="">
+        </div>
         <div class="container">
             <div class="row">
                 <span v-for="developer in developers" class="dev-container col-lg-4 col-sm-6">
@@ -71,6 +71,9 @@ export default {
 @use '../partials/variables.scss' as *;
 
 .wave-container img {
+    position: absolute;
+    bottom: 100%;
+    left:0;
     width: 100%;
     height: 200px;
 }
@@ -94,6 +97,7 @@ export default {
 }
 
 .container_footer {
+    margin-top: 100px;
     background-color: $primary-color;
 }
 </style>

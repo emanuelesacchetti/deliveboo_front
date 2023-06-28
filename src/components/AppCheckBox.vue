@@ -72,7 +72,7 @@ export default {
 </script>
 
 <template>
-    <div class="container py-2">
+    <div class="container py-2 categories-container">
         <div class="row overflow-auto flex-nowrap ">
             <div class="col text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
@@ -93,6 +93,9 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
+.categories-container{
+    margin-top: 15vw;
+}
 .container_check {
 
 
@@ -112,7 +115,7 @@ export default {
 
 .my_text {
     font-size: 13px;
-    color: $secondary-color;
+    color: $primary-color;
     font-weight: bolder;
 }
 
