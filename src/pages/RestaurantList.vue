@@ -142,6 +142,11 @@ export default {
 
 }
 
+.btn_color:hover {
+    background-color: $secondary-color;
+
+}
+
 .my_img {
     height: 70%;
 }
