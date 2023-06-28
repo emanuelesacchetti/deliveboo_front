@@ -6,8 +6,7 @@
                 <div class="d-flex justify-content-between align-items-center py-1 border-bottom py-3">
                     <div class="w-25 d-flex align-items-center justify-content-between px-1">
 
-                        <i class="text-warning fa-solid fa-circle-plus fs-5" @click="addToCart(item.product)"
-                            role="button"></i>
+                        <i class=" fa-solid fa-circle-plus fs-5" @click="addToCart(item.product)" role="button"></i>
 
                         <div class="text-bg-light rounded-circle p-2 px-2">
                             x{{ item.product.quantity }}
@@ -136,5 +135,9 @@ export default {
 
 .my_btn:active {
     @include mixins.btn-active;
+}
+
+.fa-circle-plus {
+    color: $secondary-color;
 }
 </style>

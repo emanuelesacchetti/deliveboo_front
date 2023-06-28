@@ -106,7 +106,7 @@ export default {
                             <div class="my_cardText">
                                 <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
                                 <p>{{ product.description }}</p>
-                                <p> &euro; {{ product.price }}</p>
+                                <p class="fw-bold"> &euro; {{ product.price }}</p>
                                 <button @click="addToCart(product)">Aggiungi al
                                     carrello</button>
                             </div>
@@ -145,17 +145,18 @@ export default {
     img {
         height: 100%;
         object-fit: cover;
+        filter: brightness(40%);
     }
 
     .container_jumboText {
         width: 100vw;
-        box-shadow: 0px 0px 10px 20px rgba($color: black, $alpha: 0.5);
+        //box-shadow: 0px 0px 10px 20px rgba($color: black, $alpha: 0.5);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white;
-        background-color: rgba($color: black, $alpha: 0.5);
+        //background-color: rgba($color: black, $alpha: 0.5);
 
     }
 }
@@ -204,9 +205,14 @@ export default {
 
 
     .my_cardText {
+        p {
+            line-height: 30px;
+        }
+
         width: 80%;
         //padding: 1rem;
-        padding: 5px 5px 5px 50px;
+        padding: 15px 15px 15px 50px;
+
     }
 }
 
@@ -227,6 +233,7 @@ button {
 
 button:hover {
     @include mixins.btn-hover;
+    font-size: 12px;
 }
 
 button:active {
@@ -245,6 +252,8 @@ button:active {
         padding-left: 0;
         padding-right: 0;
     }
+
+
 
 
 
