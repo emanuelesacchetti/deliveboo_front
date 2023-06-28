@@ -25,7 +25,7 @@ export default {
 
 
 <template>
-  <nav class="navbar navbar-expand-lg z-5" id="header-nav">
+  <nav class="navbar navbar-expand-sm" id="header-nav">
     <div class="container-fluid px-3 h-100">
       <router-link :to="{ name: 'home' }"><img class="logo_img" :src="getImageUrl('logo.svg')" alt=""></router-link>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -36,15 +36,15 @@ export default {
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item p-3">
-          <a class="my_btn d-block mx-3 p-2 px-4 d-lg-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
+        <li class="nav-item p-1 p-md-3">
+          <a class="my_btn d-block mx-3 p-2 px-4 d-sm-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
             href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <span class=" me-2"> Vai al Carrello </span>
             <i class="fa-solid fa-cart-shopping my_cart"></i>
           </a>
         </li>
 
-        <li class="nav-item p-3">
+        <li class="nav-item p-1 p-md-3">
           <!--<router-link :to="{name: laravel}">Lavora con noi</router-link>-->
           <a :href="store.baseUrl" class="my_btn mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
         </li>
@@ -107,5 +107,24 @@ a {
 
 .my_btn:active {
   @include mixins.btn-active
+}
+
+//mediquery 
+@media(max-width:768px) {
+
+  .navbar-expand-sm .navbar-nav {
+    flex-direction: column;
+  }
+}
+
+@media(max-width:576px) {
+  .nav-item {
+    display: flex;
+    justify-content: center;
+    .my_btn {
+      text-align: center;
+      min-width: 250px;
+    }
+  }
 }
 </style>
