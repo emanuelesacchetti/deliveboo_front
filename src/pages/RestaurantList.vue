@@ -96,12 +96,12 @@ export default {
                             <img :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Immagini Ristoranti"
                                 class="w-100 h-100 my_image">
                         </div>
-                        <div class="col-md-4 bg-black d-flex justify-content-center align-items-center">
+                        <div class="col-md-4 d-flex justify-content-center align-items-center">
                             <div class="text-center text-light">
                                 <h5 class="">{{ restaurant.name }}</h5>
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
-                                    class="btn btn_color text-light mt-3" @click="emptyCart(restaurant.id)">
-                                    Ordina da qui
+                                    class="text-light mt-3" @click="emptyCart(restaurant.id)">
+                                    <button>Ordina da qui</button>
                                 </router-link>
                             </div>
                         </div>
@@ -134,14 +134,17 @@ export default {
 @use '../partials/mixins.scss';
 
 .my_color {
-    border: 3px solid $primary-color;
+    border: 3px solid $secondary-color;
+}
+
+.card {
+    background-color: $tertiarycolor;
 }
 
 .card:hover {
     //border: 1px solid rgba($secondary-color, $alpha: 4.0);
     transform: scale(1.1);
-    transition: 0.4s all;
-    background-color: black;
+    transition: 0.9s all;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -149,30 +152,30 @@ export default {
 }
 
 .my_style {
-    background: linear-gradient(to left, black, transparent);
+    background: linear-gradient(to left, $tertiarycolor, transparent);
     z-index: 50;
-
-}
-
-
-
-
-
-.btn_color {
-    background-color: $primary-color;
-    border-radius: 30px;
-    padding: 10px;
-
-
-
-}
-
-.btn_color:hover {
-    background-color: $secondary-color;
 
 }
 
 .my_height {
     height: 250px;
+}
+
+button {
+    @include mixins.primary-btn;
+    background-color: $tertiarycolor;
+    border-color: white;
+    color: white;
+}
+
+button:hover {
+    @include mixins.btn-hover;
+
+    background-color: $primary-color;
+
+}
+
+button:active {
+    @include mixins.btn-active;
 }
 </style>
