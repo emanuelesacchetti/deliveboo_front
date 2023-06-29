@@ -55,7 +55,7 @@
             <div v-show="!orderPayload.phone_number && buttonClicked" class="text-danger">
                 Il contatto telefonico è richiesto
             </div>
-            <div v-show="(orderPayload.phone_number > 9999999999) && buttonClicked" class="text-danger">
+            <div v-show="((orderPayload.phone_number > 9999999999) || (orderPayload.phone_number < 999999999)) && buttonClicked" class="text-danger">
                 Il campo può contenere solo 10 cifre
             </div>
         </div>
@@ -188,7 +188,7 @@ export default {
                 (this.orderPayload.address)&&
                 (this.orderPayload.phone_number) &&
                 (this.orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm)) &&
-                (this.orderPayload.phone_number)
+                (this.orderPayload.phone_number.match(/[^0-9]/g))
                 ) 
             {
                 return '';
