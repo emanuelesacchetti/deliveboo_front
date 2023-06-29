@@ -37,14 +37,14 @@
             <div id="dropin-container"></div>
             <!-- Submit button -->
             <div class="container_button">
-                <button id="submit-payment-btn">Conferma pagamento</button>
+                <button id="submit-payment-btn" :class="{ 'btn disabled': !store.cartTotal }">Conferma pagamento</button>
             </div>
 
         </div>
         <div v-else class="container_button">
-            <button @click="getPaymentData" :class="{ 'disabled': !store.cart.length }">Procedi
-                con
-                il pagamento</button>
+            <button @click="getPaymentData" :class="{ 'btn disabled': !store.cartTotal }">
+                Procedi con il pagamento
+            </button>
         </div>
     </div>
 </template>
@@ -70,6 +70,9 @@ export default {
             isUserPaying: false,
             store,
         }
+    },
+    computed :{
+
     },
     methods: {
         getProducts() {

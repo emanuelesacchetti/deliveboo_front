@@ -107,7 +107,6 @@ export default {
                 })
             }
             this.store.cartTotal = total;
-            console.log(total + " è il totale")
             return total;
         }
     },
