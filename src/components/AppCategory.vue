@@ -72,18 +72,19 @@ export default {
             text-decoration: none;
         }
 
-        
+
     }
 }
-img {
-            border-radius: 100%;
-            object-fit: cover;
-            aspect-ratio: 1/1;
 
-            &:hover {
-                box-shadow: 6px 5px 15px 1px #38009996;
-            }
-        }
+img {
+    border-radius: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+
+    &:hover {
+        box-shadow: 6px 5px 15px 1px #38009996;
+    }
+}
 
 .no-scroll::-webkit-scrollbar {
     display: none;
@@ -93,10 +94,12 @@ img {
 @media(max-width:768px) {
     img {
         object-fit: cover;
-        height: 200px;
+        height: 250px;
         border-radius: 10px;
 
     }
 }
+
+
 
 //hover </style>

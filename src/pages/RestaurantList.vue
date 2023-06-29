@@ -97,7 +97,7 @@ export default {
                         </div>
                         <div class="my_col col-md-4 bg-black d-flex justify-content-center align-items-center">
                             <div class="text-center text-light">
-                                <h5 class="">{{ restaurant.name }}</h5>
+                                <h5>{{ restaurant.name }}</h5>
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
                                     class="btn btn_color text-light mt-3" @click="emptyCart(restaurant.id)">
                                     Ordina da qui
@@ -168,40 +168,12 @@ export default {
     height: 250px;
 }
 
-@media screen and (max-width:340px) {
-    .my_height {
-        height: 100%;
-
-    }
-
-    .my_col {
-        display: flex;
-        align-items: center;
-    }
-
-
-}
-
-@media screen and (max-width:400px) {
-    .my_height {
-        height: 100%;
-    }
-
-    .my_col {
-        display: flex;
-        align-items: center;
-    }
-}
-
-
 @media screen and (max-width:767px) {
     .my_height {
         height: 100%;
     }
-
-    .my_col {
-        display: flex;
-        align-items: center;
+    .btn {
+        margin-bottom: 20px;
     }
 }
 </style>
