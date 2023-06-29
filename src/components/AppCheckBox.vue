@@ -146,11 +146,11 @@ export default {
 
 .restaurant-icon {
     border: 3px solid $primary-color;
-    border-radius: 15px;
+    border-radius: 50%;
     width: 100%;
     aspect-ratio: 1/1;
     cursor: pointer;
-
+    box-shadow: inset 0px 0px 10px $primary-color;
 
 }
 
