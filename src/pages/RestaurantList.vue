@@ -110,7 +110,8 @@ export default {
         </div>
     </div>
     <div v-if="cartAlert.triggered"
-        class="position-fixed top-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-9">
+        class="position-fixed top-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-9"
+        id="my_allert">
         <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
             <button @click="clickOnAlertBtn('confirm')">
@@ -132,19 +133,23 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
-.component-container{
+.component-container {
     background: whitesmoke;
 }
+
 .my_color {
     border: 3px solid $primary-color;
 }
-.card-border{
+
+.card-border {
     box-shadow: 4px 4px 5px 0px rgba($color: $primary-color, $alpha: 0.8);
     z-index: 5;
 }
-.text-box{
+
+.text-box {
     background-color: white;
 }
+
 .card:hover {
     //border: 1px solid rgba($secondary-color, $alpha: 4.0);
     transform: scale(1.05);
@@ -176,10 +181,16 @@ export default {
     height: 250px;
 }
 
+
+#my_allert {
+    z-index: 99;
+}
+
 @media screen and (max-width:767px) {
     .my_height {
         height: 100%;
     }
+
     .btn {
         margin-bottom: 20px;
     }
