@@ -22,7 +22,7 @@ export default {
                 {
                     nome: 'Angelo Roudani',
                     git: 'https://github.com/AngeloRoudani',
-                    linkedin: 'https://www.linkedin.com/in/emanuele-sacchetti-5b591b27b/'
+                    linkedin: 'www.linkedin.com/in/angelo-roudani-2456b6281'
                 },
                 {
                     nome: 'Giuseppe Suanno',
