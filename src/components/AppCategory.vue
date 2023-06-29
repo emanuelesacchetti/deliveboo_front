@@ -78,10 +78,10 @@ export default {
             <div class="row flex-md-nowrap overflow-x-auto no-scroll row-cols-1 row-cols-md-4 row-cols-lg-6 row-cols-xl-8"
                 id="category-window">
                 <div v-for="restaurantType in store.restaurantTypes " class="z-1 p-2 col">
-                    <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
+                    <router-link class="d-block card_category position-relative" @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        <span class="text_category d-flex justify-content-center mt-2">{{ restaurantType.name }}</span>
+                        <span class="text_category d-flex justify-content-center mt-2 fw-bold">{{ restaurantType.name }}</span>
                     </router-link>
                 </div>
             </div>
@@ -109,6 +109,9 @@ export default {
         .text_category {
             color: black;
             text-decoration: none;
+            color: $primary-color;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0px $secondary-color;
         }
 
 
@@ -123,10 +126,12 @@ img {
     border-radius: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
-    transition: box-shadow 0.5s ease;
+    border: 1px solid $primary-color;
+    transition: all 0.15s linear;
 
     &:hover {
         box-shadow: 6px 5px 15px 1px #38009996;
+        border: 3px solid $primary-color;
     }
 }
 
