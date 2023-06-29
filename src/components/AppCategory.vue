@@ -117,11 +117,6 @@ export default {
 
     }
 }
-
-.scroll_eat {
-    width: 200px;
-}
-
 img {
     border-radius: 100%;
     object-fit: cover;
@@ -151,10 +146,12 @@ img {
 @media(max-width:768px) {
     img {
         object-fit: cover;
-        height: 200px;
+        height: 250px;
         border-radius: 10px;
 
     }
 }
+
+
 
 //hover </style>

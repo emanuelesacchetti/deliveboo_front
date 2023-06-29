@@ -161,10 +161,6 @@ export default {
 
 }
 
-
-
-
-
 .btn_color {
     background-color: $primary-color;
     border-radius: 30px;
@@ -178,5 +174,14 @@ export default {
 
 .my_height {
     height: 250px;
+}
+
+@media screen and (max-width:767px) {
+    .my_height {
+        height: 100%;
+    }
+    .btn {
+        margin-bottom: 20px;
+    }
 }
 </style>
