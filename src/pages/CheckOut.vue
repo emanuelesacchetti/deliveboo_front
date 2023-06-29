@@ -9,6 +9,7 @@
             </ul>
             <p class="text-capitalize fw-semibold fs-5 m-3">totale {{ this.store.cartTotal }} &euro;</p>
         </div>
+    
 
     <div v-if="isUserPaying" class="container">
         <h2>Inserisci qui i tuoi dati</h2>
@@ -70,6 +71,7 @@
     <div v-else class="container">
         <button @click="getPaymentData" class="btn btn-warning w-100">Procedi con il pagamento</button>
     </div>
+</div>
 </template>
 
 <script>
