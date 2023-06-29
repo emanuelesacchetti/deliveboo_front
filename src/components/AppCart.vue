@@ -32,7 +32,7 @@
             &euro; </p>
         <p v-else class="p-3 text-center"> Nessun elemento nel carrello</p>
 
-        <router-link :to="{ name: 'payment' }" class="my_btn p-2 w-100" :class="{ 'disabled': !store.cart.length }">
+        <router-link :to="{ name: 'payment' }" v-if="total" class= "my_btn p-2 w-100">
             Vai al checkout
         </router-link>
     </div>
@@ -89,6 +89,9 @@ export default {
                     }
                 })
             }
+            if(!store.cart.length){
+                this.store.cartTotal = 0;
+            }
             this.localstorage();
         },
         localstorage() {
@@ -103,8 +106,8 @@ export default {
                     total += (parseInt(item.product.price) * parseInt(item.product.quantity));
                 })
             }
-
             this.store.cartTotal = total;
+            console.log(total + " è il totale")
             return total;
         }
     },
