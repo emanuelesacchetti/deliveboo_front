@@ -67,13 +67,13 @@ export default {
             if (direction == 'left' && categoryWindow.scrollLeft > 0) {
                 categoryWindow.scroll({
                     top: 0,
-                    left: categoryWindow.scrollLeft -= window.innerWidth,
+                    left: categoryWindow.scrollLeft -= ( window.innerWidth - 250),
                     behavior: "smooth",
                 });
             } else if (direction == 'right' && categoryWindow.scrollLeft < categoryWindow.scrollWidth) {
                 categoryWindow.scroll({
                     top: 0,
-                    left: categoryWindow.scrollLeft += window.innerWidth,
+                    left: categoryWindow.scrollLeft += ( window.innerWidth - 250),
                     behavior: "smooth",
                 });
 
