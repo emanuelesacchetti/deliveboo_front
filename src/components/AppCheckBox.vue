@@ -158,7 +158,7 @@ export default {
     scale: 1.2;
 }
 
-.types::-webkit-scrollbar {
+#category-window::-webkit-scrollbar {
     display: none;
 }
 
