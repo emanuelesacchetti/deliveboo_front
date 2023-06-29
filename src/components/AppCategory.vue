@@ -50,16 +50,6 @@ export default {
             }
         }
     },
-    watch: {
-        
-    },
-    computed: {
-        scrollDots(){
-            const categoryWindow = document.getElementById('category-window');
-            if(categoryWindow)
-            return (Math.ceil(window.innerWidth/categoryWindow.scrollWidth))
-        }
-    },
     mounted() {
         this.getTypes();
     }
