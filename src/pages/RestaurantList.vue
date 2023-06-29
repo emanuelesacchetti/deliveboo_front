@@ -110,14 +110,13 @@ export default {
         </div>
     </div>
     <div v-if="cartAlert.triggered"
-        class="position-fixed top-50 start-50 translate-middle p-5 border border-dark rounded text-bg-light z-9"
-        id="my_allert">
+        class="position-fixed top-50 start-50 translate-middle p-5 text-bg-light z-9 container_allert" id="my_allert">
         <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
-            <button @click="clickOnAlertBtn('confirm')">
+            <button class="my_btn" @click="clickOnAlertBtn('confirm')">
                 Procedi
             </button>
-            <button class="btn btn-secondary" @click="clickOnAlertBtn('close')">
+            <button class="my_btn" @click="clickOnAlertBtn('close')">
                 Torna alla lista
             </button>
         </div>
@@ -184,6 +183,29 @@ export default {
 
 #my_allert {
     z-index: 99;
+}
+
+.container_allert {
+    border-radius: 40px;
+    border: 2px solid $secondary-color;
+
+    .my_btn {
+        @include mixins.primary-btn;
+        border-color: $secondary-color;
+        background-color: $primary-color;
+        color: white;
+        border: white;
+
+    }
+
+    .my_btn:hover {
+        @include mixins.btn-hover;
+        font-size: 12px;
+    }
+
+    .my_btn:active {
+        @include mixins.btn-active;
+    }
 }
 
 @media screen and (max-width:767px) {
