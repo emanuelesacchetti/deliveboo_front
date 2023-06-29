@@ -29,7 +29,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .container {
-    margin-top: 40vh;
+    margin-top: 150px;
     height: 50vh;
 }
 </style>

@@ -20,13 +20,13 @@ export default {
 
 
 <style lang="scss" scoped>
-
-.home-container{
+.home-container {
     padding: 50vw 0 5vw;
 }
+
 .slogan_img {
+    margin-top: 20px;
     width: 100%;
     z-index: 0;
 }
-
 </style>

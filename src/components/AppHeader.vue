@@ -137,6 +137,7 @@ a {
 
 .wave_img {
   width: 100%;
+  height: 200px;
   transform: rotate(180deg);
   display: block;
   margin-top: -10px;

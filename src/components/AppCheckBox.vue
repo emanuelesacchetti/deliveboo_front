@@ -89,28 +89,28 @@ export default {
 </script>
 
 <template>
-        <div class="container component-wrapper position-relative">
-            <span @click="scroll('left')"
-                class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-                &langle;
-            </span>
-            <div class="row overflow-x-auto flex-nowrap row-cols-3 row-cols-md-5 row-cols-lg-6" id="category-window">
-                <div class="col text-center py-4 z-1" v-for="restaurantType in store.restaurantTypes"
-                    :key="restaurantType.id" @click="categoryFilter(restaurantType.slug)">
-                    <div class="restaurant-icon pt-3" :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
-                        <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
-                        <div class="card-body">
-                            <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
-                                restaurantType.name }}</small>
-                        </div>
+    <div class="container component-wrapper position-relative">
+        <span @click="scroll('left')"
+            class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+            &langle;
+        </span>
+        <div class="row overflow-x-auto flex-nowrap row-cols-3 row-cols-md-5 row-cols-lg-6" id="category-window">
+            <div class="col text-center py-4 z-1" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
+                @click="categoryFilter(restaurantType.slug)">
+                <div class="restaurant-icon pt-3" :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
+                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
+                    <div class="card-body">
+                        <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
+                            restaurantType.name }}</small>
                     </div>
                 </div>
             </div>
-            <span @click="scroll('right')"
-                class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-                &rangle;
-            </span>
         </div>
+        <span @click="scroll('right')"
+            class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+            &rangle;
+        </span>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -119,7 +119,7 @@ export default {
 @use '../partials/mixins.scss';
 
 .component-wrapper {
-    margin-top: 15vw;
+    margin-top: 150px;
 }
 
 .container_check {
