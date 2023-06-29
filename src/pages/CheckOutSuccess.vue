@@ -1,5 +1,5 @@
 <template>
-    <div class="container text-center">
+    <div class="container  text-center">
         <h1 class="display-1 my-5">Ordine confermato!</h1>
         <h3 class="display-6 mb-5">Ordine N° {{ orderCode }}</h3>
         <p>Riceverai una mail di conferma a breve.</p>
@@ -27,4 +27,9 @@ export default {
     }
 }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+    margin-top: 40vh;
+    height: 50vh;
+}
+</style>
