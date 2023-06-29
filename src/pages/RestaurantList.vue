@@ -95,7 +95,7 @@ export default {
                             <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
                             <img :src="restaurant.image" alt="Immagini Ristoranti" class="w-100 h-100 my_image">
                         </div>
-                        <div class="col-md-4 bg-black d-flex justify-content-center align-items-center">
+                        <div class="my_col col-md-4 bg-black d-flex justify-content-center align-items-center">
                             <div class="text-center text-light">
                                 <h5 class="">{{ restaurant.name }}</h5>
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }"
@@ -153,17 +153,10 @@ export default {
 
 }
 
-
-
-
-
 .btn_color {
     background-color: $primary-color;
     border-radius: 30px;
     padding: 10px;
-
-
-
 }
 
 .btn_color:hover {
@@ -173,5 +166,42 @@ export default {
 
 .my_height {
     height: 250px;
+}
+
+@media screen and (max-width:340px) {
+    .my_height {
+        height: 100%;
+
+    }
+
+    .my_col {
+        display: flex;
+        align-items: center;
+    }
+
+
+}
+
+@media screen and (max-width:400px) {
+    .my_height {
+        height: 100%;
+    }
+
+    .my_col {
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width:767px) {
+    .my_height {
+        height: 100%;
+    }
+
+    .my_col {
+        display: flex;
+        align-items: center;
+    }
 }
 </style>
