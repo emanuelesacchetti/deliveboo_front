@@ -45,8 +45,7 @@ button:active {
 .container_img {
     position: relative;
     transition: all 0.5s ease;
-    border: 2px solid $secondary-color;
-    border-radius: 20px;
+
 
 
 
@@ -74,10 +73,5 @@ button:active {
     filter: opacity(0);
     // transition: all 1.0s ease-in-out;
 
-}
-
-.container_img:hover {
-    background-color: rgba($color: black, $alpha: 1.0);
-    transition: all 0.9s ease;
 }
 </style>
