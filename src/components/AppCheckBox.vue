@@ -61,6 +61,23 @@ export default {
             if (this.$route.query.types) {
                 return this.$route.query.types.includes(slug)
             }
+        },
+        scroll(direction) {
+            const categoryWindow = document.getElementById('category-window');
+            if (direction == 'left' && categoryWindow.scrollLeft > 0) {
+                categoryWindow.scroll({
+                    top: 0,
+                    left: categoryWindow.scrollLeft -= window.innerWidth,
+                    behavior: "smooth",
+                });
+            } else if (direction == 'right' && categoryWindow.scrollLeft < categoryWindow.scrollWidth) {
+                categoryWindow.scroll({
+                    top: 0,
+                    left: categoryWindow.scrollLeft += window.innerWidth,
+                    behavior: "smooth",
+                });
+
+            }
         }
     },
     mounted() {
@@ -72,20 +89,28 @@ export default {
 </script>
 
 <template>
-    <div class="container py-2">
-        <div class="row overflow-auto flex-nowrap ">
-            <div class="col text-center py-4" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
-                @click="categoryFilter(restaurantType.slug)">
-                <div class="restaurant-icon " :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
-                    <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
-                    <div class="card-body">
-                        <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
-                            restaurantType.name }}</small>
+        <div class="container component-wrapper position-relative">
+            <span @click="scroll('left')"
+                class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+                &langle;
+            </span>
+            <div class="row overflow-x-auto flex-nowrap row-cols-3 row-cols-md-5 row-cols-lg-6" id="category-window">
+                <div class="col text-center py-4 z-1" v-for="restaurantType in store.restaurantTypes"
+                    :key="restaurantType.id" @click="categoryFilter(restaurantType.slug)">
+                    <div class="restaurant-icon pt-3" :class="{ 'my_color': ifQueryExist(restaurantType.slug) }">
+                        <img :src="restaurantType.image" alt="Card image cap" class="  w-50 m-auto ">
+                        <div class="card-body">
+                            <small class="my_text" :class="{ 'text-light': ifQueryExist(restaurantType.slug) }">{{
+                                restaurantType.name }}</small>
+                        </div>
                     </div>
                 </div>
             </div>
+            <span @click="scroll('right')"
+                class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+                &rangle;
+            </span>
         </div>
-    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -93,13 +118,16 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
+.component-wrapper {
+    margin-top: 15vw;
+}
+
 .container_check {
 
 
     .card {
         border: 1px solid black;
-        width: calc(100%/10);
-        height: 100px;
+
     }
 }
 
@@ -112,13 +140,14 @@ export default {
 
 .my_text {
     font-size: 13px;
-    color: $secondary-color;
+    color: $primary-color;
     font-weight: bolder;
 }
 
 .restaurant-icon {
-    height: 100px;
-    width: 100px;
+    border-radius: 15px;
+    width: 100%;
+    aspect-ratio: 1/1;
     cursor: pointer;
 
 
@@ -126,8 +155,7 @@ export default {
 
 .restaurant-icon:hover {
     transition: 0.4s;
-    transform: scale(1.4);
-
+    scale: 1.2;
 }
 
 .types::-webkit-scrollbar {

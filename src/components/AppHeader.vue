@@ -25,33 +25,37 @@ export default {
 
 
 <template>
-  <nav class="navbar navbar-expand-sm" id="header-nav">
-    <div class="container-fluid px-3 h-100">
-      <router-link :to="{ name: 'home' }"><img class="logo_img" :src="getImageUrl('logo.svg')" alt=""></router-link>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item p-1 p-md-3">
-          <a class="my_btn d-block mx-3 p-2 px-4 d-sm-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
-            href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            <span class=" me-2"> Vai al Carrello </span>
-            <i class="fa-solid fa-cart-shopping my_cart"></i>
-          </a>
-        </li>
+  <header>
+    <nav class="navbar navbar-expand-sm" id="header-nav">
+      <div class="container-fluid px-3 h-100">
+        <router-link :to="{ name: 'home' }"><img class="logo_img" :src="getImageUrl('logo.svg')" alt=""></router-link>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item p-1 p-md-3">
+            <a class="my_btn d-block mx-3 p-2 px-4 d-sm-flex align-items-center text-nowrap" data-bs-toggle="offcanvas"
+              href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <span class=" me-2"> Vai al Carrello </span>
+              <i class="fa-solid fa-cart-shopping my_cart"></i>
+            </a>
+          </li>
 
-        <li class="nav-item p-1 p-md-3">
-          <!--<router-link :to="{name: laravel}">Lavora con noi</router-link>-->
-          <a :href="store.baseUrl" class="my_btn mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
-        </li>
-      </ul>
+          <li class="nav-item p-1 p-md-3">
+            <!--<router-link :to="{name: laravel}">Lavora con noi</router-link>-->
+            <a :href="store.baseUrl" class="my_btn mx-3 text-nowrap p-2 px-4 d-block"> Lavora con noi </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="position-relative wave-container">
+      <img class="wave_img w-100 position-absolute top-0 start-0 z-1" :src="getImageUrl('wave.png')" alt="">
     </div>
-  </nav>
-
+  </header>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <AppCart />
     <button type="button" class="btn-close position-absolute m-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -63,7 +67,6 @@ export default {
 @use '../styles/general.scss';
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
-
 
 nav {
   position: sticky;
@@ -121,10 +124,18 @@ a {
   .nav-item {
     display: flex;
     justify-content: center;
+
     .my_btn {
       text-align: center;
       min-width: 250px;
     }
   }
+}
+
+.wave_img {
+  width: 100%;
+  transform: rotate(180deg);
+  display: block;
+  margin-top: -10px;
 }
 </style>

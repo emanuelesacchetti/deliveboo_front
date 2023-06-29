@@ -12,6 +12,7 @@ export default {
     data() {
         return {
             store,
+            scrollDots: 0,
         }
     },
     methods: {
@@ -30,6 +31,30 @@ export default {
                     this.store.restaurantList = response.data.results;
                     console.log(response);
                 })
+        },
+        scroll(direction) {
+            const categoryWindow = document.getElementById('category-window');
+            if (direction == 'left' && categoryWindow.scrollLeft > 0) {          
+                categoryWindow.scroll({
+                    top: 0,
+                    left: categoryWindow.scrollLeft -= window.innerWidth,
+                    behavior: "smooth",
+                });
+            } else if (direction == 'right' && categoryWindow.scrollLeft < categoryWindow.scrollWidth) {
+                categoryWindow.scroll({
+                    top: 0,
+                    left: categoryWindow.scrollLeft += window.innerWidth,
+                    behavior: "smooth",
+                });
+
+            }
+        }
+    },
+    computed: {
+        scrollDots(){
+            const categoryWindow = document.getElementById('category-window');
+            if(categoryWindow)
+            return (window.innerWidth/categoryWindow.scrollWidth)
         }
     },
     mounted() {
@@ -45,10 +70,14 @@ export default {
         <AppSearch />
     </div>
     <div class="container_category">
-        <div class="container-fluid">
-            <div class="row flex-md-nowrap overflow-x-auto no-scroll">
-                <div v-for="restaurantType in this.store.restaurantTypes " class=" p-2 col-md-2 col-sm-12 ">
-
+        <div class="container position-relative">
+            <span @click="scroll('left')"
+                class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+                &langle;
+            </span>
+            <div class="row flex-md-nowrap overflow-x-auto no-scroll row-cols-1 row-cols-md-4 row-cols-lg-6 row-cols-xl-8"
+                id="category-window">
+                <div v-for="restaurantType in store.restaurantTypes " class="z-1 p-2 col">
                     <router-link class="d-block card_category  " @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
@@ -56,6 +85,15 @@ export default {
                     </router-link>
                 </div>
             </div>
+            <span @click="scroll('right')"
+                class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
+                &rangle;
+            </span>
+        </div>
+        <div>
+            <span v-for="scrollDot in scrollDots" class="p-2 rounded-circle bg-secondary">
+
+            </span>
         </div>
     </div>
 </template>
@@ -64,8 +102,6 @@ export default {
 @use '../partials/_variables.scss' as *;
 
 .container_category {
-    background-color: white;
-
     .card_category {
         border-radius: 10px;
         text-decoration: none;

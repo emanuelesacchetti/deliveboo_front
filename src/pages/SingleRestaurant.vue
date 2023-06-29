@@ -81,7 +81,7 @@ export default {
 
 
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid component-container">
 
 
         <div class="position-relative container_jumbo">
@@ -134,6 +134,9 @@ export default {
     margin: 0;
 }
 
+.component-container{
+    margin-top: 2.5vw;
+}
 .general_container {
     top: -150px;
     padding: 3rem;
