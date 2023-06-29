@@ -131,6 +131,8 @@ export default {
 
 .my_btn:hover {
     @include mixins.btn-hover;
+    font-size: 12px;
+    scale: 1.0.9;
 }
 
 .my_btn:active {
