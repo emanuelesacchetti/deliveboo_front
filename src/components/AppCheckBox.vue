@@ -145,18 +145,17 @@ export default {
 }
 
 .restaurant-icon {
-    border: 3px solid $primary-color;
-    border-radius: 50%;
+    border-radius: 15px;
     width: 100%;
     aspect-ratio: 1/1;
     cursor: pointer;
-    box-shadow: inset 0px 0px 10px $primary-color;
+
 
 }
 
 .restaurant-icon:hover {
     transition: 0.4s;
-
+    scale: 1.2;
 }
 
 .types::-webkit-scrollbar {

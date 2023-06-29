@@ -86,18 +86,18 @@ export default {
 
 <template>
     <AppCheckBox />
-    <div class="container p-3">
+    <div class="container p-3 component-container rounded-4">
         <div class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
             <div class=" col my_height" v-for="restaurant in  this.store.restaurantList">
-                <div class=" card h-100 rounded-5 overflow-hidden">
+                <div class=" card h-100 rounded-5 overflow-hidden card-border">
                     <div class=" row h-100">
                         <div class="col-md-8 position-relative">
                             <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
                             <img :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Immagini Ristoranti"
                                 class="w-100 h-100 my_image">
                         </div>
-                        <div class="col-md-4 bg-black d-flex justify-content-center align-items-center">
-                            <div class="text-center text-light">
+                        <div class="col-md-4 d-flex justify-content-center align-items-center text-box">
+                            <div class="text-center text-dark">
                                 <h5 class="">{{ restaurant.name }}</h5>
                                 <button class="btn btn_color text-light mt-3" @click="clickOnRestaurant(restaurant)">
                                     Ordina da qui
@@ -132,15 +132,23 @@ export default {
 @use '../partials/variables.scss' as *;
 @use '../partials/mixins.scss';
 
+.component-container{
+    background: whitesmoke;
+}
 .my_color {
     border: 3px solid $primary-color;
 }
-
+.card-border{
+    box-shadow: 4px 4px 5px 0px rgba($color: $primary-color, $alpha: 0.8);
+    z-index: 5;
+}
+.text-box{
+    background-color: white;
+}
 .card:hover {
     //border: 1px solid rgba($secondary-color, $alpha: 4.0);
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.4s all;
-    background-color: black;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -148,7 +156,7 @@ export default {
 }
 
 .my_style {
-    background: linear-gradient(to left, black, transparent);
+    background: linear-gradient(to left, white 5%, transparent 30%);
     z-index: 50;
 
 }
