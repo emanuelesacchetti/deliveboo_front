@@ -90,10 +90,8 @@ export default {
 
 <template>
     <div class="container component-wrapper position-relative">
-        <span @click="scroll('left')"
-            class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-            &langle;
-        </span>
+        <img @click="scroll('left')" class="position-absolute arrow_left d-none d-md-block"
+            src="src/assets/img/arrowleft.svg" alt="">
         <div class="row overflow-x-auto flex-nowrap row-cols-3 row-cols-md-5 row-cols-lg-6" id="category-window">
             <div class="col text-center py-4 z-1" v-for="restaurantType in store.restaurantTypes" :key="restaurantType.id"
                 @click="categoryFilter(restaurantType.slug)">
@@ -106,10 +104,8 @@ export default {
                 </div>
             </div>
         </div>
-        <span @click="scroll('right')"
-            class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-            &rangle;
-        </span>
+        <img @click="scroll('right')" class="position-absolute arrow_right d-none d-md-block"
+            src="src/assets/img/arrowright.svg" alt="">
     </div>
 </template>
 
@@ -165,5 +161,19 @@ export default {
 .my_color {
     background-color: $primary-color;
     border-radius: 50%;
+}
+
+.arrow_left {
+    z-index: 50;
+    top: 70px;
+    left: -45px;
+    width: 80px;
+}
+
+.arrow_right {
+    z-index: 50;
+    top: 70px;
+    right: -45px;
+    width: 80px;
 }
 </style>

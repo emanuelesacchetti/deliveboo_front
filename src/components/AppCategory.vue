@@ -34,7 +34,7 @@ export default {
         },
         scroll(direction) {
             const categoryWindow = document.getElementById('category-window');
-            if (direction == 'left' && categoryWindow.scrollLeft > 0) {          
+            if (direction == 'left' && categoryWindow.scrollLeft > 0) {
                 categoryWindow.scroll({
                     top: 0,
                     left: categoryWindow.scrollLeft -= window.innerWidth,
@@ -51,10 +51,10 @@ export default {
         }
     },
     computed: {
-        scrollDots(){
+        scrollDots() {
             const categoryWindow = document.getElementById('category-window');
-            if(categoryWindow)
-            return (window.innerWidth/categoryWindow.scrollWidth)
+            if (categoryWindow)
+                return (window.innerWidth / categoryWindow.scrollWidth)
         }
     },
     mounted() {
@@ -71,24 +71,22 @@ export default {
     </div>
     <div class="container_category">
         <div class="container position-relative">
-            <span @click="scroll('left')"
-                class="position-absolute top-50 start-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-                &langle;
-            </span>
+
+            <img @click="scroll('left')" class="position-absolute arrow_left d-none d-md-block"
+                src="src/assets/img/arrowleft.svg" alt="">
             <div class="row flex-md-nowrap overflow-x-auto no-scroll row-cols-1 row-cols-md-4 row-cols-lg-6 row-cols-xl-8"
                 id="category-window">
                 <div v-for="restaurantType in store.restaurantTypes " class="z-1 p-2 col">
                     <router-link class="d-block card_category position-relative" @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
-                        <img class="w-100" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
-                        <span class="text_category d-flex justify-content-center mt-2 fw-bold">{{ restaurantType.name }}</span>
+                        <img class="w-100 my_img" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
+                        <span class="text_category d-flex justify-content-center mt-2 fw-bold">{{ restaurantType.name
+                        }}</span>
                     </router-link>
                 </div>
             </div>
-            <span @click="scroll('right')"
-                class="position-absolute top-50 end-0 fs-2 translate-middle-y px-4 py-1 text-bg-dark rounded-circle z-2">
-                &rangle;
-            </span>
+            <img @click="scroll('right')" class="position-absolute arrow_right d-none d-md-block"
+                src="src/assets/img/arrowright.svg" alt="">
         </div>
         <div>
             <span v-for="scrollDot in scrollDots" class="p-2 rounded-circle bg-secondary">
@@ -102,6 +100,8 @@ export default {
 @use '../partials/_variables.scss' as *;
 
 .container_category {
+
+
     .card_category {
         border-radius: 10px;
         text-decoration: none;
@@ -117,7 +117,8 @@ export default {
 
     }
 }
-img {
+
+.my_img {
     border-radius: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
@@ -129,6 +130,8 @@ img {
         border: 3px solid $primary-color;
     }
 }
+
+
 
 .no-scroll::-webkit-scrollbar {
     display: none;
@@ -142,9 +145,23 @@ img {
     margin-top: -20px;
 }
 
+.arrow_left {
+    z-index: 50;
+    top: 50px;
+    left: -45px;
+    width: 80px;
+}
+
+.arrow_right {
+    z-index: 50;
+    top: 50px;
+    right: -45px;
+    width: 80px;
+}
+
 //media query
 @media(max-width:768px) {
-    img {
+    .my_img {
         object-fit: cover;
         height: 250px;
         border-radius: 10px;
