@@ -50,11 +50,14 @@ export default {
             }
         }
     },
+    watch: {
+        
+    },
     computed: {
         scrollDots(){
             const categoryWindow = document.getElementById('category-window');
             if(categoryWindow)
-            return (window.innerWidth/categoryWindow.scrollWidth)
+            return (Math.ceil(window.innerWidth/categoryWindow.scrollWidth))
         }
     },
     mounted() {
@@ -92,7 +95,7 @@ export default {
         </div>
         <div>
             <span v-for="scrollDot in scrollDots" class="p-2 rounded-circle bg-secondary">
-
+                .
             </span>
         </div>
     </div>
