@@ -11,26 +11,48 @@
     <div v-if="isUserPaying" class="container">
         <h2>Inserisci qui i tuoi dati</h2>
         <!-- Payment form fields -->
+
+        
+        <!-- Inserimento nome -->
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
             <input v-model="orderPayload.name" type="text" class="form-control" id="name" placeholder="Inserisci qui il tuo nome">
+            <div v-if="orderPayload.name == ''" class="text-danger">
+                Il campo nome è richiesto
+            </div>
         </div>
+
+        <!-- Inserimento Indirizzo -->
         <div class="mb-3">
             <label for="Indirizzo" class="form-label">Indirizzo</label>
             <input v-model="orderPayload.address" type="text" class="form-control" id="Indirizzo" placeholder="Inserisci l'indirizzo per la consegna">
+            <div v-if="orderPayload.address == ''" class="text-danger">
+                L'indirizzo è richiesto
+            </div>
         </div>
+
+        <!-- Inserimento E-mail -->
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
             <input v-model="orderPayload.email" type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+            <div v-if="orderPayload.email == ''" class="text-danger">
+                L'E-mail è richiesta
+            </div>
         </div>
+
+        <!-- Inserimento telefono -->
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
             <input v-model="orderPayload.phone_number" type="email" class="form-control" id="phone" placeholder="Inserisci il tuo recapito">
+            <div v-if="orderPayload.phone_number == ''" class="text-danger">
+                Il contatto telefonico è richiesto
+            </div>
         </div>
+
 
         <div id="dropin-container"></div>
         <!-- Submit button -->
-        <button id="submit-payment-btn" class="btn btn-warning w-100">Conferma pagamento</button>
+        <button id="submit-payment-btn" class="btn btn-warning w-100" :class="{ 'disabled': button_enable == false }">Conferma pagamento</button>
     </div>
     <div v-else class="container">
         <button @click="getPaymentData" class="btn btn-warning w-100">Procedi con il pagamento</button>
@@ -47,16 +69,18 @@ export default {
     data() {
         return {
             orderPayload: {
-                name: 'mario rossi',
-                address: 'via nazionale, 1',
-                phone_number: '3331234567',
-                email: 'mariorossi@gmail.com',
+                name: '',
+                address: '',
+                phone_number: '',
+                email: '',
                 total: store.cartTotal,
                 products: [],
                 restaurant_id: null,
             },
             isUserPaying: false,
             store,
+            button_enable: false
+
         }
     },
     methods: {
@@ -138,10 +162,24 @@ export default {
             }
             this.isDropinLoading = false;
         },
+        getButtonEnable() {
+            
+            if((this.orderPayload.name == '') && 
+                (this.orderPayload.email == '')&&
+                (this.orderPayload.address == '')&&
+                (this.orderPayload.phone_number == '')
+                ) {
+                this.button_enable = false;
+            } else {
+                this.button_enable = true;
+            }
+            
+        }
     },
     mounted(){
         this.getProducts();
         this.getRestaurantId();
+        this.getButtonEnable();
     }
 }
 </script>
