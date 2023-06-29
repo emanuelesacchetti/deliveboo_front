@@ -169,9 +169,6 @@ export default {
     background-color: $primary-color;
     border-radius: 30px;
     padding: 10px;
-
-
-
 }
 
 .btn_color:hover {

@@ -198,8 +198,7 @@ export default {
             width: 100%;
             border-radius: 100%;
             aspect-ratio: 1/1;
-            // top: -30px;
-            //left: -50%;
+
         }
     }
 
