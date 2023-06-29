@@ -99,7 +99,7 @@ export default {
                         <div class="col-md-4 d-flex justify-content-center align-items-center text-box">
                             <div class="text-center text-dark">
                                 <h5 class="">{{ restaurant.name }}</h5>
-                                <button class="btn btn_color text-light mt-3" @click="clickOnRestaurant(restaurant)">
+                                <button class=" mt-3" @click="clickOnRestaurant(restaurant)">
                                     Ordina da qui
                                 </button>
                             </div>
@@ -165,16 +165,23 @@ export default {
 
 }
 
-.btn_color {
+button {
+    @include mixins.primary-btn;
+    border-color: $primary-color;
+
+}
+
+button:hover {
+    @include mixins.btn-hover;
+    font-size: 12px;
     background-color: $primary-color;
-    border-radius: 30px;
-    padding: 10px;
+    box-shadow: $primary-color 0px 0px 15px 0px;
 }
 
-.btn_color:hover {
-    background-color: $secondary-color;
-
+button:active {
+    @include mixins.btn-active;
 }
+
 
 .my_height {
     height: 250px;

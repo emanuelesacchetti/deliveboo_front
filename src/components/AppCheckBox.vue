@@ -176,4 +176,21 @@ export default {
     right: -45px;
     width: 80px;
 }
+
+//media query
+@media(max-width:1200px) {
+    .arrow_left {
+        z-index: 50;
+        top: 50px;
+        left: -45px;
+        width: 80px;
+    }
+
+    .arrow_right {
+        z-index: 50;
+        top: 50px;
+        right: -45px;
+        width: 80px;
+    }
+}
 </style>
