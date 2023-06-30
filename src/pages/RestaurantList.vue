@@ -99,7 +99,7 @@ export default {
                         <div class="col-md-4 d-flex justify-content-center align-items-center text-box">
                             <div class="text-center text-dark">
                                 <h5 class="">{{ restaurant.name }}</h5>
-                                <button class=" mt-3" @click="clickOnRestaurant(restaurant)">
+                                <button class=" my_btn mt-3" @click="clickOnRestaurant(restaurant)">
                                     Ordina da qui
                                 </button>
                             </div>
@@ -220,8 +220,19 @@ button:active {
         height: 100%;
     }
 
-    .btn {
+    .my_btn {
         margin-bottom: 20px;
+        font-size: 12px;
+    }
+}
+
+
+
+@media screen and (max-width:1200px) {
+
+
+    .my_btn {
+        font-size: 11px;
     }
 }
 </style>
