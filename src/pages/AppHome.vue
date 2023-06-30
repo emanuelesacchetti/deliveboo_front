@@ -13,7 +13,8 @@ export default {
 
 <template>
     <div class="home-container position-relative">
-        <img class="slogan_img position-absolute top-0 left-50 translate-x-middle" src="src/assets/img/slogan.svg" alt="">
+        <img class="slogan_img position-absolute top-0 left-50 translate-x-middle" src="src/assets/img/sloganlello.jpeg"
+            alt="">
         <AppCategory />
     </div>
 </template>
