@@ -66,6 +66,9 @@ export default {
         goToRestaurant(id, slug) {
             this.store.lastVisitedRestaurantId = id;
             this.$router.push({ name: 'single-restaurant', params: { slug } });
+        },
+        resetFilters(){
+            this.$router.push({query:{types: ''}})
         }
     },
     watch: {
@@ -108,8 +111,9 @@ export default {
                 </div>
             </div>
         </div>
-        <div v-else>
-            <h1 class="display-6 p-2 text-dark rounded-3 my-3 text-center">Non ci sono ristoranti che soddisfino tutte le categorie selezionate.</h1>
+        <div v-else class="my-5 text-center">
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Non ci sono ristoranti che soddisfino tutte le categorie selezionate</h1>
+            <button class="my_btn mt-3" @click="resetFilters()">Deseleziona tutto</button>
         </div>
     </div>
     <div v-if="cartAlert.triggered"
@@ -137,6 +141,7 @@ export default {
 
 .component-container {
     background: whitesmoke;
+    margin-bottom: 150px;
 }
 
 .my_color {
