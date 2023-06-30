@@ -37,7 +37,7 @@ export default {
             if (direction == 'left' && categoryWindow.scrollLeft > 0) {
                 categoryWindow.scroll({
                     top: 0,
-                    left: categoryWindow.scrollLeft -= ( window.innerWidth - 250),
+                    left: categoryWindow.scrollLeft -= (window.innerWidth - 250),
                     behavior: "smooth",
                 });
             } else if (direction == 'right' && categoryWindow.scrollLeft < categoryWindow.scrollWidth) {
@@ -150,6 +150,7 @@ export default {
     top: 50px;
     left: -45px;
     width: 80px;
+    cursor: pointer;
 }
 
 .arrow_right {
@@ -157,6 +158,7 @@ export default {
     top: 50px;
     right: -45px;
     width: 80px;
+    cursor: pointer;
 }
 
 //media query
