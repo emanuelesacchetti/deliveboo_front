@@ -159,13 +159,10 @@ export default {
 
                                 if (response.data.success == true) {
                                     that.emptyCart();
-                                    //
+                                    that.$router.push({ name: 'checkout-success', params: { orderCode: response.data.orderCode }});
                                 }else{
                                     submitBtn.classList.remove('disabled');
-                                    that.errors = response.data.errors
                                 }
-
-                                alert(response.data.message)
 
                             })
 
