@@ -100,8 +100,8 @@ export default {
                     <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
                         <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
                             <div class="img_container">
-                                <img class=" card-img-top" :src="`${store.baseUrl}/storage/${product.image}`"
-                                    alt="Card image cap">
+                                <img class=" card-img-top dish-img" :src="`${store.baseUrl}/storage/${product.image}`"
+                                    :alt="'food,gourmet'+product.id" onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt">
                             </div>
                             <div class="my_cardText">
                                 <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
@@ -116,7 +116,7 @@ export default {
                 </div>
             </div>
             <div class="cart-container mt-5 ms-2 ps-2 d-none d-md-block">
-                <AppCart class="cart_element" />
+                <AppCart class="cart_element sticky-top" />
             </div>
 
         </div>
@@ -133,8 +133,6 @@ export default {
     padding: 0;
     margin: 0;
 }
-
-
 
 .general_container {
     top: -150px;
