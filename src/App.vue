@@ -24,7 +24,7 @@ export default {
         </main>
         <AppFooter />
     </body>
-    <AppLoading></AppLoading>
+    <AppLoading />
 </template>
 
 
