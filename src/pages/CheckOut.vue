@@ -1,84 +1,101 @@
 <template>
     <div class="container_wrapper">
-        <div class="container p-2">
-            <h1 class="text-center mb-3">Riepilogo ordine</h1>
-            <ul class="list-group fw-semibold">
-                <li v-for="item in this.store.cart" class="list-group-item">{{ item.product.name }} x{{
-                    item.product.quantity }}
-                </li>
-            </ul>
-            <p class="text-capitalize fw-semibold fs-5 m-3">totale {{ this.store.cartTotal }} &euro;</p>
-        </div>
-
-
-        <div v-if="isUserPaying" class="container">
-            <h2>Inserisci qui i tuoi dati</h2>
-            <!-- Payment form fields -->
-            <div v-show="errors" class="text-danger">
-                <ul v-for="error, index in errors ">
-                    <li>{{ error[0] }}</li>
+        <div v-if="store.cartTotal">
+            <div class="container p-2">
+                <h1 class="text-center mb-5 display-4">Riepilogo ordine</h1>
+                <ul class="list-group fw-semibold p-2">
+                    <li v-for="item in this.store.cart" class="list-group-item">{{ item.product.name }} x{{
+                        item.product.quantity }}
+                    </li>
                 </ul>
-            </div>
-
-            <!-- Inserimento nome -->
-            <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
-                <input v-model="orderPayload.name" type="text" class="form-control" id="name"
-                    placeholder="Inserisci qui il tuo nome">
-                <div v-show="!orderPayload.name && buttonClicked" class="text-danger">
-                    Il campo nome è richiesto
-                </div>
-            </div>
-
-            <!-- Inserimento Indirizzo -->
-            <div class="mb-3">
-                <label for="Indirizzo" class="form-label">Indirizzo</label>
-                <input v-model="orderPayload.address" type="text" class="form-control" id="Indirizzo"
-                    placeholder="Inserisci l'indirizzo per la consegna">
-                <div v-show="!orderPayload.address && buttonClicked" class="text-danger">
-                    L'indirizzo è richiesto
-                </div>
-            </div>
-
-            <!-- Inserimento E-mail -->
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
-                <input v-model="orderPayload.email" type="email" class="form-control" id="email"
-                    placeholder="Inserisci la tua email">
-                <div v-show="!orderPayload.email && buttonClicked" class="text-danger">
-                    L'E-mail è richiesta
-                </div>
-                <div v-show="(!orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm)) && buttonClicked" class="text-danger">
-                    L'E-mail non è valida
-                </div>
-            </div>
-
-            <!-- Inserimento telefono -->
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input v-model="orderPayload.phone_number" type="number" class="form-control" id="phone"
-                    placeholder="Inserisci il tuo recapito">
-
-                <div v-show="!orderPayload.phone_number && buttonClicked" class="text-danger">
-                    Il contatto telefonico è richiesto
-                </div>
-                <div v-show="((orderPayload.phone_number > 9999999999) || (orderPayload.phone_number < 999999999)) && buttonClicked"
-                    class="text-danger">
-                    Il campo può contenere solo 10 cifre
-                </div>
+                <p v-if="this.store.cartTotal" class="text-capitalize fw-semibold fs-5 my-3">
+                    totale {{ this.store.cartTotal }} &euro;
+                </p>
             </div>
 
 
-            <div id="dropin-container"></div>
-            <!-- Submit button -->
-            <div class="d-flex justify-content-center">
-                <button id="submit-payment-btn" class="d-flex " @click="buttonClicked = true"
-                    :class="{ 'disabled': checkFormValidity }">Conferma pagamento</button>
+            <div v-if="isUserPaying" class="container">
+                <h2>Inserisci qui i tuoi dati</h2>
+                <!-- Payment form fields -->
+                <div v-show="errors" class="text-danger">
+                    <ul v-for="error, index in errors ">
+                        <li>{{ error[0] }}</li>
+                    </ul>
+                </div>
+
+                <!-- Inserimento nome -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input v-model="orderPayload.name" type="text" class="form-control" id="name"
+                        placeholder="Inserisci qui il tuo nome">
+                    <div v-show="!orderPayload.name && buttonClicked" class="text-danger">
+                        Il campo nome è richiesto
+                    </div>
+                </div>
+
+                <!-- Inserimento Indirizzo -->
+                <div class="mb-3">
+                    <label for="Indirizzo" class="form-label">Indirizzo</label>
+                    <input v-model="orderPayload.address" type="text" class="form-control" id="Indirizzo"
+                        placeholder="Inserisci l'indirizzo per la consegna">
+                    <div v-show="!orderPayload.address && buttonClicked" class="text-danger">
+                        L'indirizzo è richiesto
+                    </div>
+                </div>
+
+                <!-- Inserimento E-mail -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input v-model="orderPayload.email" type="email" class="form-control" id="email"
+                        placeholder="Inserisci la tua email">
+                    <div v-show="!orderPayload.email && buttonClicked" class="text-danger">
+                        L'E-mail è richiesta
+                    </div>
+                    <div v-show="(!orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm)) && buttonClicked"
+                        class="text-danger">
+                        L'E-mail non è valida
+                    </div>
+                </div>
+
+                <!-- Inserimento telefono -->
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input v-model="orderPayload.phone_number" type="number" class="form-control" id="phone"
+                        placeholder="Inserisci il tuo recapito">
+
+                    <div v-show="!orderPayload.phone_number && buttonClicked" class="text-danger">
+                        Il contatto telefonico è richiesto
+                    </div>
+                    <div v-show="((orderPayload.phone_number > 9999999999) || (orderPayload.phone_number < 999999999)) && buttonClicked"
+                        class="text-danger">
+                        Il campo può contenere solo 10 cifre
+                    </div>
+                </div>
+
+
+                <div v-if="store.cartTotal" id="dropin-container"></div>
+                <!-- Submit button -->
+                <div class="d-flex justify-content-center">
+                    <button id="submit-payment-btn" class="d-flex " @click="buttonClicked = true"
+                        :class="{ 'btn disabled': checkFormValidity }">
+                        Conferma pagamento
+                    </button>
+                </div>
+            </div>
+            <div v-else class="container d-flex justify-content-center">
+                <button @click="getPaymentData" :class="{ 'btn disabled': !this.store.cartTotal }">
+                    Procedi con il pagamento
+                </button>
+
             </div>
         </div>
-
-        <div v-else class="container d-flex justify-content-center">
-            <button @click="getPaymentData">Procedi con il pagamento</button>
+        <div v-else class="py-5 container d-flex justify-content-center flex-wrap">
+            <p class="w-100 text-center fs-3">Ops! Si è verificato un errore...</p>
+            <router-link to="/" class="d-flex btn">
+                <button id="submit-payment-btn" class="d-flex ">
+                    Torna alla Home
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -188,7 +205,6 @@ export default {
         },
     },
     computed: {
-
         checkFormValidity() {
 
             if (this.buttonClicked) {
@@ -197,8 +213,8 @@ export default {
                     (this.orderPayload.email) &&
                     (this.orderPayload.address) &&
                     (this.orderPayload.phone_number) &&
-                    (this.orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm)) &&
-                    (this.orderPayload.phone_number.match(/[^0-9]/g))
+                    (this.orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm))
+                    // && (this.orderPayload.phone_number.match(/[^0-9]/g))
                 ) {
                     return '';
                 } else {
@@ -224,8 +240,7 @@ export default {
 @use '../partials/mixins.scss';
 
 .container_wrapper {
-    margin-top: 40vh;
-    margin-bottom: 40vh;
+    margin: 200px 0;
 }
 
 button {
