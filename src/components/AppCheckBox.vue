@@ -115,7 +115,7 @@ export default {
 @use '../partials/mixins.scss';
 
 .component-wrapper {
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .container_check {

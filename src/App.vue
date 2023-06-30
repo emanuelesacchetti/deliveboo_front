@@ -33,4 +33,8 @@ export default {
     font-family: 'Inter', sans-serif;
     font-family: 'Roboto', sans-serif;
 }
+
+body{
+    min-height: 100vh;
+}
 </style>

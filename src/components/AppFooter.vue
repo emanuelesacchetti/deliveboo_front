@@ -50,18 +50,17 @@ export default {
         <div class="wave-container">
             <img :src="getImageUrl('wave.png')" alt="">
         </div>
-        <div class="container">
-            <div class="row">
-                <span v-for="developer in developers" class="dev-container col-lg-4 col-sm-6">
-                    <span>
-                        <small>{{ developer.nome }}</small>
-                        <a :href="developer.git"><img :src="getImageUrl('github.png')" alt="github logo"></a>
-                        <a :href="developer.linkedin"><img :src="getImageUrl('linkedin.png')" alt="linkedin logo"></a>
-                        <hr />
-                    </span>
-                </span>
-
-            </div>
+        <div class="container text-end lh-1">
+            <ul class="list-group d-inline-block">
+                <h2 class="text-center fs-4 fw-light text-white">Contattaci</h2>
+                <li v-for="developer in developers" class="list-group-item d-flex justify-content-end align-items-center bg-transparent border-0 text-white">
+                    <h3 class="fs-6 mb-0 me-2 fw-light">{{ developer.nome }}</h3>
+                    <a class="me-2" :href="developer.git"><img class="logo-img img-fluid"
+                            :src="getImageUrl('github.png')" alt="github logo"></a>
+                    <a :href="developer.linkedin"><img class="img-fluid logo-img"
+                            :src="getImageUrl('linkedin.png')" alt="linkedin logo"></a>
+                </li>
+            </ul>
         </div>
     </footer>
 </template>
@@ -70,10 +69,22 @@ export default {
 <style scoped lang="scss">
 @use '../partials/variables.scss' as *;
 
+.logo-img {
+    height: 1.2rem;
+}
+.accordion-item {
+    background: transparent;
+    border: 0;
+
+    & * {
+        background-color: transparent;
+    }
+}
+
 .wave-container img {
     position: absolute;
     bottom: 100%;
-    left:0;
+    left: 0;
     width: 100%;
     height: 200px;
 }
@@ -97,7 +108,9 @@ export default {
 }
 
 .container_footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
     margin-top: 100px;
     background-color: $primary-color;
-}
-</style>
+}</style>
