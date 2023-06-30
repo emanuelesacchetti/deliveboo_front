@@ -87,7 +87,7 @@ export default {
 <template>
     <AppCheckBox />
     <div class="container p-3 component-container rounded-4">
-        <div class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
+        <div v-if="store.restaurantList.length" class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
             <div class=" col my_height" v-for="restaurant in  this.store.restaurantList">
                 <div class=" card h-100 rounded-5 overflow-hidden card-border">
                     <div class=" row h-100">
@@ -107,6 +107,9 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3 text-center">Non ci sono ristoranti che soddisfino tutte le categorie selezionate.</h1>
         </div>
     </div>
     <div v-if="cartAlert.triggered"
