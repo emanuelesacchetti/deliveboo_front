@@ -1,6 +1,7 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import AppLoading from './loading/AppLoading.vue';
 
 
 
@@ -8,6 +9,7 @@ export default {
     components: {
         AppHeader,
         AppFooter,
+        AppLoading,
 
     }
 }
@@ -22,6 +24,7 @@ export default {
         </main>
         <AppFooter />
     </body>
+    <AppLoading></AppLoading>
 </template>
 
 
