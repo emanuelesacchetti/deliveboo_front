@@ -101,7 +101,8 @@ export default {
                         <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
                             <div class="img_container">
                                 <img class=" card-img-top dish-img" :src="`${store.baseUrl}/storage/${product.image}`"
-                                    :alt="'food,gourmet'+product.id" onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt">
+                                    :alt="'food,gourmet' + product.id"
+                                    onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt">
                             </div>
                             <div class="my_cardText">
                                 <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
@@ -245,11 +246,25 @@ button:active {
 //mediquery 
 @media(max-width:768px) {
 
+    .my_menu {
+        padding: 10px 2rem;
+    }
     .general_container {
         padding-left: 0;
         padding-right: 0;
     }
 
+    .my_card {
+
+        .my_cardText{
+            padding: 120px 0 20px;
+        }
+        .img_container {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%,-50px);
+        }
+    }
 
 
 
