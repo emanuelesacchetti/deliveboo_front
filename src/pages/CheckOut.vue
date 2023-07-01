@@ -113,12 +113,6 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
-            inputs: {
-                name: '',
-                address: '',
-                phone_number: '',
-                email: '',
-            },
             orderPayload: {
                 name: '',
                 address: '',
@@ -216,13 +210,9 @@ export default {
         },
     },
     computed: {
-        isFormInvalid() {
+        checkFormValidity() {
             if (this.buttonClicked) {
-                this.inputs.forEach(input => {
-                    if(input){
-                        
-                    }
-                });
+
                 if ((this.orderPayload.name) &&
                     (this.orderPayload.email) &&
                     (this.orderPayload.address) &&
