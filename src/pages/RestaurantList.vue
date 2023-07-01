@@ -15,7 +15,8 @@ export default {
                 id: '',
             },
             products: [],
-            loadingRestaurants : true,
+            loadingRestaurants: true,
+            timeoutLoading: null,
         }
     },
     components: {
@@ -70,6 +71,14 @@ export default {
         },
         resetFilters() {
             this.$router.push({ query: { types: '' } })
+        },
+        setTimeoutLoading() {
+            if(this.timeoutLoading){
+                clearTimeout(this.timeoutLoading);
+            }
+            this.timeoutLoading = setTimeout(() => {
+                this.loadingRestaurants = false;
+            }, 1000);
         }
     },
     watch: {
@@ -78,14 +87,13 @@ export default {
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
-                    let timingLoading = setTimeout( () => {
-                        this.loadingRestaurants = false;
-                    }, 1500);
+                    this.setTimeoutLoading()
                 })
         },
     },
     created() {
         this.getRestaurantList(this.$route.query.types);
+        this.setTimeoutLoading();
     }
 }
 
@@ -95,7 +103,11 @@ export default {
 <template>
     <AppCheckBox />
     <div class="container p-3 component-container rounded-4">
-        <div v-if="store.restaurantList.length" class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
+        <div v-if="loadingRestaurants" class="my-5 text-center">
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo cercando i migliori ristoranti per te</h1>
+            <img src="src/assets/img/loadingDots.gif" alt="">
+        </div>
+        <div v-else-if="store.restaurantList.length" class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
             <div class=" col my_height" v-for="restaurant in  this.store.restaurantList">
                 <div class=" card h-100 rounded-5 overflow-hidden card-border">
                     <div class=" row h-100">
@@ -115,10 +127,6 @@ export default {
                     </div>
                 </div>
             </div>
-        </div>
-        <div v-else-if="loadingRestaurants" class="my-5 text-center">
-            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo cercando i migliori ristoranti per te</h1>
-            <img src="src/assets/img/loadingDots.gif" alt="">
         </div>
         <div v-else class="my-5 text-center">
             <h1 class="display-6 p-2 text-dark rounded-3 my-3">Non ci sono ristoranti che soddisfino tutte le categorie
@@ -233,10 +241,11 @@ button:active {
     }
 }
 
-@media(max-width:550px){
-    .container_allert{
+@media(max-width:550px) {
+    .container_allert {
         flex-direction: column;
-        .my_btn{
+
+        .my_btn {
             font-size: 10px;
         }
     }
@@ -245,12 +254,13 @@ button:active {
 
 
 @media screen and (max-width:767px) {
-    .container_allert{
-        
-        div{
+    .container_allert {
+
+        div {
             flex-direction: column;
         }
     }
+
     .my_height {
         height: 100%;
     }
