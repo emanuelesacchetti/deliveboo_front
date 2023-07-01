@@ -236,9 +236,6 @@ button:active {
 @media(max-width:550px){
     .container_allert{
         flex-direction: column;
-        div{
-            
-        }
         .my_btn{
             font-size: 10px;
         }
@@ -252,8 +249,6 @@ button:active {
         
         div{
             flex-direction: column;
-        }
-        .my_btn{
         }
     }
     .my_height {
