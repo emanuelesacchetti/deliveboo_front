@@ -7,13 +7,13 @@
         <div v-else-if="store.cartTotal">
             <div class="container p-2">
                 <h1 class="text-center mb-5 display-4">Riepilogo ordine</h1>
-                <ul class="list-group fw-semibold p-2">
+                <ul class="list-group p-2">
                     <li v-for="item in this.store.cart" class="list-group-item">{{ item.product.name }} x{{
                         item.product.quantity }}
                     </li>
                 </ul>
-                <p v-if="this.store.cartTotal" class="text-capitalize fw-semibold fs-5 my-3">
-                    totale {{ this.store.cartTotal }} &euro;
+                <p class="text-capitalize fw-semibold fs-3 my-3 px-4">
+                    Totale {{ this.store.cartTotal }} &euro;
                 </p>
             </div>
 
@@ -113,6 +113,20 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
+            inputs:{
+                name: {
+                    empty: false,
+                },
+                address: {
+                    empty: false,
+                },
+                phone_number: {
+                    empty: false,
+                },
+                email: {
+                    empty: false,
+                },
+            },
             orderPayload: {
                 name: '',
                 address: '',
@@ -149,7 +163,6 @@ export default {
         getToken() {
             let token = axios.get('http://localhost:8000/api/generate-client-token')
                 .catch(error => {
-                    console.log('Token request failed: ' + error.message);
                     return
                 });
             return token;
@@ -210,10 +223,9 @@ export default {
         },
     },
     computed: {
-        checkFormValidity() {
-
+        isFormValid() {
             if (this.buttonClicked) {
-
+                
                 if ((this.orderPayload.name) &&
                     (this.orderPayload.email) &&
                     (this.orderPayload.address) &&
