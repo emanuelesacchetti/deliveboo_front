@@ -85,7 +85,7 @@ export default {
 
 
         <div class="position-relative container_jumbo">
-            <img class=" w-100" :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap">
+            <img class=" w-100" :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap" loading="lazy">
             <div class=" my_bg text-center container_jumboText">
                 <h1 class="display-1"> {{ restaurant.name }}</h1>
             </div>
@@ -102,7 +102,7 @@ export default {
                             <div class="img_container">
                                 <img class=" card-img-top dish-img" :src="`${store.baseUrl}/storage/${product.image}`"
                                     :alt="'food,gourmet' + product.id"
-                                    onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt">
+                                    onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt" loading="lazy">
                             </div>
                             <div class="my_cardText">
                                 <h5 class=" fs-3 mb-3">{{ product.name }}</h5>
