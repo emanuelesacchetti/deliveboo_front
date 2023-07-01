@@ -15,7 +15,8 @@ export default {
                 id: '',
             },
             products: [],
-            loadingRestaurants : true,
+            loadingRestaurants: true,
+            timeoutLoading: null,
         }
     },
     components: {
@@ -68,8 +69,16 @@ export default {
             this.store.lastVisitedRestaurantId = id;
             this.$router.push({ name: 'single-restaurant', params: { slug } });
         },
-        resetFilters(){
-            this.$router.push({query:{types: ''}})
+        resetFilters() {
+            this.$router.push({ query: { types: '' } })
+        },
+        setTimeoutLoading() {
+            if(this.timeoutLoading){
+                clearTimeout(this.timeoutLoading);
+            }
+            this.timeoutLoading = setTimeout(() => {
+                this.loadingRestaurants = false;
+            }, 1000);
         }
     },
     watch: {
@@ -78,14 +87,13 @@ export default {
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
-                    let timingLoading = setTimeout( () => {
-                        this.loadingRestaurants = false;
-                    }, 1500);
+                    this.setTimeoutLoading()
                 })
         },
     },
     created() {
         this.getRestaurantList(this.$route.query.types);
+        this.setTimeoutLoading();
     }
 }
 
@@ -95,7 +103,11 @@ export default {
 <template>
     <AppCheckBox />
     <div class="container p-3 component-container rounded-4">
-        <div v-if="store.restaurantList.length" class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
+        <div v-if="loadingRestaurants" class="my-5 text-center">
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo cercando i migliori ristoranti per te</h1>
+            <img src="src/assets/img/loadingDots.gif" alt="">
+        </div>
+        <div v-else-if="store.restaurantList.length" class="row row-cols-1 row-cols-lg-2  g-4 justify-content-center">
             <div class=" col my_height" v-for="restaurant in  this.store.restaurantList">
                 <div class=" card h-100 rounded-5 overflow-hidden card-border">
                     <div class=" row h-100">
@@ -106,7 +118,7 @@ export default {
                         </div>
                         <div class="col-md-4 d-flex justify-content-center align-items-center text-box">
                             <div class="text-center text-dark">
-                                <h5 class="">{{ restaurant.name }}</h5>
+                                <h5 class="p-2">{{ restaurant.name }}</h5>
                                 <button class=" my_btn mt-3" @click="clickOnRestaurant(restaurant)">
                                     Ordina da qui
                                 </button>
@@ -116,20 +128,17 @@ export default {
                 </div>
             </div>
         </div>
-        <div v-else-if="loadingRestaurants" class="my-5 text-center">
-            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo cercando i migliori ristoranti per te</h1>
-            <img src="src/assets/img/loadingDots.gif" alt="">
-        </div>
         <div v-else class="my-5 text-center">
-            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Non ci sono ristoranti che soddisfino tutte le categorie selezionate</h1>
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Non ci sono ristoranti che soddisfino tutte le categorie
+                selezionate</h1>
             <button class="my_btn mt-3" @click="resetFilters()">Deseleziona tutto</button>
         </div>
     </div>
     <div v-if="cartAlert.triggered"
         class="position-fixed top-50 start-50 translate-middle p-5 text-bg-light z-9 container_allert" id="my_allert">
-        <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
+        <p class="text-center">Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
-            <button class="my_btn" @click="clickOnAlertBtn('confirm')">
+            <button class="my_btn me-1" @click="clickOnAlertBtn('confirm')">
                 Procedi
             </button>
             <button class="my_btn" @click="clickOnAlertBtn('close')">
@@ -232,14 +241,33 @@ button:active {
     }
 }
 
+@media(max-width:550px) {
+    .container_allert {
+        flex-direction: column;
+
+        .my_btn {
+            font-size: 10px;
+        }
+    }
+
+}
+
+
 @media screen and (max-width:767px) {
+    .container_allert {
+
+        div {
+            flex-direction: column;
+        }
+    }
+
     .my_height {
         height: 100%;
     }
 
     .my_btn {
         margin-bottom: 20px;
-        font-size: 12px;
+        font-size: 8px;
     }
 }
 
