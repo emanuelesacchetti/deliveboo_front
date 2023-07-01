@@ -128,9 +128,9 @@ export default {
     </div>
     <div v-if="cartAlert.triggered"
         class="position-fixed top-50 start-50 translate-middle p-5 text-bg-light z-9 container_allert" id="my_allert">
-        <p>Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
+        <p class="text-center">Hai dei prodotti nel carrello, se prosegui verranno eliminati.</p>
         <div class="d-flex justify-content-between px-3">
-            <button class="my_btn" @click="clickOnAlertBtn('confirm')">
+            <button class="my_btn me-1" @click="clickOnAlertBtn('confirm')">
                 Procedi
             </button>
             <button class="my_btn" @click="clickOnAlertBtn('close')">
@@ -233,14 +233,36 @@ button:active {
     }
 }
 
+@media(max-width:550px){
+    .container_allert{
+        flex-direction: column;
+        div{
+            
+        }
+        .my_btn{
+            font-size: 10px;
+        }
+    }
+
+}
+
+
 @media screen and (max-width:767px) {
+    .container_allert{
+        
+        div{
+            flex-direction: column;
+        }
+        .my_btn{
+        }
+    }
     .my_height {
         height: 100%;
     }
 
     .my_btn {
         margin-bottom: 20px;
-        font-size: 12px;
+        font-size: 8px;
     }
 }
 
