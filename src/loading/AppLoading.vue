@@ -11,7 +11,7 @@ export default {
     created() {
         setTimeout(firstload => {
             this.store.loading = false
-        }, 2000);
+        }, 2500);
 
     }
 
@@ -43,10 +43,8 @@ export default {
 
 
     img {
-        //  animation-name: animationdeliveboo;
-        // animation-duration: 2.0s;
-        // animation-timing-function: linear;
-        animation: animationdeliveboo 3.5s linear infinite;
+        animation: animationdeliveboo 4.5s ease-in;
+        will-change: width;
     }
 }
 
@@ -56,8 +54,6 @@ export default {
     0% {
         width: 0px;
     }
-
-
 
     100% {
         width: 1300px;
