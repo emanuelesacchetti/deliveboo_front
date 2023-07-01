@@ -1,6 +1,10 @@
 <template>
     <div class="container_wrapper">
-        <div v-if="store.cartTotal">
+        <div v-if="paymentLoading" class="my-5 text-center">
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo processando il pagamento</h1>
+            <img src="src/assets/img/loadingDots.gif" alt="">
+        </div>
+        <div v-else-if="store.cartTotal">
             <div class="container p-2">
                 <h1 class="text-center mb-5 display-4">Riepilogo ordine</h1>
                 <ul class="list-group fw-semibold p-2">
@@ -121,8 +125,8 @@ export default {
             isUserPaying: false,
             store,
             buttonClicked: false,
-            errors: null
-
+            errors: null,
+            paymentLoading: false,
         }
     },
     methods: {
@@ -177,12 +181,13 @@ export default {
                                 submitBtn.classList.remove('disabled');
                             }
                             // Send the nonce to your Laravel backend for server-side processing
-
+                            that.paymentLoading = true;
                             axios.post('http://localhost:8000/api/process-payment', {
                                 paymentMethodNonce: payload.nonce,
                                 order: that.orderPayload,
+                                
                             }).then(response => {
-
+                                that.paymentLoading = false;
                                 if (response.data.success == true) {
                                     that.emptyCart();
                                     that.$router.push({ name: 'checkout-success', params: { orderCode: response.data.orderCode } });
