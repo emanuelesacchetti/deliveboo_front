@@ -81,7 +81,7 @@
                 <!-- Submit button -->
                 <div class="d-flex justify-content-center">
                     <button id="submit-payment-btn" class="d-flex " @click="buttonClicked = true"
-                        :class="{ 'btn disabled': checkFormValidity }">
+                        :class="{ 'btn disabled': isFormInvalid }">
                         Conferma pagamento
                     </button>
                 </div>
@@ -113,6 +113,12 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
+            inputs: {
+                name: '',
+                address: '',
+                phone_number: '',
+                email: '',
+            },
             orderPayload: {
                 name: '',
                 address: '',
@@ -210,10 +216,13 @@ export default {
         },
     },
     computed: {
-        checkFormValidity() {
-
+        isFormInvalid() {
             if (this.buttonClicked) {
-
+                this.inputs.forEach(input => {
+                    if(input){
+                        
+                    }
+                });
                 if ((this.orderPayload.name) &&
                     (this.orderPayload.email) &&
                     (this.orderPayload.address) &&
