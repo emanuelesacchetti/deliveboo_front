@@ -13,13 +13,13 @@
                     </li>
                 </ul>
                 <p class="text-capitalize fw-semibold fs-3 my-3 px-4">
-                    Totale {{ this.store.cartTotal }} &euro;
+                    Totale: {{ this.store.cartTotal }} &euro;
                 </p>
             </div>
 
 
             <div v-if="isUserPaying" class="container">
-                <h2>Inserisci qui i tuoi dati</h2>
+                <h2 class="text-center">Inserisci qui i tuoi dati</h2>
                 <!-- Payment form fields -->
                 <div v-show="errors" class="text-danger">
                     <ul v-for="error, index in errors ">
@@ -31,63 +31,69 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
                     <input v-model="orderPayload.name" type="text" class="form-control" id="name"
-                        placeholder="Inserisci qui il tuo nome">
-                    <div v-show="!orderPayload.name && buttonClicked" class="text-danger">
-                        Il campo nome è richiesto
-                    </div>
+                        placeholder="Inserisci qui il tuo nome" @focusin="inputs.name.shown = true"
+                        @focusout="inputs.name.shown = false"
+                        :class="{ 'is-valid': orderPayload.name, 'is-invalid': !orderPayload.name }">
+                    <small v-show="inputs.name.shown">
+                        <span v-show="!orderPayload.name">Il campo nome è richiesto.</span>
+                    </small>
                 </div>
 
                 <!-- Inserimento Indirizzo -->
                 <div class="mb-3">
                     <label for="Indirizzo" class="form-label">Indirizzo</label>
                     <input v-model="orderPayload.address" type="text" class="form-control" id="Indirizzo"
-                        placeholder="Inserisci l'indirizzo per la consegna">
-                    <div v-show="!orderPayload.address && buttonClicked" class="text-danger">
-                        L'indirizzo è richiesto
-                    </div>
+                        placeholder="Inserisci l'indirizzo per la consegna" @focusin="inputs.address.shown = true"
+                        @focusout="inputs.address.shown = false"
+                        :class="{ 'is-valid': orderPayload.address, 'is-invalid': !orderPayload.address }">
+                    <small v-show="inputs.address.shown">
+                        <span v-show="!orderPayload.address">L'indirizzo è richiesto.</span>
+                    </small>
                 </div>
 
                 <!-- Inserimento E-mail -->
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
                     <input v-model="orderPayload.email" type="email" class="form-control" id="email"
-                        placeholder="Inserisci la tua email">
-                    <div v-show="!orderPayload.email && buttonClicked" class="text-danger">
-                        L'E-mail è richiesta
-                    </div>
-                    <div v-show="(!orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm)) && buttonClicked"
-                        class="text-danger">
-                        L'E-mail non è valida
-                    </div>
+                        placeholder="Inserisci la tua email" @focusin="inputs.email.shown = true"
+                        @focusout="inputs.email.shown = false"
+                        :class="{ 'is-valid': orderPayload.email && inputs.email.hasValidFormat, 'is-invalid': !orderPayload.email || !inputs.email.hasValidFormat }">
+                    <small v-show="inputs.email.shown">
+                        <span v-show="!orderPayload.email">Il campo email è obbligatorio.</span>
+                        <span v-show="!inputs.email.hasValidFormat && orderPayload.email"> Inserisci un formato
+                            valido.</span>
+                    </small>
                 </div>
 
                 <!-- Inserimento telefono -->
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone</label>
-                    <input v-model="orderPayload.phone_number" type="number" class="form-control" id="phone"
-                        placeholder="Inserisci il tuo recapito">
-
-                    <div v-show="!orderPayload.phone_number && buttonClicked" class="text-danger">
-                        Il contatto telefonico è richiesto
-                    </div>
-                    <div v-show="((orderPayload.phone_number > 9999999999) || (orderPayload.phone_number < 999999999)) && buttonClicked"
-                        class="text-danger">
-                        Il campo può contenere solo 10 cifre
-                    </div>
+                    <input v-model="orderPayload.phone_number" type="text" class="form-control" id="phone"
+                        placeholder="Inserisci il tuo recapito" @focusin="inputs.phone_number.shown = true"
+                        @focusout="inputs.phone_number.shown = false"
+                        :class="{ 'is-valid': orderPayload.phone_number && inputs.phone_number.hasValidFormat, 'is-invalid': !(orderPayload.phone_number && inputs.phone_number.hasValidFormat) }">
+                    <small v-show="inputs.phone_number.shown">
+                        <span v-show="!orderPayload.phone_number">Il numero di telefono è richiesto.</span>
+                        <span v-show="!inputs.phone_number.hasValidFormat && orderPayload.phone_number"> Sono ammessi solo
+                            numeri.</span>
+                    </small>
                 </div>
 
 
-                <div v-if="store.cartTotal" id="dropin-container"></div>
+                <div id="dropin-container"></div>
                 <!-- Submit button -->
-                <div class="d-flex justify-content-center">
-                    <button id="submit-payment-btn" class="d-flex " @click="buttonClicked = true"
-                        :class="{ 'btn disabled': checkFormValidity }">
+                <div class="text-center">
+                    <button id="submit-payment-btn" class="btn" @click="buttonClicked = true"
+                        :class="{ 'disabled': (!isFormValid || paymentLoading) }">
                         Conferma pagamento
                     </button>
+                    <p v-show="!isFormValid">
+                        <small> Compila correttamente il form</small>
+                    </p>
                 </div>
             </div>
             <div v-else class="container d-flex justify-content-center">
-                <button @click="getPaymentData" :class="{ 'btn disabled': !this.store.cartTotal }">
+                <button @click="getPaymentData" class="btn">
                     Procedi con il pagamento
                 </button>
 
@@ -113,19 +119,20 @@ import dropin from 'braintree-web-drop-in';
 export default {
     data() {
         return {
-            inputs:{
+            inputs: {
                 name: {
-                    focus: false,
-                    empty: false,
+                    shown: false,
                 },
                 address: {
-                    empty: false,
+                    shown: false,
                 },
                 phone_number: {
-                    empty: false,
+                    shown: false,
+                    hasValidFormat: false,
                 },
                 email: {
-                    empty: false,
+                    shown: false,
+                    hasValidFormat: false,
                 },
             },
             orderPayload: {
@@ -139,7 +146,6 @@ export default {
             },
             isUserPaying: false,
             store,
-            buttonClicked: false,
             errors: null,
             paymentLoading: false,
         }
@@ -175,73 +181,82 @@ export default {
 
         },
         async getPaymentData() {
-            // Create a client-side Braintree instance
+            // richiedo il token al back
             const clientToken = await this.getToken();
 
             let that = this;
             if (clientToken) {
+                //genero il form
                 this.isUserPaying = true;
+                //creo istanza di braintree
                 const instance = await dropin.create({
                     authorization: clientToken.data.clientToken,
                     selector: '#dropin-container',
                     locale: 'it_IT'
                 }, function (err, dropinInstance) {
-                    const submitBtn = document.getElementById('submit-payment-btn');
+                    if (err) {
+                        //errori durante la creazione del dropin
+                        console.log('Dropin creation failed.')
+                    }
 
+                    const submitBtn = document.getElementById('submit-payment-btn');
                     submitBtn.addEventListener('click', function () {
-                        this.classList.add('disabled');
+                        //invio i dati al back al click su submit
                         dropinInstance.requestPaymentMethod(function (err, payload) {
                             if (err) {
-                                submitBtn.classList.remove('disabled');
-                            }
-                            // Send the nonce to your Laravel backend for server-side processing
-                            that.paymentLoading = true;
-                            axios.post('http://localhost:8000/api/process-payment', {
-                                paymentMethodNonce: payload.nonce,
-                                order: that.orderPayload,
-                                
-                            }).then(response => {
+                                //errore durante la richiesta del metodo di pagamento
                                 that.paymentLoading = false;
-                                if (response.data.success == true) {
-                                    that.emptyCart();
-                                    that.$router.push({ name: 'checkout-success', params: { orderCode: response.data.orderCode } });
-                                } else {
-                                    submitBtn.classList.remove('disabled');
-                                }
+                            } else {
+                                // Invio dei dati al back
+                                that.paymentLoading = true;
+                                axios.post('http://localhost:8000/api/process-payment', {
+                                    paymentMethodNonce: payload.nonce,
+                                    order: that.orderPayload,
 
-                            })
-
+                                }).then(response => {
+                                    that.paymentLoading = false;
+                                    //esito pagamento
+                                    if (response.data.success == true) {
+                                        that.emptyCart();
+                                        that.$router.push({ name: 'checkout-success', params: { orderCode: response.data.orderCode } });
+                                    } else {
+                                        submitBtn.classList.remove('disabled');
+                                    }
+                                })
+                            }
 
                         })
-                    })
+                    });
                 })
-
-
             } else {
-                console.log('Dropin creation failed: token not found');
+                console.log('Client token not found');
             }
-            this.isDropinLoading = false;
         },
     },
     computed: {
         isFormValid() {
-            if (this.buttonClicked) {
+            let formValidity = true;
 
-                if ((this.orderPayload.name) &&
-                    (this.orderPayload.email) &&
-                    (this.orderPayload.address) &&
-                    (this.orderPayload.phone_number) &&
-                    (this.orderPayload.email.match(/@[^.]*\.(?:com|it)\b/gm))
-                    // && (this.orderPayload.phone_number.match(/[^0-9]/g))
-                ) {
-                    return '';
-                } else {
-                    return 'disabled';
-                }
-
+            //verifica campi vuoti
+            let payload = this.orderPayload;
+            if (!(payload.name && payload.address && payload.email && payload.phone_number)) {
+                formValidity = false;
             }
 
+            //phone_number
+            let phone = this.inputs.phone_number;
+            phone.hasValidFormat = !payload.phone_number.match(/[^0-9]/g);
+            if (!phone.hasValidFormat) {
+                formValidity = false;
+            }
+            //email
+            let email = this.inputs.email;
+            email.hasValidFormat = payload.email.match(/@[^.]*\.(?:com|it)\b/gm) ? true : false;
+            if (!email.hasValidFormat) {
+                formValidity = false;
+            }
 
+            return formValidity
         }
 
     },
