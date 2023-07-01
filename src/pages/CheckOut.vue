@@ -115,6 +115,7 @@ export default {
         return {
             inputs:{
                 name: {
+                    focus: false,
                     empty: false,
                 },
                 address: {
@@ -225,7 +226,7 @@ export default {
     computed: {
         isFormValid() {
             if (this.buttonClicked) {
-                
+
                 if ((this.orderPayload.name) &&
                     (this.orderPayload.email) &&
                     (this.orderPayload.address) &&
