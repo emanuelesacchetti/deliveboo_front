@@ -76,7 +76,7 @@ export default {
                 src="src/assets/img/arrowleft.svg" alt="">
             <div class="row flex-md-nowrap overflow-x-auto no-scroll row-cols-1 row-cols-md-4 row-cols-lg-6 row-cols-xl-8"
                 id="category-window">
-                <div v-for="restaurantType in store.restaurantTypes " class="z-1 p-2 col">
+                <div v-for="restaurantType in store.restaurantTypes " class="z-1 p-2 col h-100">
                     <router-link class="d-block card_category position-relative" @click='getTypesById(restaurantType.slug)'
                         :to="{ name: 'restaurants', query: { types: restaurantType.slug } }">
                         <img class="w-100 my_img" :src="`src/assets/iconcategory/${restaurantType.icon}`" alt="">
