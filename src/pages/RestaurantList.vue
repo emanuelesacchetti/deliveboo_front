@@ -14,7 +14,8 @@ export default {
                 slug: '',
                 id: '',
             },
-            products: []
+            products: [],
+            loadingRestaurants : true,
         }
     },
     components: {
@@ -73,9 +74,13 @@ export default {
     },
     watch: {
         '$route.query.types'(newQuery, oldQuery) {
+            this.loadingRestaurants = true;
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
+                    let timingLoading = setTimeout( () => {
+                        this.loadingRestaurants = false;
+                    }, 1500);
                 })
         },
     },
@@ -110,6 +115,10 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-else-if="loadingRestaurants" class="my-5 text-center">
+            <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo cercando i migliori ristoranti per te</h1>
+            <img src="src/assets/img/loadingDots.gif" alt="">
         </div>
         <div v-else class="my-5 text-center">
             <h1 class="display-6 p-2 text-dark rounded-3 my-3">Non ci sono ristoranti che soddisfino tutte le categorie selezionate</h1>
