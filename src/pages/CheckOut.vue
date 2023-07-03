@@ -249,7 +249,7 @@ export default {
             let phone = this.inputs.phone_number;
             phone.hasValidFormat = !payload.phone_number.match(/[^0-9]/g);
             phone.hasValidLength = payload.phone_number.length == 10;
-            if (!phone.hasValidFormat) {
+            if (!(phone.hasValidFormat && phone.hasValidLength)) {
                 formValidity = false;
             }
             //email
