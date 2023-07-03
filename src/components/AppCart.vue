@@ -20,8 +20,8 @@
                     <div class="w-25 d-flex px-1">
                         <div @click="deletefromCart(item.product)" class="text-danger text-nowrap"><i
                                 class="fa-solid fa-trash"></i></div>
-                        <div class="fw-semibold fs-6 text-nowrap text-end flex-grow-1"> {{ item.product.price *
-                            item.product.quantity }}
+                        <div class="fw-semibold fs-6 text-nowrap text-end flex-grow-1"> {{ (item.product.price *
+                            item.product.quantity).toFixed(2) }}
                             &euro;</div>
                     </div>
                 </div>
