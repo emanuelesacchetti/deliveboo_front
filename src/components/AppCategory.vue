@@ -69,6 +69,10 @@ export default {
     <div class="container-fluid">
         <AppSearch />
     </div>
+    <div class="text-center alternative-choice">
+        <br>
+        oppure scegli una categoria</div>
+        <br>
     <div class="container_category">
         <div class="container position-relative">
 
@@ -99,6 +103,11 @@ export default {
 <style lang="scss" scoped>
 @use '../partials/_variables.scss' as *;
 
+.alternative-choice{
+    color: $primary-color;
+            //text-transform: uppercase;
+            text-shadow: 1px 1px 0px $secondary-color;
+}
 .container_category {
 
 

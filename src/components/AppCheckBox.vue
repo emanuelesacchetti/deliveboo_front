@@ -168,6 +168,7 @@ export default {
     top: 70px;
     left: -45px;
     width: 80px;
+    cursor: pointer;
 }
 
 .arrow_right {
@@ -175,6 +176,8 @@ export default {
     top: 70px;
     right: -45px;
     width: 80px;
+    cursor: pointer;
+
 }
 
 //media query

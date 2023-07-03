@@ -97,7 +97,7 @@ export default {
             <div class="container-fluid mt-5 my_menu">
                 <h1 class=" p-3 border-bottom text-center">Menù</h1>
                 <div class=" row row-cols-1 row-cols-lg-1 row-cols-xl-1">
-                    <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products">
+                    <div class="col p-2 mt-5 d-flex justify-content-center" v-for="product in restaurant.products" key="product.id">
                         <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
                             <div class="img_container">
                                 <img class=" card-img-top dish-img" :src="`${store.baseUrl}/storage/${product.image}`"
