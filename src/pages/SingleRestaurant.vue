@@ -101,7 +101,7 @@ export default {
                         <div class="my_card text-center col-sm-12 col-lg-8 col-xl-8">
                             <div class="img_container">
                                 <img class=" card-img-top dish-img" :src="`${store.baseUrl}/storage/${product.image}`"
-                                    :alt="'food,gourmet' + product.id"
+                                    :alt="`${product.slug.split('-')[0]},dish`"
                                     onerror="this.src='https:\/\/source.unsplash.com/random/300x300/?'+this.alt" loading="lazy">
                             </div>
                             <div class="my_cardText">
