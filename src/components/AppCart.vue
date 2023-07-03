@@ -100,15 +100,14 @@ export default {
     },
     computed: {
         total() {
-            let total = 0;
+            let total = 0.00;
             if (this.store.cart.length) {
                 this.store.cart.forEach(item => {
-                    total += (parseInt(item.product.price) * parseInt(item.product.quantity));
+                    total += (parseFloat(item.product.price) * parseFloat(item.product.quantity));
                 })
             }
-            this.store.cartTotal = total;
-            console.log(total + " è il totale")
-            return total;
+            this.store.cartTotal = total.toFixed(2);
+            return total.toFixed(2);
         }
     },
     created() {

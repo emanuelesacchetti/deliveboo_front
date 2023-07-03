@@ -16,6 +16,7 @@ export default {
             },
             products: [],
             loadingRestaurants : true,
+            timingLoading: null,
         }
     },
     components: {
@@ -74,11 +75,15 @@ export default {
     },
     watch: {
         '$route.query.types'(newQuery, oldQuery) {
+            console.log('watching...');
             this.loadingRestaurants = true;
             axios.get(`${this.store.baseUrl}/api/restaurants?types=${newQuery}`)
                 .then(response => {
                     this.store.restaurantList = response.data.results;
-                    let timingLoading = setTimeout( () => {
+                    if(this.timingLoading){
+                        clearTimeout(this.timingLoading);
+                    }
+                    this.timingLoading = setTimeout( () => {
                         this.loadingRestaurants = false;
                     }, 1500);
                 })
