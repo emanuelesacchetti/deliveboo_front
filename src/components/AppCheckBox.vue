@@ -157,6 +157,10 @@ export default {
 #category-window::-webkit-scrollbar {
     display: none;
 }
+#category-window{
+    scrollbar-width: none;
+}
+
 
 .my_color {
     background-color: $primary-color;

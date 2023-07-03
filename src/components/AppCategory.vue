@@ -108,6 +108,9 @@ export default {
             //text-transform: uppercase;
             text-shadow: 1px 1px 0px $secondary-color;
 }
+#category-window{
+    scrollbar-width: none;
+}
 .container_category {
 
 
@@ -145,6 +148,7 @@ export default {
 .no-scroll::-webkit-scrollbar {
     display: none;
 }
+
 
 .container_check {
     width: 100%;
