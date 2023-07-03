@@ -85,7 +85,7 @@ export default {
 
 
         <div class="position-relative container_jumbo">
-            <img class=" w-100" :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Card image cap" loading="lazy">
+            <img class=" w-100" :src="`${store.baseUrl}/storage/${restaurant.image}`" alt="Card image cap" loading="lazy">
             <div class=" my_bg text-center container_jumboText">
                 <h1 class="display-1"> {{ restaurant.name }}</h1>
             </div>

@@ -101,7 +101,7 @@ export default {
                     <div class=" row h-100">
                         <div class="col-md-8 position-relative">
                             <div class="position-absolute top-0 start-0 w-100 h-100 my_style"></div>
-                            <img :src="`${store.baseUrl}/img/${restaurant.image}`" alt="Immagini Ristoranti"
+                            <img :src="`${store.baseUrl}/storage/${restaurant.image}`" alt="Immagini Ristoranti"
                                 class="w-100 h-100 my_image" loading="lazy">
                         </div>
                         <div class="col-md-4 d-flex justify-content-center align-items-center text-box">
