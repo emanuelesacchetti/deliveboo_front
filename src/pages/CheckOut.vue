@@ -71,11 +71,12 @@
                     <input v-model="orderPayload.phone_number" type="text" class="form-control" id="phone"
                         placeholder="Inserisci il tuo recapito" @focusin="inputs.phone_number.shown = true"
                         @focusout="inputs.phone_number.shown = false"
-                        :class="{ 'is-valid': orderPayload.phone_number && inputs.phone_number.hasValidFormat, 'is-invalid': !(orderPayload.phone_number && inputs.phone_number.hasValidFormat) }">
+                        :class="{ 'is-valid': orderPayload.phone_number && inputs.phone_number.hasValidFormat && inputs.phone_number.hasValidLength, 'is-invalid': !(orderPayload.phone_number && inputs.phone_number.hasValidFormat && inputs.phone_number.hasValidLength) }">
                     <small v-show="inputs.phone_number.shown">
                         <span v-show="!orderPayload.phone_number">Il numero di telefono è richiesto.</span>
                         <span v-show="!inputs.phone_number.hasValidFormat && orderPayload.phone_number"> Sono ammessi solo
                             numeri.</span>
+                        <span v-show="!inputs.phone_number.hasValidLength && orderPayload.phone_number"> Il numero deve essere di 10 cifre.</span>
                     </small>
                 </div>
 
@@ -128,6 +129,7 @@ export default {
                 },
                 phone_number: {
                     shown: false,
+                    hasValidLength: false,
                     hasValidFormat: false,
                 },
                 email: {
@@ -246,6 +248,7 @@ export default {
             //phone_number
             let phone = this.inputs.phone_number;
             phone.hasValidFormat = !payload.phone_number.match(/[^0-9]/g);
+            phone.hasValidLength = payload.phone_number.length == 10;
             if (!phone.hasValidFormat) {
                 formValidity = false;
             }
