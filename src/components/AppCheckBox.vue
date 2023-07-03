@@ -169,6 +169,11 @@ export default {
     left: -45px;
     width: 80px;
     cursor: pointer;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+        transform: scale(0.8);
+    }
 }
 
 .arrow_right {
@@ -177,6 +182,11 @@ export default {
     right: -45px;
     width: 80px;
     cursor: pointer;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+        transform: scale(0.8);
+    }
 
 }
 
