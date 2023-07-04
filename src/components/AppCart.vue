@@ -32,7 +32,7 @@
             &euro; </p>
         <p v-else class="p-3 text-center"> Nessun elemento nel carrello</p>
 
-        <router-link :to="{ name: 'payment' }" v-if="total" class= "my_btn p-2 w-100">
+        <router-link :to="{ name: 'payment' }" v-if="total != 0" class= "my_btn p-2 w-100">
             Vai al checkout
         </router-link>
     </div>

@@ -4,7 +4,7 @@
             <h1 class="display-6 p-2 text-dark rounded-3 my-3">Stiamo processando il pagamento</h1>
             <img src="src/assets/img/loadingDots.gif" alt="">
         </div>
-        <div v-else-if="store.cartTotal">
+        <div v-else-if="store.cartTotal != 0">
             <div class="container p-2">
                 <h1 class="text-center mb-5 display-4">Riepilogo ordine</h1>
                 <ul class="list-group p-2">
